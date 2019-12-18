@@ -35,13 +35,15 @@ export default class SignIn extends React.Component {
         return (
             <div className="sign-in-container">
                 <form onSubmit={this.handleSubmit}>
-                    <p className="started">Lets get started</p>
+                    <p className="started">Let's get started</p>
+                    <p className="enter-email">Enter your email to get started.</p>
                    <div className={this.state.myClass.join(" ")}
                    onFocus={this.inFocus} onBlur={this.inBlur}>
                        <label htmlFor="email">Email Address</label>
                        <input type="text" id="email"
                        onChange={this.update('email')}/>
                    </div>
+                   <button className="red-button">Get Started</button>
                 </form>
             </div>
         )

@@ -845,7 +845,9 @@ function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "started"
-      }, "Lets get started"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Let's get started"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "enter-email"
+      }, "Enter your email to get started."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.state.myClass.join(" "),
         onFocus: this.inFocus,
         onBlur: this.inBlur
@@ -855,7 +857,9 @@ function (_React$Component) {
         type: "text",
         id: "email",
         onChange: this.update('email')
-      }))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "red-button"
+      }, "Get Started")));
     }
   }]);
 
