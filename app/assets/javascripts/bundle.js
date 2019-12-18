@@ -344,7 +344,9 @@ var LoginNavBar = function LoginNavBar(_ref) {
     className: "nav-list"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "logo login-logo"
-  }, "haply")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "haply")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "right"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "organize"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: "#"
@@ -374,7 +376,7 @@ var LoginNavBar = function LoginNavBar(_ref) {
     to: "#"
   }, "Resources")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: "#"
-  }, "Create Event")), condition)));
+  }, "Create Event")), condition))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (LoginNavBar);
@@ -493,7 +495,9 @@ var NavBarIndex = function NavBarIndex(_ref) {
     className: "nav-list"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "logo"
-  }, "haply")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "haply")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "right"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "organize"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: "#"
@@ -523,7 +527,7 @@ var NavBarIndex = function NavBarIndex(_ref) {
     to: "#"
   }, "Resources")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: "#"
-  }, "Create Event")), condition)));
+  }, "Create Event")), condition))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarIndex);

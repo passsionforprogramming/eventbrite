@@ -10,6 +10,7 @@ const LoginNavBar = ({ currentUser, logout, }) => {
                 <ul className="nav-list">
                     <li><p className="logo login-logo">haply</p></li>
                     <li><SearchBar /></li>
+                    <span className="right">
                     <li className="organize"><NavLink to="#">Organize</NavLink>
                         <ul className="drop-down">
                             <li><NavLink to="#">Overview</NavLink></li>
@@ -28,6 +29,7 @@ const LoginNavBar = ({ currentUser, logout, }) => {
                     </li>
                     <li><NavLink to="#">Create Event</NavLink></li>
                     {condition}
+                    </span>
                 </ul>
             </nav>
         </div>
