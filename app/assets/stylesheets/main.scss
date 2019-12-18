@@ -1,0 +1,152 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+@font-face {
+    font-family: 'Signatra';
+    src: asset_url("Signatra.ttf") format("truetype")
+}
+.background-image {
+    position: absolute;
+    height: 70%;
+    width: 100%;
+    display: inline-block;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    background-image: image_url("concerts-1150042_1920.jpg");
+    z-index: -1;
+}
+
+
+.navbar {
+    position: absolute;
+    color: white;
+    width: 100%;
+}
+
+nav {
+    float: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.nav-list li {
+    float: left;
+    position: relative;
+}
+
+.nav-list a {
+    display: block;
+    padding: 0 20px;
+    line-height: 70px;
+    text-decoration: none;
+    &:hover {
+        background-color: rgba($color: #cfb6b63f, $alpha: .2)
+    }
+    &:not(:only-child):after {
+       padding-left: 4px;
+       content: ' ▾';
+    }
+}
+
+.drop-down li {
+    min-width: 190px;
+    a {
+        padding: 15px;
+        line-height: 20px;
+    }
+}
+
+.drop-down {
+    position: absolute;
+    z-index: 1;
+     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+     background-color: white;
+     color: grey;
+     display: none;
+}
+
+.logo {
+    font-size: 50px;
+    font-family: 'Signatra';
+    margin-left: 30px;
+}
+
+.organize:hover > .drop-down {
+    display: block;
+}
+
+.help:hover > .drop-down {
+    display: block;
+}
+
+.search-bar {
+    background-color: white;
+    padding: 15px 10px;
+    line-height: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.search-bar > input {
+    width: 400px;
+    margin-left: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: rgba($color: #000000, $alpha: .3)
+}
+
+.login {
+    position: relative;
+    color: grey;
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+}
+
+
+.login-logo {
+    color: orangered;
+}
+
+
+
+
+
