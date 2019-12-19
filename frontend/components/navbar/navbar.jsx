@@ -8,6 +8,7 @@ const NavBar = (props) => (
             <Route exact path="/" render={(props) => <NavBarIndex {...props}/>} />
             <Route exact path="/login" render={(props) => <LoginNavBar {...props} />} />
             <Route exact path="/signin" render={(props) => <LoginNavBar {...props} />} />
+            <Route exact path="/signup" render={(props) => <LoginNavBar {...props} />} />
         </Switch>
     </div>
 )

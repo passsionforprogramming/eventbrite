@@ -1,9 +1,12 @@
 import React from 'react';
-
-export default class SignIn extends React.Component {
+import { connect } from 'react-redux';
+import { verifyMember } from '../../util/session_api_util';
+import LoadingIcon from '../loading/loading_icon';
+class SignIn extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            loading: false,
             email: "",
             myClass: ["float-container"]
         }
@@ -22,19 +25,36 @@ export default class SignIn extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.history.push({
-            pathname: "/login",
-            state: {email: this.state.email},
+        this.setState({loading: true});
+        verifyMember(this.state.email).then(data => {
+            if (!data.verify){
+                this.setState({ loading: false });
+                this.props.history.push({
+                    pathname: "/signup",
+                    state: { email: this.state.email },
+                })
+            } else {
+                this.setState({ loading: false });
+                this.props.history.push({
+                    pathname: "/login",
+                    state: { email: this.state.email },
+                })
+            }
         })
+        
         
     }
     update = field => e => {
         this.setState({[field]: e.currentTarget.value})
     }
     render(){
+        if (this.state.loading){
+            return <section><LoadingIcon /></section>;
+        }
         return (
             <div className="sign-in-container">
                 <form onSubmit={this.handleSubmit}>
+                    <p className="logo-initial">h</p>
                     <p className="started">Let's get started</p>
                     <p className="enter-email">Enter your email to get started.</p>
                    <div className={this.state.myClass.join(" ")}
@@ -49,3 +69,13 @@ export default class SignIn extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+   loading: state.ui.loading.verifyLoading
+})
+
+const mapDispatchToProps = dispatch => ({
+    previousMember: (email) => dispatch(verifyPreviousMember(email))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

@@ -3,6 +3,19 @@ import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const PREVIOUS_USER = 'PREVIOUS_USER';
+export const NOT_PREVIOUS_USER = 'NOT_PREVIOUS_USER';
+export const START_LOADING_VERIFY = 'START_LOADING_VERIFY';
+
+export const previousUser = (status, email) => ({
+  type: PREVIOUS_USER,
+  status,
+  email,
+})
+
+export const loadingPreviousUser = () => ({
+  type: START_LOADING_VERIFY
+})
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
@@ -39,3 +52,10 @@ export const logout = () => dispatch => (
     dispatch(logoutCurrentUser())
   ))
 );
+
+export const verifyPreviousMember = (email) => dispatch => {
+  dispatch(loadingPreviousUser);
+  return APIUtil.verifyMember().then(data => (
+    dispatch(previousUser(data.verify, email))
+  ))
+  }

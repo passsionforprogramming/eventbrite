@@ -11,14 +11,7 @@ const LoginNavBar = ({ currentUser, logout, }) => {
                     <li><p className="logo login-logo">haply</p></li>
                     <li><SearchBar /></li>
                     <span className="right">
-                    <li className="organize"><NavLink to="#">Organize</NavLink>
-                        <ul className="drop-down">
-                            <li><NavLink to="#">Overview</NavLink></li>
-                            <li><NavLink to="#">Pricing</NavLink></li>
-                            <li><NavLink to="#">Blog</NavLink></li>
-                            <li><NavLink to="#">Resources</NavLink></li>
-                        </ul>
-                    </li>
+                        <li><NavLink to="#">Browse</NavLink></li>
                     <li className="help"><NavLink to="#">Help</NavLink>
                         <ul className="drop-down">
                             <li><NavLink to="#">How it Works</NavLink></li>
@@ -27,7 +20,6 @@ const LoginNavBar = ({ currentUser, logout, }) => {
                             <li><NavLink to="#">Resources</NavLink></li>
                         </ul>
                     </li>
-                    <li><NavLink to="#">Create Event</NavLink></li>
                     {condition}
                     </span>
                 </ul>

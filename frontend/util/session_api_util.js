@@ -20,3 +20,11 @@ export const logout = () => (
     url: '/api/session'
   })
 );
+
+export const verifyMember = (email) => (
+  $.ajax({
+    method: 'POST',
+    url: `api/members`,
+    data: email
+  })
+)
