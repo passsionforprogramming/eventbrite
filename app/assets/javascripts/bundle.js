@@ -1044,9 +1044,11 @@ function (_React$Component) {
       emailConfirm: "",
       firstName: "",
       lastName: "",
+      password: "",
       emailConfirmClass: ["input-group"],
       firstNameClass: ["input-group"],
-      lastNameClass: ["input-group"]
+      lastNameClass: ["input-group"],
+      passwordClass: ["input-group"]
     };
     return _this;
   }
@@ -1110,6 +1112,8 @@ function (_React$Component) {
         required: true,
         onChange: this.update('firstName')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "empty-divider"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.state.lastNameClass.join(" "),
         onFocus: function onFocus() {
           return _this2.inFocus("lastNameClass");
@@ -1121,7 +1125,33 @@ function (_React$Component) {
         type: "text",
         required: true,
         onChange: this.update('lastName')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Last Name")))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Last Name"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: this.state.passwordClass.join(" "),
+        onFocus: function onFocus() {
+          return _this2.inFocus("passwordClass");
+        },
+        onBlur: function onBlur() {
+          return _this2.inBlur("passwordClass");
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        required: true,
+        onChange: this.update('password')
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "five-height"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "grey-divider"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "password-warning"
+      }, "Your password must be at least 8 characters"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "five-height"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "red-button"
+      }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "third-em"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "login-text"
+      }, "Log In Instead")));
     }
   }]);
 

@@ -112,6 +112,24 @@
   justify-content: space-between;
 }
 
+.empty-divider {
+  width: 30px;
+}
+
+.password-warning {
+  font-family: Roboto, Proxima-Nova, sans-serif;
+  font-size: .8em;
+  color: rgba($color: #000000, $alpha: 0.7)
+}
+
+.login-text {
+  color: blue;
+  font-family: Roboto, Proxima-Nova, sans-serif;
+  align-self: center;
+}
+
+
+
 
 
 
