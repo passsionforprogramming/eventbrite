@@ -1,5 +1,7 @@
 import React from 'react';
-import EventSearchBox from '../event_box/event_box'
+import EventSearchBox from '../event_box/event_box';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 const Home = () => (
     
        <div>
@@ -16,6 +18,11 @@ const Home = () => (
                      those who do
               </div>
               <EventSearchBox />
+              <div className="arrow-circle">
+                     <FontAwesomeIcon icon={faArrowCircleRight} 
+                     color={"orangered"}
+                     className="the-arrow"/>
+              </div>
              
 
        </div>
