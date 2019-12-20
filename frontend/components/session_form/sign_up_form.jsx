@@ -23,12 +23,7 @@ export default class SignUpForm extends React.Component {
         }
     }
 
-    static getDerivedStateFromProps(props, state){
-        debugger;
-        if (!props.location.state.email){
-            this.props.history.push("/signin");
-        }
-    }
+    
 
     update = field => e => {
         this.setState({ [field]: e.currentTarget.value })
@@ -125,7 +120,7 @@ export default class SignUpForm extends React.Component {
                     <div className="five-height"></div>
                     <button className="red-button">Sign Up</button>
                     <div className="third-em"></div>
-                    <Link to="/login"><p className="login-text">Log In Instead</p></Link>
+                    <p className="login-text"><Link to="/login">Log In Instead</Link></p>
                 </form>
             </div>
         )
