@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Home from './home/home';
 import SignIn from './session_form/sign_in';
+import Dashboard from './main/dashboard';
 
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signin" component={SignIn} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <ProtectedRoute exact path="/dashboard" component={Dashboard} />
       <Route exact path="/" component={Home}/>
     </Switch>
   </div>

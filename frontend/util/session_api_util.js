@@ -9,7 +9,7 @@ export const login = user => (
 export const signup = user => (
   $.ajax({
     method: 'POST',
-    url: '/api/user',
+    url: '/api/users',
     data: { user }
   })
 );
@@ -25,6 +25,8 @@ export const verifyMember = (email) => (
   $.ajax({
     method: 'POST',
     url: `api/members`,
-    data: email
+    data: {
+      email: email
+    }
   })
 )

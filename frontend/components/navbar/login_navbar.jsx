@@ -1,8 +1,10 @@
 import React from 'react';
 import SearchBar from '../search_bar/search_bar';
 import { NavLink } from 'react-router-dom';
-const LoginNavBar = ({ currentUser, logout, }) => {
-    const condition = currentUser ? <li><NavLink to="/">Sign Out</NavLink></li> :
+import { connect } from 'react-redux';
+import { logout } from '../../actions/session_actions';
+const LoginNavBar = (props) => {
+    const condition = props.currentUser ? <li onClick={() => props.logout()}><NavLink to="/signin">Sign Out</NavLink></li> :
         <li><NavLink to="/signin">Sign In</NavLink></li>;
     return (
         <div>
@@ -28,4 +30,12 @@ const LoginNavBar = ({ currentUser, logout, }) => {
     )
 }
 
-export default LoginNavBar;
+const mapStateToProps = ({ session, entities: { users } }) => ({
+    currentUser: users[session.id]
+});
+
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginNavBar);

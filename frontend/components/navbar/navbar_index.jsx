@@ -1,8 +1,10 @@
 import React from 'react';
 import SearchBar from '../search_bar/search_bar';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/session_actions';
 const NavBarIndex = ({ currentUser, logout, }) => {
-    const condition = currentUser ? <li><NavLink to="/">Sign Out</NavLink></li> :
+    const condition = currentUser ? <li onClick={() => logout()}><NavLink to="/signin">Sign Out</NavLink></li> :
         <li><NavLink to="/signin">Sign In</NavLink></li>;
     return (
         <div>
@@ -36,4 +38,12 @@ const NavBarIndex = ({ currentUser, logout, }) => {
     )
 }
 
-export default NavBarIndex;
+const mapStateToProps = ({ session, entities: { users } }) => ({
+    currentUser: users[session.id]
+});
+
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBarIndex);

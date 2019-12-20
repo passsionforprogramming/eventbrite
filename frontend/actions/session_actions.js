@@ -6,15 +6,20 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const PREVIOUS_USER = 'PREVIOUS_USER';
 export const NOT_PREVIOUS_USER = 'NOT_PREVIOUS_USER';
 export const START_LOADING_VERIFY = 'START_LOADING_VERIFY';
+export const LOADING_FORM = "LOADING_FORM";
 
 export const previousUser = (status, email) => ({
   type: PREVIOUS_USER,
   status,
   email,
-})
+});
 
 export const loadingPreviousUser = () => ({
   type: START_LOADING_VERIFY
+});
+
+export const loadingForm = () => ({
+  type: LOADING_FORM
 })
 
 export const receiveCurrentUser = currentUser => ({
@@ -31,13 +36,14 @@ export const receiveErrors = errors => ({
   errors
 });
 
-export const signup = user => dispatch => (
-  APIUtil.signup(user).then(user => (
+export const signup = user => dispatch => {
+  dispatch(loadingForm()); 
+  return APIUtil.signup(user).then(user => (
     dispatch(receiveCurrentUser(user))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-);
+  };
 
 export const login = user => dispatch => (
   APIUtil.login(user).then(user => (
@@ -54,7 +60,7 @@ export const logout = () => dispatch => (
 );
 
 export const verifyPreviousMember = (email) => dispatch => {
-  dispatch(loadingPreviousUser);
+  dispatch(loadingPreviousUser());
   return APIUtil.verifyMember().then(data => (
     dispatch(previousUser(data.verify, email))
   ))
