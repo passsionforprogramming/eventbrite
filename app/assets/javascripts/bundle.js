@@ -1230,9 +1230,12 @@ function (_React$Component) {
       }));
     });
 
-    debugger;
+    if (!props.location.state) {
+      _this.props.history.push("/signin");
+    }
+
     _this.state = {
-      email: _this.props.location.state.email || "",
+      email: _this.props.location.state ? _this.props.location.state.email : "",
       emailConfirm: "",
       firstName: "",
       lastName: "",
@@ -1343,9 +1346,11 @@ function (_React$Component) {
         className: "red-button"
       }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "third-em"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/login"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-text"
-      }, "Log In Instead")));
+      }, "Log In Instead"))));
     }
   }], [{
     key: "getDerivedStateFromProps",

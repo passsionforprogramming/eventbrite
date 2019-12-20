@@ -6,9 +6,11 @@ import { fieldsMatch, validateEmail } from '../../util/form_validator';
 export default class SignUpForm extends React.Component {
     constructor(props){
         super(props)
-        debugger;
+        if (!props.location.state) {
+            this.props.history.push("/signin");
+        }
         this.state = {
-            email: this.props.location.state.email || "",
+            email: this.props.location.state ? this.props.location.state.email : "",
             emailConfirm: "",
             firstName: "",
             lastName: "",
@@ -123,7 +125,7 @@ export default class SignUpForm extends React.Component {
                     <div className="five-height"></div>
                     <button className="red-button">Sign Up</button>
                     <div className="third-em"></div>
-                    <p className="login-text">Log In Instead</p>
+                    <Link to="/login"><p className="login-text">Log In Instead</p></Link>
                 </form>
             </div>
         )
