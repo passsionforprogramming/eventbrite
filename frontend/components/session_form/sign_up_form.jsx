@@ -115,6 +115,7 @@ export default class SignUpForm extends React.Component {
                     <div className="five-height">
 
                     </div>
+                    {this.renderErrors()}
                     <hr className="grey-divider"/>
                     <p className="password-warning">Your password must be at least 8 characters</p>
                     <div className="five-height"></div>

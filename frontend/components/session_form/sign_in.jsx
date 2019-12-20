@@ -57,7 +57,7 @@ class SignIn extends React.Component {
                     <p className="logo-initial">h</p>
                     <p className="started">Let's get started</p>
                     <p className="enter-email">Enter your email to get started.</p>
-                   <div className={this.state.myClass.join(" ")}
+                   <div required className={this.state.myClass.join(" ")}
                    onFocus={this.inFocus} onBlur={this.inBlur}>
                        <label htmlFor="email">Email Address</label>
                        <input type="text" id="email"
