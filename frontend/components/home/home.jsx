@@ -2,9 +2,15 @@ import React from 'react';
 import EventSearchBox from '../event_box/event_box';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
-const Home = () => (
+import { sendDropdownEvent } from "../../actions/ui_actions";
+import { connect } from 'react-redux';
+const Home = (props) => (
     
-       <div>
+       <div onClick={() => {
+              if (props.showDropDown){
+                     props.sendDropdownEvent({dateDropDown: false})
+              }
+       }}>
               <div className="background-image">
                      
               </div>
@@ -29,4 +35,13 @@ const Home = () => (
 
 )
 
-export default Home;
+
+const mapStateToProps = state => ({
+  showDropDown: state.ui.homeUi.dateDropDown
+});
+
+const mapDispatchToProps = dispatch => ({
+  sendDropdownEvent: (event) => dispatch(sendDropdownEvent(event))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
