@@ -81,7 +81,7 @@ nav {
 
 .nav-list a {
     display: block;
-    padding: 0 20px;
+    padding: 0 25px;
     line-height: 70px;
     text-decoration: none;
     &:hover {
@@ -109,6 +109,7 @@ nav {
      color: grey;
      display: none;
 }
+
 
 .logo {
     font-size: 50px;
@@ -141,10 +142,8 @@ nav {
 }
 
 .login {
-    position: relative;
     color: grey;
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-    display: flex;
 }
 
 
@@ -355,6 +354,23 @@ border-bottom: 2px solid blue;
 
 .range-picker {
   z-index: 1000;
+}
+
+.help:hover, .help:active {
+  .drop-down {
+    display: block;
+  }
+}
+
+.drop-down:hover {
+  display: block;
+  ul {
+    display: block;
+  }
+}
+
+.help {
+  position: relative;
 }
 
 

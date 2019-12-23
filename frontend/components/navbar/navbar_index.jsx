@@ -29,7 +29,7 @@ const NavBarIndex = ({ currentUser, logout, }) => {
                             <li><NavLink to="#">Resources</NavLink></li>
                         </ul>
                     </li>
-                    <li><NavLink to="#">Create Event</NavLink></li>
+                    <li><NavLink to="/createEvent">Create Event</NavLink></li>
                     {condition}
                     </span>
                 </ul>

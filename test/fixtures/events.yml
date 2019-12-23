@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  user_id: 1
+  category: MyString
+  type: 
+  organizer: MyString
+  start_time: 2019-12-22 22:44:55
+  end_time: 2019-12-22 22:44:55
+  display_start_time: false
+  display_end_time: false
+  timezone: MyString
+  image_url: MyString
+  description: MyText
+  published: false
+  status: MyString
+  sold: 1.5
+  gross: 1.5
+  views: 1
+
+two:
+  title: MyString
+  user_id: 1
+  category: MyString
+  type: 
+  organizer: MyString
+  start_time: 2019-12-22 22:44:55
+  end_time: 2019-12-22 22:44:55
+  display_start_time: false
+  display_end_time: false
+  timezone: MyString
+  image_url: MyString
+  description: MyText
+  published: false
+  status: MyString
+  sold: 1.5
+  gross: 1.5
+  views: 1

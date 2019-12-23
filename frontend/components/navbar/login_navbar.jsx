@@ -8,7 +8,7 @@ const LoginNavBar = (props) => {
         <li><NavLink to="/signin">Sign In</NavLink></li>;
     return (
         <div>
-            <nav className="navbar login">
+            <nav className="login">
                 <ul className="nav-list">
                     <li><p className="logo login-logo">haply</p></li>
                     <li><SearchBar /></li>

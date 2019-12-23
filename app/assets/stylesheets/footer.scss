@@ -1,0 +1,22 @@
+.footer {
+    display: flex;
+    color: white;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #1E0D3C;
+    font-family: 'Roboto';
+    li {
+        padding: 20px 5px;
+    }
+}
+
+.footer-center {
+width: 90%;
+display: flex;
+justify-content: space-evenly;
+}
+
+.copyright {
+   color: rgba($color: #8c9092, $alpha: 0.7)
+}
