@@ -86,6 +86,72 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/event_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/event_actions.js ***!
+  \*******************************************/
+/*! exports provided: UPDATE_TITLE, UPDATE_TYPE, UPDATE_CATEGORY, ADD_TAG, REMOVE_TAG, UPDATE_ORGANIZER, updateTitle, updateType, updateCategory, addTag, removeTag, updateOrganizer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_TITLE", function() { return UPDATE_TITLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_TYPE", function() { return UPDATE_TYPE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_CATEGORY", function() { return UPDATE_CATEGORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TAG", function() { return ADD_TAG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_TAG", function() { return REMOVE_TAG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_ORGANIZER", function() { return UPDATE_ORGANIZER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateTitle", function() { return updateTitle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateType", function() { return updateType; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCategory", function() { return updateCategory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addTag", function() { return addTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeTag", function() { return removeTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateOrganizer", function() { return updateOrganizer; });
+var UPDATE_TITLE = "UPDATE_TITLE";
+var UPDATE_TYPE = "UPDATE_TYPE";
+var UPDATE_CATEGORY = "UPDATE_CATEGORY";
+var ADD_TAG = "ADD_TAG";
+var REMOVE_TAG = "REMOVE_TAG";
+var UPDATE_ORGANIZER = "UPDATE_ORGANIZER";
+var updateTitle = function updateTitle(title) {
+  return {
+    type: UPDATE_TITLE,
+    title: title
+  };
+};
+var updateType = function updateType(eventType) {
+  return {
+    type: UPDATE_TYPE,
+    eventType: eventType
+  };
+};
+var updateCategory = function updateCategory(category) {
+  return {
+    type: UPDATE_TITLE,
+    category: category
+  };
+};
+var addTag = function addTag(tag) {
+  return {
+    type: ADD_TAG,
+    tag: tag
+  };
+};
+var removeTag = function removeTag(tag) {
+  return {
+    type: REMOVE_TAG,
+    tag: tag
+  };
+};
+var updateOrganizer = function updateOrganizer(organizer) {
+  return {
+    type: UPDATE_ORGANIZER,
+    organizer: organizer
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -280,16 +346,16 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./frontend/components/create_event/basic_info.jsx":
-/*!*********************************************************!*\
-  !*** ./frontend/components/create_event/basic_info.jsx ***!
-  \*********************************************************/
+/***/ "./frontend/components/builders/dropdown_list.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/builders/dropdown_list.jsx ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BasicInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DropDownList; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -312,6 +378,87 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var DropDownList =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DropDownList, _React$Component);
+
+  function DropDownList(props) {
+    var _this;
+
+    _classCallCheck(this, DropDownList);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DropDownList).call(this, props));
+    _this.state = {
+      selected: _this.props.type
+    };
+    return _this;
+  }
+
+  _createClass(DropDownList, [{
+    key: "render",
+    value: function render() {
+      var items = this.props.items;
+      var itemList = items.map(function (item, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: i
+        }, item);
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "my-custom-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "select-box"
+      }, this.state.selected), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "event-type-dropdown-content"
+      }, itemList));
+    }
+  }]);
+
+  return DropDownList;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./frontend/components/create_event/basic_info.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/create_event/basic_info.jsx ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BasicInfo; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_event_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/event_types */ "./frontend/util/event_types.js");
+/* harmony import */ var _builders_dropdown_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../builders/dropdown_list */ "./frontend/components/builders/dropdown_list.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
 var BasicInfo =
 /*#__PURE__*/
 function (_React$Component) {
@@ -323,11 +470,25 @@ function (_React$Component) {
     _classCallCheck(this, BasicInfo);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BasicInfo).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "inFocus", function (arg) {
+      _this.setState(function (prevState) {
+        return prevState[arg].push("focused");
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "inBlur", function (arg) {
+      _this.setState(function (prevState) {
+        return prevState[arg].pop();
+      });
+    });
+
     _this.state = {
       titleClassName: ["float-container"],
       typeClassName: ["float-container"],
       categoryClassName: ["float-container"],
-      tagClassName: ["float-container"]
+      tagClassName: ["float-container"],
+      counter: 0
     };
     return _this;
   }
@@ -337,7 +498,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "basic-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "basic-info-header"
@@ -345,15 +506,32 @@ function (_React$Component) {
         className: "basic-info-explanation"
       }, "Name your event and tell event-goers why they should come. Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "basic-info-explplanation"
-      }, "details that highlight what makes it unique"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "details that highlight what makes it unique"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: this.state.titleClassName.join(" ")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "title"
       }, "Event Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         id: "title",
+        placeholder: "Be clear and descriptive.",
+        maxLength: "75",
         onChange: function onChange(e) {
           return _this2.props.updateTitle(e.currentTarget.value);
+        },
+        onFocus: function onFocus() {
+          return _this2.inFocus("titleClassName");
+        },
+        onBlur: function onBlur() {
+          return _this2.inBlur("titleClassName");
         }
-      }));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "counter"
+      }, "".concat(this.props.title.length.toString(), "/75")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_builders_dropdown_list__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        items: _util_event_types__WEBPACK_IMPORTED_MODULE_1__["eventTypes"],
+        type: "Type"
+      }))));
     }
   }]);
 
@@ -375,88 +553,40 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _basic_info__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./basic_info */ "./frontend/components/create_event/basic_info.jsx");
+/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
+
 
 
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    title: state.entities.event,
-    eventType: state.entities.eventType,
-    category: state.entities.category,
-    tags: state.entities.tags,
-    organizer: state.entities.organizer
+    title: state.entities.event.title,
+    eventType: state.entities.event.eventType,
+    category: state.entities.event.category,
+    tags: state.entities.event.tags,
+    organizer: state.entities.event.organizer
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    updateTitle: function (_updateTitle) {
-      function updateTitle(_x) {
-        return _updateTitle.apply(this, arguments);
-      }
-
-      updateTitle.toString = function () {
-        return _updateTitle.toString();
-      };
-
-      return updateTitle;
-    }(function (title) {
-      return dispatch(updateTitle(title));
-    }),
-    updateType: function (_updateType) {
-      function updateType(_x2) {
-        return _updateType.apply(this, arguments);
-      }
-
-      updateType.toString = function () {
-        return _updateType.toString();
-      };
-
-      return updateType;
-    }(function (eventType) {
-      return dispatch(updateType(eventType));
-    }),
-    updateCategory: function (_updateCategory) {
-      function updateCategory(_x3) {
-        return _updateCategory.apply(this, arguments);
-      }
-
-      updateCategory.toString = function () {
-        return _updateCategory.toString();
-      };
-
-      return updateCategory;
-    }(function (category) {
-      return dispatch(updateCategory(category));
-    }),
-    addTag: function (_addTag) {
-      function addTag(_x4) {
-        return _addTag.apply(this, arguments);
-      }
-
-      addTag.toString = function () {
-        return _addTag.toString();
-      };
-
-      return addTag;
-    }(function (tag) {
-      return dispatch(addTag(tag));
-    }),
-    removeTag: function (_removeTag) {
-      function removeTag(_x5) {
-        return _removeTag.apply(this, arguments);
-      }
-
-      removeTag.toString = function () {
-        return _removeTag.toString();
-      };
-
-      return removeTag;
-    }(function (tag) {
-      return dispatch(removeTag(tag));
-    }),
+    updateTitle: function updateTitle(title) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["updateTitle"])(title));
+    },
+    updateType: function updateType(eventType) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["updateType"])(eventType));
+    },
+    updateCategory: function updateCategory(category) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["updateCategory"])(category));
+    },
+    addTag: function addTag(tag) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["addTag"])(tag));
+    },
+    removeTag: function removeTag(tag) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["removeTag"])(tag));
+    },
     organizer: function organizer(_organizer) {
-      return dispatch(updateOrganizer(_organizer));
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_2__["updateOrganizer"])(_organizer));
     }
   };
 };
@@ -872,10 +1002,12 @@ var LoadingIcon = function LoadingIcon() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _create_event_basic_info_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../create_event/basic_info_container */ "./frontend/components/create_event/basic_info_container.js");
+
 
 
 var Dashboard = function Dashboard(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "dashboard");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_event_basic_info_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Dashboard);
@@ -1178,20 +1310,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var SignedInNavBar = function SignedInNavBar(props) {
-  var condition = props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    onClick: function onClick() {
-      return props.logout();
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-    to: "/signin"
-  }, "Sign Out")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-    to: "/signin"
-  }, "Sign In"));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "login"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "nav-list"
+    className: "nav-lists"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "logo login-logo"
   }, "haply")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_bar_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -1218,10 +1342,15 @@ var SignedInNavBar = function SignedInNavBar(props) {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faTicketAlt"],
     color: "black"
   }), "Tickets"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "help"
+    className: "profile"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: "#"
-  }, "Help"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faUserCircle"],
+    className: "profile-icon"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "arrow down"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "drop-down"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: "#"
@@ -1231,7 +1360,7 @@ var SignedInNavBar = function SignedInNavBar(props) {
     to: "#"
   }, "Blog")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: "#"
-  }, "Resources")))), condition))));
+  }, "Resources"))))))));
 };
 
 var mapStateToProps = function mapStateToProps(_ref) {
@@ -2057,7 +2186,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _previous_user_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./previous_user_reducer */ "./frontend/reducers/previous_user_reducer.js");
 /* harmony import */ var _event_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event_reducer */ "./frontend/reducers/event_reducer.js");
-/* harmony import */ var _event_reducer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_event_reducer__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -2065,7 +2193,7 @@ __webpack_require__.r(__webpack_exports__);
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   previousUser: _previous_user_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  event: _event_reducer__WEBPACK_IMPORTED_MODULE_3___default.a
+  event: _event_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2094,16 +2222,20 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./frontend/reducers/event_reducer.js ***!
   \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/event_actions */ "./frontend/actions/event_actions.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var state = {
+
+var initState = {
   title: "",
   eventType: "",
   category: "",
@@ -2116,21 +2248,27 @@ var eventReducer = function eventReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case UPDATE_TITLE:
-      return _objectSpread({}, state, {}, action.title);
+    case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_TITLE"]:
+      return _objectSpread({}, state, {
+        title: action.title
+      });
 
-    case UPDATE_TYPE:
-      return _objectSpread({}, state, {}, action.eventType);
+    case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_TYPE"]:
+      return _objectSpread({}, state, {
+        eventType: action.eventType
+      });
 
-    case UPDATE_CATEGORY:
-      return _objectSpread({}, state, {}, action.category);
+    case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_CATEGORY"]:
+      return _objectSpread({}, state, {
+        category: action.category
+      });
 
-    case ADD_TAG:
+    case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["ADD_TAG"]:
       return _objectSpread({}, state, {
         tag: state.tags.concat(action.tag)
       });
 
-    case REMOVE_TAG:
+    case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TAG"]:
       var updatedTags = state.tags.filter(function (tag) {
         return tag.toLowerCase() !== tag.toLowerCase();
       });
@@ -2138,13 +2276,17 @@ var eventReducer = function eventReducer() {
         tags: updatedTags
       });
 
-    case UPDATE_ORGANIZER:
-      return _objectSpread({}, state, {}, action.organizer);
+    case _actions_event_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_ORGANIZER"]:
+      return _objectSpread({}, state, {
+        organizer: action.organizer
+      });
 
     default:
       return state;
   }
 };
+
+/* harmony default export */ __webpack_exports__["default"] = (eventReducer);
 
 /***/ }),
 
@@ -2453,6 +2595,20 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/event_types.js":
+/*!**************************************!*\
+  !*** ./frontend/util/event_types.js ***!
+  \**************************************/
+/*! exports provided: eventTypes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventTypes", function() { return eventTypes; });
+var eventTypes = ["Type", "Appearance or Signing", "Attraction", "Camp, Trip, or Retreat", "Class, Training, or Workshop", "Concert, or Performance", "Conference", "Convention", "Dinner or Gala", "Festival or Fair", "Game or Competition", "Meeting or Networking Event", "Other", "Party or Social Gathering", "Race or Endurance Event", "Rally", "Screening", "Seminar or Talk", "Tour", "Tournament", "Tradeshow, Consumer Show, or Expo"];
 
 /***/ }),
 

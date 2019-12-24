@@ -7,3 +7,36 @@
     margin-top: 10px;
     align-items: center;
 }
+
+.profile-icon {
+    font-size: 40px;
+    margin-right: 3px;
+}
+
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.nav-lists a {
+    display: block;
+    padding: 0 25px;
+    line-height: 70px;
+    text-decoration: none;
+    &:hover {
+        background-color: rgba($color: #cfb6b63f, $alpha: .2)
+    }
+}
+
+.nav-lists {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

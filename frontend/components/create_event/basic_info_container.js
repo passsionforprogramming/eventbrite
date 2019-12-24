@@ -1,12 +1,20 @@
 import { connect } from 'react-redux';
 import BasicInfo from './basic_info';
+import {
+    updateTitle,
+    updateType,
+    updateCategory,
+    addTag,
+    removeTag,
+    updateOrganizer
+} from '../../actions/event_actions';
 
 const mapStateToProps = state => ({
-title: state.entities.event,
-eventType: state.entities.eventType,
-category: state.entities.category,
-tags: state.entities.tags,
-organizer: state.entities.organizer
+title: state.entities.event.title,
+eventType: state.entities.event.eventType,
+category: state.entities.event.category,
+tags: state.entities.event.tags,
+organizer: state.entities.event.organizer
 });
 
 const mapDispatchToProps = dispatch => ({
