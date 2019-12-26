@@ -346,6 +346,40 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./frontend/components/builders/category_dropdown_container.js":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/builders/category_dropdown_container.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _dropdown_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dropdown_list */ "./frontend/components/builders/dropdown_list.jsx");
+/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    selected: state.entities.event.category
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateState: function updateState(category) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["updateCategory"])(category));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_dropdown_list__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/builders/dropdown_list.jsx":
 /*!********************************************************!*\
   !*** ./frontend/components/builders/dropdown_list.jsx ***!
@@ -384,33 +418,37 @@ function (_React$Component) {
   _inherits(DropDownList, _React$Component);
 
   function DropDownList(props) {
-    var _this;
-
     _classCallCheck(this, DropDownList);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DropDownList).call(this, props));
-    _this.state = {
-      selected: _this.props.type
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(DropDownList).call(this, props));
   }
 
   _createClass(DropDownList, [{
     key: "render",
     value: function render() {
-      var items = this.props.items;
+      var _this$props = this.props,
+          items = _this$props.items,
+          updateState = _this$props.updateState,
+          selected = _this$props.selected;
       var itemList = items.map(function (item, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i
+          key: i,
+          onClick: function onClick() {
+            return updateState(item);
+          }
         }, item);
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "my-custom-dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select-box"
-      }, this.state.selected), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, selected), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "arrow down"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "relative-custom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "event-type-dropdown-content"
-      }, itemList));
+      }, itemList)));
     }
   }]);
 
@@ -418,6 +456,40 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./frontend/components/builders/dropdown_list_container.js":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/builders/dropdown_list_container.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _dropdown_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dropdown_list */ "./frontend/components/builders/dropdown_list.jsx");
+/* harmony import */ var _actions_event_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/event_actions */ "./frontend/actions/event_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    selected: state.entities.event.eventType
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateState: function updateState(eventType) {
+      return dispatch(Object(_actions_event_actions__WEBPACK_IMPORTED_MODULE_1__["updateType"])(eventType));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_dropdown_list__WEBPACK_IMPORTED_MODULE_0__["default"]));
 
 /***/ }),
 
@@ -434,7 +506,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_event_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/event_types */ "./frontend/util/event_types.js");
-/* harmony import */ var _builders_dropdown_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../builders/dropdown_list */ "./frontend/components/builders/dropdown_list.jsx");
+/* harmony import */ var _builders_dropdown_list_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../builders/dropdown_list_container */ "./frontend/components/builders/dropdown_list_container.js");
+/* harmony import */ var _builders_category_dropdown_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../builders/category_dropdown_container */ "./frontend/components/builders/category_dropdown_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -454,6 +527,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -483,12 +557,19 @@ function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "updateDropdownCallback", function (newVal) {
+      _this.setState({
+        valTest: newVal
+      });
+    });
+
     _this.state = {
       titleClassName: ["float-container"],
       typeClassName: ["float-container"],
       categoryClassName: ["float-container"],
       tagClassName: ["float-container"],
-      counter: 0
+      counter: 0,
+      valTest: ""
     };
     return _this;
   }
@@ -505,7 +586,7 @@ function (_React$Component) {
       }, "Basic Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "basic-info-explanation"
       }, "Name your event and tell event-goers why they should come. Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "basic-info-explplanation"
+        className: "basic-info-explanation"
       }, "details that highlight what makes it unique"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.state.titleClassName.join(" ")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -527,10 +608,13 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "counter"
       }, "".concat(this.props.title.length.toString(), "/75")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_builders_dropdown_list__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        items: _util_event_types__WEBPACK_IMPORTED_MODULE_1__["eventTypes"],
-        type: "Type"
+        className: "space-between"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_builders_dropdown_list_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        items: _util_event_types__WEBPACK_IMPORTED_MODULE_1__["eventTypes"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_builders_category_dropdown_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        items: _util_event_types__WEBPACK_IMPORTED_MODULE_1__["eventTypes"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "width-thirty-three"
       }))));
     }
   }]);
@@ -2237,8 +2321,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initState = {
   title: "",
-  eventType: "",
-  category: "",
+  eventType: "Type",
+  category: "Category",
   tags: [],
   organizer: ""
 };

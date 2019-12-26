@@ -3,20 +3,24 @@ import React from 'react';
 export default class DropDownList extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            selected: this.props.type
-        }
     }
+    
+    
     render(){
-        const { items } = this.props;
+        const { items, updateState, selected } = this.props;
         const itemList = items.map((item, i) =>
-            <li key={i}>{item}</li>)
+            <li key={i} onClick={() => updateState(item)}>{item}</li>)
         return (
             <div className="my-custom-dropdown">
-                <p className="select-box">{this.state.selected}</p>
-                <ul className="event-type-dropdown-content">
-                    {itemList}
-                </ul>
+                <div className="select-box">
+                    <p>{selected}</p>
+                    <p><i className="arrow down"></i></p>
+                </div>
+                <div className="relative-custom">
+                    <ul className="event-type-dropdown-content">
+                        {itemList}
+                    </ul>
+                </div>
             </div>
         )
     }

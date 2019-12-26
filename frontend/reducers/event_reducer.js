@@ -8,8 +8,8 @@ import { UPDATE_TITLE,
 
 const initState = {
     title: "",
-    eventType: "",
-    category: "",
+    eventType: "Type",
+    category: "Category",
     tags: [],
     organizer: ""
 }
