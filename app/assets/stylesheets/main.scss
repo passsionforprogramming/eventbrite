@@ -152,6 +152,10 @@ nav {
     display: flex;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 
 .login-logo {
     color: orangered;
@@ -371,6 +375,10 @@ border-bottom: 2px solid blue;
 
 .help {
   position: relative;
+}
+
+.seven-size {
+  height: 7em;
 }
 
 

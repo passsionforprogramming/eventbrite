@@ -18,6 +18,7 @@
 !/storage/.keep
 
 /node_modules
+/frontend/components/keys*
 /yarn-error.log
 
 /public/assets
