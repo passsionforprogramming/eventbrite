@@ -7,7 +7,9 @@ import {
   UPDATE_ORGANIZER,
   UPDATE_END_DATE,
   UPDATE_START_DATE,
-  FORM_SUBMITTED
+  FORM_SUBMITTED,
+  UPDATE_DISPLAY_END_TIME,
+  UPDATE_DISPLAY_START_TIME
 } from "../actions/event_actions";
 
 import { UPDATE_ADDRESS,
@@ -24,7 +26,9 @@ const initState = {
     endDate: new Date(),
     submitted: false,
     address: "",
-    addressType: "Venue"
+    addressType: "Venue",
+    displayStartTime: true,
+    displayEndTime: true
 }
 const eventReducer = (state = initState, action) => {
     switch (action.type) {
@@ -42,6 +46,10 @@ const eventReducer = (state = initState, action) => {
         return { ...state, address: action.address };
       case UPDATE_LAT_LNG:
         return { ...state, lat: action.latLng.lat, lng: action.latLng.lng };
+      case UPDATE_DISPLAY_START_TIME:
+        return { ...state, displayStartTime: action.val }
+      case UPDATE_DISPLAY_END_TIME:
+        return {...state, displayEndTime: action.val }
       case REMOVE_TAG:
         const updatedTags = state.tags.filter(
           tag => tag.toLowerCase() !== tag.toLowerCase()

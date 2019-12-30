@@ -323,12 +323,16 @@ export default class BasicInfo extends React.Component {
               })}>Advanced Settings <i className={`arrow ${this.state.displayStartTimeClass.length === 1 ? "down" : "up"}`}></i></p>
               <div className={this.state.displayStartTimeClass.join(" ")}>
                 <label htmlFor="checkbox">
-                  <input type="checkbox" checked/>
+                  <input type="checkbox" 
+                  checked={this.props.displayStartTime}
+                    onChange={e => this.props.updateDisplayStartTime(e.target.checked)}/>
                   Display start time.
                   <p>The start time will be displayed to your attendees</p>
                 </label>
                 <label htmlFor="checkbox">
-                  <input type="checkbox" checked />
+                  <input type="checkbox" 
+                  checked={this.props.displayEndTime}
+                    onChange={e => this.props.updateDisplayEndTime(e.target.checked)} />
                   Display end time.
                   <p>The end time will be displayed to your attendees</p>
                 </label>
