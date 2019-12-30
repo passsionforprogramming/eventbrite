@@ -21,7 +21,8 @@ tags: state.entities.event.tags,
 organizer: state.entities.event.organizer,
 address: state.entities.location.address,
 startDate: state.entities.event.startDate,
-endDate: state.entities.event.endDate
+endDate: state.entities.event.endDate,
+loading: state.ui.loading.loadingForm
 });
 
 const mapDispatchToProps = dispatch => ({

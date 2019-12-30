@@ -64,6 +64,9 @@ export default class BasicInfo extends React.Component {
 
     render(){
         const locationOptions = ["Venue", "Online event", "To be announced"];
+      if (this.props.loading) {
+        return <section><LoadingIcon /></section>;
+      }
         return (
           <div className="basic-info">
             <form>
@@ -78,6 +81,7 @@ export default class BasicInfo extends React.Component {
                 <label htmlFor="title">Event Title</label>
                 <input
                   type="text"
+                  required
                   id="title"
                   placeholder="Be clear and descriptive."
                   maxLength="75"
@@ -178,7 +182,8 @@ export default class BasicInfo extends React.Component {
                       <input
                         type="text"
                         {...getInputProps({
-                          placeholder: "Search for a venue or address"
+                          placeholder: "Search for a venue or address",
+                          required: true
                         })}
                       />
                     </div>

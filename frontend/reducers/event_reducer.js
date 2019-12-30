@@ -6,7 +6,8 @@ import {
   REMOVE_TAG,
   UPDATE_ORGANIZER,
   UPDATE_END_DATE,
-  UPDATE_START_DATE
+  UPDATE_START_DATE,
+  FORM_SUBMITTED
 } from "../actions/event_actions";
 
 const initState = {
@@ -16,7 +17,8 @@ const initState = {
     tags: [],
     organizer: "",
     startDate: new Date(),
-    endDate: new Date()
+    endDate: new Date(),
+    submitted: false
 }
 const eventReducer = (state = initState, action) => {
     switch (action.type) {
@@ -32,6 +34,8 @@ const eventReducer = (state = initState, action) => {
         const updatedTags = state.tags.filter(
           tag => tag.toLowerCase() !== tag.toLowerCase()
         );
+      case FORM_SUBMITTED:
+        return {...state, submitted: action.submitted }
         return {
           ...state,
           tags: updatedTags
