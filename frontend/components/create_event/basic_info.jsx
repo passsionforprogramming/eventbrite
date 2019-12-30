@@ -6,7 +6,6 @@ import LocationDropdown from '../builders/location_dropdown';
 import Tag from '../tag/tag';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { mapsAPIkey } from '../keys/key';
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -49,18 +48,6 @@ export default class BasicInfo extends React.Component {
 
     updateTagField = e => {
         this.setState({tagField: e.currentTarget.value});
-    }
-
-    fetchAddress = address => {
-       $.ajax({
-           url: `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${address}&key=${mapsAPIkey}`,
-           method: "GET"
-       }).then(res => console.log(res.predictions.description))
-    }
-
-    mapsAutoComplete = e => {
-        this.props.updateAddress(e.currentTarget.value);
-        this.fetchAddress(e.currentTarget.value);
     }
 
     handleSelect = address => {
