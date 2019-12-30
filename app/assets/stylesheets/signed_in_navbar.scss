@@ -25,6 +25,11 @@ i {
   -webkit-transform: rotate(45deg);
 }
 
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
 .nav-lists a {
     display: block;
     padding: 0 25px;

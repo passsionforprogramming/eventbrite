@@ -28,7 +28,8 @@ export default class BasicInfo extends React.Component {
             counter: 0,
             tagField: "",
             organizerClassName: ["float-container"],
-            singleEvent: "single"
+            singleEvent: "single",
+          displayStartTimeClass: ["display-start-time"]
         }
 
     }
@@ -307,7 +308,25 @@ export default class BasicInfo extends React.Component {
               <div className="one-em">
 
               </div>
-              <p className="advanced-settings">Advanced Settings</p>
+              <p className="advanced-settings" onClick={e => this.setState(prevState => {
+                if (prevState.displayStartTimeClass.includes("show")){
+                  return prevState.displayStartTimeClass.pop();
+                } else {
+                  return prevState.displayStartTimeClass.push("show");
+                }
+              })}>Advanced Settings <i className={`arrow ${this.state.displayStartTimeClass.length === 1 ? "down" : "up"}`}></i></p>
+              <div className={this.state.displayStartTimeClass.join(" ")}>
+                <label htmlFor="checkbox">
+                  <input type="checkbox" checked/>
+                  Display start time.
+                  <p>The start time will be displayed to your attendees</p>
+                </label>
+                <label htmlFor="checkbox">
+                  <input type="checkbox" checked />
+                  Display end time.
+                  <p>The end time will be displayed to your attendees</p>
+                </label>
+              </div>
               <div className="seven-size"></div>
             </form>
           </div>
