@@ -1,6 +1,6 @@
 class Api::EventsController < ApplicationController
     before_action :require_logged_in
-    before action :require_user_owns_event! only: [:update, :destroy]
+    before action :require_user_owns_event!, only: [:update, :destroy]
     def create
         @event = current_user.events.new(event_params)
         if @event.save
