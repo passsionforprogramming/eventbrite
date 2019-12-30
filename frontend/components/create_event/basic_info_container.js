@@ -19,7 +19,7 @@ eventType: state.entities.event.eventType,
 category: state.entities.event.category,
 tags: state.entities.event.tags,
 organizer: state.entities.event.organizer,
-address: state.entities.location.address,
+address: state.entities.event.address,
 startDate: state.entities.event.startDate,
 endDate: state.entities.event.endDate,
 loading: state.ui.loading.loadingForm

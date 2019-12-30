@@ -31,7 +31,7 @@ export const updateType = eventType => ({
 });
 
 export const updateCategory = category => ({
-    type: UPDATE_TITLE,
+    type: UPDATE_CATEGORY,
     category
 });
 

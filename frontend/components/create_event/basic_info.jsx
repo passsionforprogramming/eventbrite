@@ -1,5 +1,6 @@
 import React from 'react';
-import { eventTypes, eventCategories } from '../../util/event_types';
+import { eventTypes} from '../../util/event_types';
+import { eventCategories } from '../../util/event_categories';
 import DropDownEventType from '../builders/dropdown_list_container';
 import DropDownCategory from '../builders/category_dropdown_container';
 import LocationDropdown from '../builders/location_dropdown';
@@ -95,7 +96,7 @@ export default class BasicInfo extends React.Component {
               <div className="space-between">
                 <DropDownEventType items={eventTypes} />
 
-                <DropDownCategory items={eventTypes} />
+                <DropDownCategory items={eventCategories} />
 
                 <div className="width-thirty-three"></div>
               </div>

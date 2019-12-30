@@ -24,7 +24,7 @@ const SaveAndContinue = (props) => {
 
 const mapStateToProps = state => ({
     title: state.entities.event.title,
-    location: state.entities.location.address
+    location: state.entities.event.address
 });
 
 const mapDispatchToProps = dispatch => ({

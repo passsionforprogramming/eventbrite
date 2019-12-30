@@ -3,7 +3,7 @@ import { updateAddressType } from '../../actions/location_actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-    selected: state.entities.location.addressType
+    selected: state.entities.event.addressType
 });
 
 const mapDispatchToProps = dispatch => ({
