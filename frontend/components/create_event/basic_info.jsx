@@ -7,6 +7,7 @@ import LocationDropdown from '../builders/location_dropdown';
 import Tag from '../tag/tag';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import LoadingIcon from '../loading/loading_icon';
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -26,10 +27,8 @@ export default class BasicInfo extends React.Component {
             typeClassName: ["float-container"],
             categoryClassName: ["float-container"],
             tagClassName: ["float-container", "width-75"],
-            counter: 0,
             tagField: "",
             organizerClassName: ["float-container"],
-            singleEvent: "single",
           displayStartTimeClass: ["display-start-time"]
         }
 
@@ -64,6 +63,7 @@ export default class BasicInfo extends React.Component {
     };
 
     render(){
+      console.log("we are in the render");
         const locationOptions = ["Venue", "Online event", "To be announced"];
       if (this.props.loading) {
         return <section><LoadingIcon /></section>;
@@ -227,9 +227,9 @@ export default class BasicInfo extends React.Component {
                     type="radio"
                     value="single"
                     onChange={e =>
-                      this.setState({ singleEvent: e.currentTarget.value })
+                      this.props.updateSingleEvent(e.currentTarget.value)
                     }
-                    checked={this.state.singleEvent === "single"}
+                    checked={this.props.singleEvent === "single"}
                   />
                   Single Event - Happens once and can last multiple days
                 </label>
@@ -238,9 +238,9 @@ export default class BasicInfo extends React.Component {
                     type="radio"
                     value="recurring"
                     onChange={e =>
-                      this.setState({ singleEvent: e.currentTarget.value })
+                      this.props.updateSingleEvent(e.currentTarget.value)
                     }
-                    checked={this.state.singleEvent === "recurring"}
+                    checked={this.props.singleEvent === "recurring"}
                   />
                   Recurring Events - Repeats or occurs more than once
                 </label>
@@ -338,6 +338,7 @@ export default class BasicInfo extends React.Component {
                 </label>
               </div>
               <div className="seven-size"></div>
+              <p>Test</p>
             </form>
           </div>
         );

@@ -10,7 +10,8 @@ import {
     updateStartDate,
     updateEndDate,
     updateDisplayEndTime,
-    updateDisplayStartTime
+    updateDisplayStartTime,
+    updateSingleEvent
 } from '../../actions/event_actions';
 
 import { updateAddress, updateLatLng } from '../../actions/location_actions';
@@ -26,7 +27,8 @@ startDate: state.entities.event.startDate,
 endDate: state.entities.event.endDate,
 loading: state.ui.loading.loadingForm,
 displayStartTime: state.entities.event.displayStartTime,
-displayEndTime: state.entities.event.displayEndTime
+displayEndTime: state.entities.event.displayEndTime,
+singleEvent: state.entities.event.singleEvent
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -41,7 +43,8 @@ const mapDispatchToProps = dispatch => ({
     updateStartDate: startDate => dispatch(updateStartDate(startDate)),
     updateEndDate: endDate => dispatch(updateEndDate(endDate)),
     updateDisplayStartTime: val => dispatch(updateDisplayStartTime(val)),
-    updateDisplayEndTime: val => dispatch(updateDisplayEndTime(val))
+    updateDisplayEndTime: val => dispatch(updateDisplayEndTime(val)),
+    updateSingleEvent: val => dispatch(updateSingleEvent(val))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasicInfo);

@@ -11,21 +11,21 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 const SignedInNavBar = (props) => {
     return (
         <div>
-            <nav className="login">
+            <nav className="navbar">
                 <ul className="nav-lists">
-                    <li><p className="logo login-logo">haply</p></li>
+                    <li><p className="logo">haply</p></li>
                     <li><SearchBar /></li>
                     <span className="right">
                         <li>
-                            <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faPlus} color="black" />Create Event</span></NavLink>
+                            <NavLink to="/createEvent"><span className="row-icon"><FontAwesomeIcon icon={faPlus} color="white" />Create Event</span></NavLink>
                             </li>
                         <li>
-                            <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faHeart} color="black" />Likes</span></NavLink>
+                            <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faHeart} color="white" />Likes</span></NavLink>
                         </li>
                         <li>
-                            <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faTicketAlt} color="black" />Tickets</span></NavLink>
+                            <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faTicketAlt} color="white" />Tickets</span></NavLink>
                         </li>
-                        <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><i className="arrow down"></i></NavLink>
+                        <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><span className="arrow-down"></span></NavLink>
                             <ul className="drop-down">
                                 <li><NavLink to="#">How it Works</NavLink></li>
                                 <li><NavLink to="#">What it costs to create an event.</NavLink></li>

@@ -8,8 +8,9 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Home from './home/home';
 import SignIn from './session_form/sign_in';
 import Dashboard from './main/dashboard';
-import CreateEvent from './create_event/create_event';
+import StartNewEvent from './main/start_new_event';
 import Footer from './footer/footer';
+import ManageEvents from './create_event/manage_event';
 
 const App = () => (
   <div>
@@ -20,7 +21,12 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <ProtectedRoute exact path="/dashboard" component={Dashboard} />
       <Route exact path="/" component={Home}/>
-      <ProtectedRoute exact path="/createEvent" component={CreateEvent} />
+      <ProtectedRoute exact path="/createEvent" component={StartNewEvent} />
+      <ProtectedRoute exact path="/manageEvents/" component={ManageEvents} />
+      <ProtectedRoute exact path="/manageEvents/:eventId" component={ManageEvents} />
+      <ProtectedRoute exact path="/manageEvents/:eventId/basicInfo" component={ManageEvents} />
+      <ProtectedRoute exact path="/manageEvents/:eventId/details" component={ManageEvents} />
+      <ProtectedRoute exact path="/manageEvents/:eventId/tickets" component={ManageEvents} />
     </Switch>
     <Footer />
   </div>

@@ -1,5 +1,5 @@
 import { PREVIOUS_USER, START_LOADING_VERIFY, LOADING_FORM } from '../actions/session_actions';
-import { FORM_SUBMITTED } from '../actions/event_actions';
+import { FORM_SUBMITTED, RECEIVE_EVENT } from '../actions/event_actions';
 const initialState = {
   verifyLoading: false,
   loadingForm: false
@@ -15,6 +15,7 @@ switch (action.type) {
   case LOADING_FORM:
     return Object.assign({}, state, {loadingForm: true});
   case FORM_SUBMITTED:
+  case RECEIVE_EVENT:
     return Object.assign({}, state, {loadingForm: false});
   default:
     return state;

@@ -9,7 +9,10 @@ import {
   UPDATE_START_DATE,
   FORM_SUBMITTED,
   UPDATE_DISPLAY_END_TIME,
-  UPDATE_DISPLAY_START_TIME
+  UPDATE_DISPLAY_START_TIME,
+  UPDATE_SINGLE_EVENT,
+  RECEIVE_EVENT,
+  UPDATE_DESCRIPTION
 } from "../actions/event_actions";
 
 import { UPDATE_ADDRESS,
@@ -28,7 +31,9 @@ const initState = {
     address: "",
     addressType: "Venue",
     displayStartTime: true,
-    displayEndTime: true
+    displayEndTime: true,
+    singleEvent: "single",
+    description: "",
 }
 const eventReducer = (state = initState, action) => {
     switch (action.type) {
@@ -48,18 +53,41 @@ const eventReducer = (state = initState, action) => {
         return { ...state, lat: action.latLng.lat, lng: action.latLng.lng };
       case UPDATE_DISPLAY_START_TIME:
         return { ...state, displayStartTime: action.val }
+      case UPDATE_DESCRIPTION:
+        return { ...state, description: action.description }
       case UPDATE_DISPLAY_END_TIME:
         return {...state, displayEndTime: action.val }
+      case UPDATE_SINGLE_EVENT:
+        return { ...state, singleEvent: action.val }
+      case RECEIVE_EVENT:
+        const { event } = action;
+        return {
+          title: event.title,
+          userId: event.user_id,
+          category: event.category,
+          eventType: event.eventType,
+          organizer: event.organizer,
+          startDate: new Date(event.start_time),
+          endDate: new Date(event.end_time),
+          address: event.location_address,
+          addressType: event.location_type,
+          lat: event.lat,
+          lng: event.lon,
+          displayStartTime: event.display_start_time,
+          displayEndTime: event.display_end_time,
+          status: event.draft,
+          description: event.description === null ? "" : event.description,
+        tags: event.tags,}
       case REMOVE_TAG:
         const updatedTags = state.tags.filter(
           tag => tag.toLowerCase() !== tag.toLowerCase()
         );
-      case FORM_SUBMITTED:
-        return {...state, submitted: action.submitted }
         return {
           ...state,
           tags: updatedTags
         };
+      case FORM_SUBMITTED:
+        return {...state, submitted: action.submitted };
       case UPDATE_ORGANIZER:
         return { ...state, organizer: action.organizer };
       case UPDATE_START_DATE:

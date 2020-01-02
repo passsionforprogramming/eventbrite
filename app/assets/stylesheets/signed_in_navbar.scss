@@ -45,3 +45,26 @@ i {
     display: flex;
     justify-content: space-between;
 }
+
+.white {
+    border: solid white;
+}
+
+.arrow-down {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-style: solid;
+  border-color: white;
+  border-width: 0px 4px 4px 0px;
+  transform: rotate(45deg);
+  transition: border-width 150ms ease-in-out;
+  margin-left: 5px;
+}
+
+.publish-event:hover, .more:hover{
+    .drop-down {
+        display: block;
+    }
+}
