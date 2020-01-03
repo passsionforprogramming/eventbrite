@@ -40,6 +40,11 @@ class Home extends React.Component {
                                           className="the-arrow" />
                             </div>
 
+                            <div className="browse">
+                                   <p className="browse-text">Browse other popular events</p>
+                            <span className="browse-down"></span>
+                            </div>
+
                             <div className="event-list">
                                    <InfiniteScroll
                                           dataLength={20}
