@@ -15,6 +15,12 @@ export const UPDATE_DISPLAY_END_TIME = "UPDATE_DISPLAY_END_TIME";
 export const UPDATE_SINGLE_EVENT = "UPDATE_SINGLE_EVENT";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
+export const UPDATE_IMAGE_FILE = "UPDATE_IMAGE_FILE";
+
+export const updateImageFile = file => ({
+    type: UPDATE_IMAGE_FILE,
+    file
+});
 
 export const updateDescription = description => ({
          type: UPDATE_DESCRIPTION,
@@ -96,3 +102,8 @@ export const submitEvent = event => dispatch => {
     dispatch(loadingForm());
     return APIUtil.submitEvent(event);
 }
+
+export const updateEvent = event => dispatch => (
+    EventAPIUtil.updateEvent(event.id).then(event => 
+        dispatch(receiveEvent(event)))
+)

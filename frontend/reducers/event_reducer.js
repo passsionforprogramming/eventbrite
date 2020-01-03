@@ -12,7 +12,8 @@ import {
   UPDATE_DISPLAY_START_TIME,
   UPDATE_SINGLE_EVENT,
   RECEIVE_EVENT,
-  UPDATE_DESCRIPTION
+  UPDATE_DESCRIPTION,
+  UPDATE_IMAGE_FILE
 } from "../actions/event_actions";
 
 import { UPDATE_ADDRESS,
@@ -34,6 +35,7 @@ const initState = {
     displayEndTime: true,
     singleEvent: "single",
     description: "",
+    imageFile: null
 }
 const eventReducer = (state = initState, action) => {
     switch (action.type) {
@@ -59,10 +61,13 @@ const eventReducer = (state = initState, action) => {
         return {...state, displayEndTime: action.val }
       case UPDATE_SINGLE_EVENT:
         return { ...state, singleEvent: action.val }
+      case UPDATE_IMAGE_FILE:
+        return Object.assign({}, state, {imageFile: action.file})
       case RECEIVE_EVENT:
         const { event } = action;
         return {
           title: event.title,
+          id: event.id,
           userId: event.user_id,
           category: event.category,
           eventType: event.eventType,
@@ -77,6 +82,7 @@ const eventReducer = (state = initState, action) => {
           displayEndTime: event.display_end_time,
           status: event.draft,
           description: event.description === null ? "" : event.description,
+          imageFile: !event.imageFile ? null : event.imageFile,
         tags: event.tags,}
       case REMOVE_TAG:
         const updatedTags = state.tags.filter(

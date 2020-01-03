@@ -6,22 +6,23 @@ export default class Details extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          descriptionClassName: ["float-container", "short"],
-          file: null
+          descriptionClassName: ["float-container", "short"]
         };
     }
 
     onDrop = acceptedFiles => {
       const file = acceptedFiles[0];
       const reader = new FileReader();
-      reader.onloadend = () =>
-      this.setState({imageUrl: reader.result, file});
+      reader.onloadend = () => {
+      this.props.updateImage(file);
+      this.props.updatePreview(reader.result)
+      }
       if (file){
         reader.readAsDataURL(file);
       } else {
-        this.setState({imageUrl: "", imageFile: null});
+        this.props.updatePreview("")
+        this.props.updateImage(null);
       }
-      console.log(this.state.files);
     }
 
     inFocus = (arg) => {
@@ -48,7 +49,7 @@ export default class Details extends React.Component {
             </p>
             <Dropzone onDrop={this.onDrop}>
               {({ getRootProps, getInputProps }) => {
-                if (this.state.file === null){
+                if (this.props.imageFile === null){
                   return (
                     <div
                       {...getRootProps({
@@ -71,7 +72,7 @@ export default class Details extends React.Component {
                       className: "preview"
                     })}>
                       <input {...getInputProps()} />
-                      <img src={this.state.imageUrl}/>
+                      <img src={this.props.imageUrl}/>
                     </div>
                   )
                 }
@@ -107,7 +108,6 @@ export default class Details extends React.Component {
               <button className="detail-outline-btn">Add Image</button>
               <button className="detail-outline-btn">Add Video</button>
             </div>
-            <div className="seven-size"></div>
             <div className="seven-size"></div>
             <p>"</p>
           </div>

@@ -3,6 +3,7 @@ import { requestEvent } from '../../actions/event_actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MainEventContent from './main_event_content';
+import UpdateAndContinue from './update_and_continue';
  class ManageEvents extends React.Component {
      componentDidMount(){
          this.props.requestEvent(this.props.match.params.eventId);
@@ -27,6 +28,7 @@ import MainEventContent from './main_event_content';
                 <div className="main-event-update">
                     <MainEventContent />
                 </div>
+                <UpdateAndContinue />
             </div>
         )
     }

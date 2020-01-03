@@ -1,12 +1,20 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicketAlt } from "@fortawesome/free-solid-svg-icons";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
 export default class Ticket extends React.Component {
     constructor(props){
         super(props);
         this.state = {
           nameClassName: ["float-container"],
           quantityClassName: ["float-container"],
+          priceClassName: ["float-container"],
           selected: null
         };
     }
@@ -95,7 +103,89 @@ export default class Ticket extends React.Component {
                     value={this.props.quantity}
                   />
                 </div>
+                <div className={this.state.priceClassName.join(" ")}>
+                  <label htmlFor="price">Price</label>
+                  <input
+                    type="text"
+                    required
+                    id="price"
+                    maxLength="25"
+                    placeholder="0.00"
+                    onChange={e => this.props.updatePrice(e.currentTarget.value)}
+                    onFocus={() => this.inFocus("priceClassName")}
+                    onBlur={() => this.inBlur("priceClassName")}
+                    value={this.props.price}
+                  />
+                </div>
               </form>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <div className="space-between">
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    disablePast={true}
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label="Sales Start"
+                    value={this.props.startDate}
+                    onChange={startDate =>
+                      this.props.updateStartDate(startDate)
+                    }
+                    KeyboardButtonProps={{
+                      "aria-label": "change date"
+                    }}
+                  />
+                  <KeyboardTimePicker
+                    margin="normal"
+                    disablePast={true}
+                    id="time-picker"
+                    label="Start Time"
+                    value={this.props.startDate}
+                    onChange={startDate =>
+                      this.props.updateStartDate(startDate)
+                    }
+                    KeyboardButtonProps={{
+                      "aria-label": "change time"
+                    }}
+                  />
+                </div>
+                <div className="space-between">
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    disablePast={true}
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label="Sales End"
+                    value={this.props.endDate}
+                    onChange={endDate =>
+                      this.props.updateEndDate(endDate)
+                    }
+                    KeyboardButtonProps={{
+                      "aria-label": "change date"
+                    }}
+                  />
+                  <KeyboardTimePicker
+                    margin="normal"
+                    disablePast={true}
+                    id="time-picker"
+                    label="End Time"
+                    value={this.props.endDate}
+                    onChange={endDate =>
+                      this.props.updateEndDate(endDate)
+                    }
+                    KeyboardButtonProps={{
+                      "aria-label": "change time"
+                    }}
+                  />
+                </div>
+              </MuiPickersUtilsProvider>
+              <div className="row">
+                <button  className="cancel-btn">Cancel</button>
+                <button className="save-ticket-btn">Save</button>
+              </div>
             </div>
           </div>
         );
