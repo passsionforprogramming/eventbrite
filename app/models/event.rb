@@ -8,5 +8,9 @@ class Event < ApplicationRecord
     foreign_key: :event_id,
     class_name: "Tag"
 
+    has_many :likes,
+    foreign_key: :event_id,
+    class_name: "Like"
+
     has_one_attached :photo
 end

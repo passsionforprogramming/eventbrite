@@ -16,7 +16,18 @@ export const UPDATE_SINGLE_EVENT = "UPDATE_SINGLE_EVENT";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 export const UPDATE_IMAGE_FILE = "UPDATE_IMAGE_FILE";
+export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 
+
+export const receiveTotalEvents = events => ({
+    type: RECEIVE_ALL_EVENTS,
+    events
+});
+
+export const fetchAllEvents = () => dispatch => (
+    EventAPIUtil.fetchEvents().then(events =>
+        dispatch(receiveTotalEvents(events)))
+);
 export const updateImageFile = file => ({
     type: UPDATE_IMAGE_FILE,
     file

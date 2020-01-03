@@ -1,5 +1,5 @@
 class Api::EventsController < ApplicationController
-    before_action :require_logged_in
+    before_action :require_logged_in, only: [:create, :update, :destroy]
     before_action :require_user_owns_event!, only: [:update, :destroy]
     def create
         @tags = event_params[:tags]
@@ -22,6 +22,11 @@ class Api::EventsController < ApplicationController
         else
             render json: ["There was an error creating your event"], status: 422
         end
+    end
+
+    def index
+        @events = Event.all
+
     end
 
     def show

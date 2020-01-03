@@ -20,17 +20,17 @@ const SignedInNavBar = (props) => {
                             <NavLink to="/createEvent"><span className="row-icon"><FontAwesomeIcon icon={faPlus} color="white" />Create Event</span></NavLink>
                             </li>
                         <li>
-                            <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faHeart} color="white" />Likes</span></NavLink>
+                            <NavLink to="/likes"><span className="row-icon"><FontAwesomeIcon icon={faHeart} color="white" />Likes</span></NavLink>
                         </li>
                         <li>
                             <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faTicketAlt} color="white" />Tickets</span></NavLink>
                         </li>
                         <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><span className="arrow-down"></span></NavLink>
                             <ul className="drop-down">
-                                <li><NavLink to="#">How it Works</NavLink></li>
-                                <li><NavLink to="#">What it costs to create an event.</NavLink></li>
-                                <li><NavLink to="#">Blog</NavLink></li>
-                                <li><NavLink to="#">Resources</NavLink></li>
+                                <li><NavLink to="#"><li onClick={() => props.logout()}>Logout</li></NavLink></li>
+                                <li><NavLink to="#">Manage Events</NavLink></li>
+                                <li><NavLink to="#">Liked</NavLink></li>
+                                <li><NavLink to="#">Tickets</NavLink></li>
                             </ul>
                         </li>
                     </span>

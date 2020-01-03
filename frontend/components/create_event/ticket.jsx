@@ -9,6 +9,9 @@ import {
   KeyboardDatePicker
 } from "@material-ui/pickers";
 export default class Ticket extends React.Component {
+  componentDidMount(){
+    
+  }
     constructor(props){
         super(props);
         this.state = {

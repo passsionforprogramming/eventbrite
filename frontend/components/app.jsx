@@ -11,6 +11,8 @@ import Dashboard from './main/dashboard';
 import StartNewEvent from './main/start_new_event';
 import Footer from './footer/footer';
 import ManageEvents from './create_event/manage_event';
+import ShowEvent from './event_display/show_event';
+import LikesList from './likes/likes_list';
 
 const App = () => (
   <div>
@@ -27,6 +29,8 @@ const App = () => (
       <ProtectedRoute exact path="/manageEvents/:eventId/basicInfo" component={ManageEvents} />
       <ProtectedRoute exact path="/manageEvents/:eventId/details" component={ManageEvents} />
       <ProtectedRoute exact path="/manageEvents/:eventId/tickets" component={ManageEvents} />
+      <Route exact path="/event/:eventId" component={ShowEvent} />
+      <ProtectedRoute exact path="/likes" component={LikesList} />
     </Switch>
     <Footer />
   </div>

@@ -83,6 +83,7 @@ const eventReducer = (state = initState, action) => {
           status: event.draft,
           description: event.description === null ? "" : event.description,
           imageFile: !event.imageFile ? null : event.imageFile,
+          imageUrl: !event.imageUrl ? "" : event.imageUrl,
         tags: event.tags,}
       case REMOVE_TAG:
         const updatedTags = state.tags.filter(
