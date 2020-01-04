@@ -13,4 +13,4 @@ Features cloned from Eventbrite include:
 Haply was built on Ruby on a Rails backend with React/Redux front end. User data such as login and list information were stored in a PostreSQL databse. Pictures were stored and accessed through AWS S3.
 
 # Site
-(https://haply-seed.s3.us-east-2.amazonaws.com/Screen+Shot+2020-01-03+at+4.27.47+PM.png)
+![alt site](https://haply-seed.s3.us-east-2.amazonaws.com/Screen+Shot+2020-01-03+at+4.27.47+PM.png)
