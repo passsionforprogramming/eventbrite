@@ -5,7 +5,7 @@ class Api::LikesController < ApplicationController
             @events = current_user.likes.map do |like|
             Event.find(like.event_id)
             end
-            render "api/events/show"
+            render "api/events/index"
         else
             render json: ["There was an error creating your event"], status: 422
         end
@@ -20,6 +20,6 @@ class Api::LikesController < ApplicationController
 
     private
     def like_params
-        params.require.permit(:event_id, :user_id)
+        params.require(:like).permit(:event_id, :user_id)
     end
 end

@@ -11,8 +11,12 @@ const Thumbnail = (props) => {
     return (
         <div className="thumbnail">
             <Link to={`/event/${props.id}`}><img src={props.imageUrl} className="thumbnail-img" /></Link>
-            <div className="space-between"><button onClick={() => props.like(props.id, props.currentUserId)}><FontAwesomeIcon icon={faShareSquare} /></button>
-                <FontAwesomeIcon icon={faHeart} color="red" /></div>
+            <div className="space-between"> <FontAwesomeIcon icon={faShareSquare} className="share" />
+                <FontAwesomeIcon icon={faHeart} color="red" onClick={() => {
+                    console.log("button clicked");
+                    props.like(props.id, props.currentUserId);
+                }} className="heart"/>
+            </div>
             <p className="thumbnail-time">{thumbDate.toLocaleDateString('en-US', options)}</p>
             <p className="thumbnail-name">{props.title}</p>
             <p className="thumb-location">{props.address}</p>

@@ -17,6 +17,12 @@ export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 export const UPDATE_IMAGE_FILE = "UPDATE_IMAGE_FILE";
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
+export const DISPLAY_EVENT = "DISPLAY_EVENT";
+
+export const displayEvent = event => ({
+    type: DISPLAY_EVENT,
+    event
+})
 
 
 export const receiveTotalEvents = events => ({
@@ -43,10 +49,16 @@ export const receiveEvent = event => ({
     event
 });
 
+
 export const requestEvent = eventId => dispatch => (
     EventAPIUtil.fetchEvent(eventId).then(event => 
         dispatch(receiveEvent(event)))
 );
+
+export const displayEventThunk = eventId => dispatch => (
+    EventAPIUtil.fetchEvent(eventId).then(event =>
+        dispatch(displayEvent(event)))
+)
 
 
 export const updateStartDate = startDate => ({

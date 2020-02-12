@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestEvent } from '../../actions/event_actions';
+import { displayEventThunk } from '../../actions/event_actions';
 class ShowEvent extends React.Component {
     componentDidMount(){
         this.props.requestEvent(this.props.match.params.eventId);
@@ -30,11 +30,11 @@ class ShowEvent extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    event: state.entities.event
+    event: state.entities.displayEvent
 });
 
 const mapDispatchToProps = dispatch => ({
-    requestEvent: eventId => dispatch(requestEvent(eventId))
+    requestEvent: eventId => dispatch(displayEventThunk(eventId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowEvent);
