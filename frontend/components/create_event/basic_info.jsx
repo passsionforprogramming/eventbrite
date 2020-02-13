@@ -338,7 +338,6 @@ export default class BasicInfo extends React.Component {
                 </label>
               </div>
               <div className="seven-size"></div>
-              <p>Test</p>
             </form>
           </div>
         );
