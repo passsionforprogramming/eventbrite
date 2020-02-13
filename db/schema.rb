@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_181621) do
+ActiveRecord::Schema.define(version: 2020_02_13_061658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 2020_01_03_181621) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "batches", force: :cascade do |t|
+    t.datetime "sale_start_time"
+    t.datetime "sale_end_time"
+    t.string "visbility"
+    t.boolean "absorb_fees", default: false
+    t.integer "quantity"
+    t.float "price"
+    t.integer "min_num_tickets_sold"
+    t.integer "max_num_tickets_sold"
+    t.string "sales_channel"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -82,6 +96,23 @@ ActiveRecord::Schema.define(version: 2020_01_03_181621) do
     t.integer "event_id"
     t.index ["event_id"], name: "index_tags_on_event_id"
     t.index ["name"], name: "index_tags_on_name"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "ticket_code", null: false
+    t.string "name", null: false
+    t.integer "owner_id"
+    t.integer "event_id"
+    t.boolean "donation", default: false
+    t.text "description"
+    t.string "type"
+    t.float "price"
+    t.integer "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_tickets_on_batch_id"
+    t.index ["event_id"], name: "index_tickets_on_event_id"
+    t.index ["owner_id"], name: "index_tickets_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|

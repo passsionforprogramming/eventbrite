@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale_start_time: 2020-02-13 00:16:58
+  sale_end_time: 2020-02-13 00:16:58
+  visbility: MyString
+  absorb_fees: false
+  quantity: 1
+  price: 1.5
+  min_num_tickets_sold: 1
+  max_num_tickets_sold: 1
+  sales_channel: MyString
+
+two:
+  sale_start_time: 2020-02-13 00:16:58
+  sale_end_time: 2020-02-13 00:16:58
+  visbility: MyString
+  absorb_fees: false
+  quantity: 1
+  price: 1.5
+  min_num_tickets_sold: 1
+  max_num_tickets_sold: 1
+  sales_channel: MyString
