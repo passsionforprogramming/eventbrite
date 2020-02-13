@@ -7,7 +7,7 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 const PublishEventNavBar = (props) => {
     return (
         <div>
-            <nav className="login basic-info-nav">
+            <nav className="login basic-info-nav" onClick={() => props.history.push("/")}>
                 <ul className="nav-lists">
                     <li><p className="logo">haply</p></li>
                     <span className="right">

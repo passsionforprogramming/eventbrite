@@ -84,6 +84,7 @@ end
         organizer: Faker::Name.name,
         lat: Faker::Address.latitude,
         lon: Faker::Address.longitude,
+        published: true,
         location_type: "venue",
         start_time: Faker::Time.between(from: DateTime.now + 8, to: DateTime.now + 15, format: :default),
         description: Faker::GreekPhilosophers.quote)

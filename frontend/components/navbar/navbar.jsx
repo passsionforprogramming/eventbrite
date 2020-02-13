@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavBarIndex from './navbar_index';
 import LoginNavBar from './login_navbar';
-import { connect } from 'react-redux';
 import SignedInNavBar from './signed_in_navbar';
 import BasicInfoNavBar from './basic_info_navbar';
 import PublishEventNavBar from './publish_event_navbar';

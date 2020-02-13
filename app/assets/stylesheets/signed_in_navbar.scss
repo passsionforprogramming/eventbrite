@@ -44,6 +44,7 @@ i {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .white {
@@ -61,6 +62,10 @@ i {
   transform: rotate(45deg);
   transition: border-width 150ms ease-in-out;
   margin-left: 5px;
+}
+
+.drop-down-right {
+    right: 2.85%;
 }
 
 .publish-event:hover, .more:hover{

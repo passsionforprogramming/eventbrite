@@ -121,6 +121,11 @@ nav {
     font-size: 50px;
     font-family: 'Signatra';
     margin-left: 30px;
+    cursor: pointer;
+}
+
+.right {
+  margin-right: 2%;
 }
 
 .organize:hover > .drop-down {

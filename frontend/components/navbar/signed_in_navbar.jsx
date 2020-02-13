@@ -13,7 +13,7 @@ const SignedInNavBar = (props) => {
         <div>
             <nav className="navbar">
                 <ul className="nav-lists">
-                    <li><p className="logo">haply</p></li>
+                    <li><p className="logo" onClick={() => props.history.push("/")}>haply</p></li>
                     <li><SearchBar /></li>
                     <span className="right">
                         <li>
