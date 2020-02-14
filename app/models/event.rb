@@ -12,5 +12,9 @@ class Event < ApplicationRecord
     foreign_key: :event_id,
     class_name: "Like"
 
+    has_many :tickets,
+    foreign_key: :event_id,
+    class_name: "Ticket"
+
     has_one_attached :photo
 end
