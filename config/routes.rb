@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy, :update, :show, :index]
     resources :tags, only: [:create, :show, :destroy, :update]
     resource :session, only: [:create, :destroy, :show]
+    resources :tickets, only: [:create, :destroy, :update, :show]
+    get '/users_tickets/', to: 'tickets#users_tickets'
+    get '/events_tickets/:event_id', to: 'tickets#events_tickets'
     post '/members/', to: 'members#verify'
   end
   root "static_pages#root"

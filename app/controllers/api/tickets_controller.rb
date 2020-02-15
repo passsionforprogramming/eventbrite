@@ -17,7 +17,7 @@ class Api::TicketsController < ApplicationController
     end
 
     def users_tickets
-        @ticket = Ticket.find_by(owner_id: curent_user.id)
+        @ticket = Ticket.find_by(owner_id: curent_user.id).includes(:event)
         render :show
     end
 
