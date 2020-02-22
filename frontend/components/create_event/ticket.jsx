@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BatchList from '../tickets/batches/batch_list';
 import { faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
@@ -18,7 +19,8 @@ export default class Ticket extends React.Component {
           nameClassName: ["float-container"],
           quantityClassName: ["float-container"],
           priceClassName: ["float-container"],
-          selected: null
+          selected: null,
+          createTicketClassName: ["create-ticket"]
         };
     }
 
@@ -37,16 +39,26 @@ export default class Ticket extends React.Component {
             prevState[arg].pop()
         ))
     }
+
+    toggleTicketForm = () => {
+      this.setState(prevState => {
+        if (!prevState.createTicketClassName.includes("hidden-ticket-form")){
+          return prevState.createTicketClassName.push("hidden-ticket-form");
+        } else {
+          return prevState.createTicketClassName.pop();
+        }
+      })
+    }
     render(){
-      const batchDisplay = this.props.batches ? <div className="align-center">
+      const batchDisplay = this.props.batches.length === 0 ? <div className="align-center">
         <FontAwesomeIcon icon={faTicketAlt} className="ticket-icon" />
         <p className="ticket-create">Create your first ticket</p>
         <button className="red-button">Create Ticket</button>
-      </div> : <div></div>;
+      </div> : <BatchList batches={this.props.batches}/>;
         return (
           <div className="ticket">
             {batchDisplay}
-            <div className="create-ticket">
+            <div className={this.state.createTicketClassName.join(" ")}>
               <p className="add-ticket">Add Ticket</p>
               <div className="ticket-price-buttons">
                 <button
@@ -188,7 +200,7 @@ export default class Ticket extends React.Component {
                 </div>
               </MuiPickersUtilsProvider>
               <div className="row">
-                <button  className="cancel-btn">Cancel</button>
+                <button className="cancel-btn" onClick={() => this.toggleTicketForm()}>Cancel</button>
                 <button 
                 className="save-ticket-btn"
                 onClick={() => {
@@ -198,9 +210,10 @@ export default class Ticket extends React.Component {
                     sale_start_time: this.props.ticket.startDate,
                     sale_end_time: this.props.ticket.endDate,
                     quantity: this.props.ticket.quantity,
-                    event_id: this.props.match.params.eventId
+                    event_id: this.props.match.params.eventId,
+                    type: this.state.selected
                   };
-                  this.props.createTicket(ticket);
+                  this.props.createTicket(ticket).then(() => this.toggleTicketForm());
                 }}>Save</button>
               </div>
             </div>

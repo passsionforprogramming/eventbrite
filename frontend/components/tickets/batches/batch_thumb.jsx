@@ -18,7 +18,7 @@ const BatchThumb = props => {
         <div className="batch-thumb">
             <div className="batch-col">
                 <p className="name-header">{props.name}</p>
-                {conditialTime}
+                {conditionalTime}
             </div>
             <p className="tickets-sold">{`${props.sold}/${props.quantity}`}</p>
             <p className="price-tickets">{`$${props.price}`}</p>

@@ -43,8 +43,8 @@ export const receiveBatches = batches => ({
 });
 
 export const createTicket = ticket => dispatch => {
-    return APIUtil.createTicketBatch(ticket).then(batch => (
-        dispatch(receiveBatch(batch))
+    return APIUtil.createTicketBatch(ticket).then(batches => (
+        dispatch(receiveBatches(batches))
     ))
 
 }

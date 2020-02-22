@@ -10,7 +10,7 @@ const BatchReducer = (state = initState, action) => {
         case RECEIVE_BATCH: 
         return {...state, currentBatch: action.batch};
         case RECEIVE_BATCHES:
-            return {...state, batches: action.batches }
+            return {...state, batches: action.batches}
         default:
             return state;
     }

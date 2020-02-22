@@ -4,5 +4,6 @@ json.array! @batches do |batch|
     json.quantity batch.quantity
     json.price batch.price
     json.id batch.id
+    json.tickets_sold batch.tickets_sold
     json.name batch.name
 end

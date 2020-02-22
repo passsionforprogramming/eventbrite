@@ -5,16 +5,18 @@ const BatchList = props => {
     return (
         <div className="batch-list">
             {
-                batches.map(batch => (
-                    <BatchThumb 
-                    title={batch.name}
-                    startTime={batch.sale_start_time}
-                    endTime={batch.sale_end_time}
-                    sold={batch.tickets_sold}
-                    price={batch.price}
-                    quantity={batch.quantity}
-                    />
-                ))
+                batches.map(batch => {
+                    return (
+                        <BatchThumb
+                            title={batch.name}
+                            startTime={batch.sale_start_time}
+                            endTime={batch.sale_end_time}
+                            sold={batch.tickets_sold ? batch.tickets_sold.toString() : "0"}
+                            price={batch.price}
+                            quantity={batch.quantity}
+                        />
+                    )
+                })
             }
         </div>
     )

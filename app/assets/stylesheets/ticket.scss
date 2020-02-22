@@ -36,15 +36,22 @@
      flex-direction: column;
      max-height: 82%;
      overflow-y: scroll;
+     animation: show;
+     animation-duration: 2s;
+}
+
+@keyframes show {
+    from {right: -50%}
+    to {right: 0}
 }
 
 @keyframes hidden {
     from {right: 0;}
-    to {right: -40%}
+    to {right: -50%}
 }
 
 .hidden-ticket-form {
-    right: -40%;
+    right: -50%;
     animation-name: hidden;
     animation-duration: 2s;
 }

@@ -1,7 +1,8 @@
 class Batch < ApplicationRecord
     has_many :tickets,
     class_name: "Ticket",
-    foreign_key: :batch_id
+    foreign_key: :batch_id,
+    dependent: :destroy
 
     belongs_to :owner,
     class_name: 'User',
