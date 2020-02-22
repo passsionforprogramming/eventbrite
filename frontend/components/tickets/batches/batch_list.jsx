@@ -8,7 +8,7 @@ const BatchList = props => {
                 batches.map(batch => {
                     return (
                         <BatchThumb
-                            title={batch.name}
+                            name={batch.name}
                             startTime={batch.sale_start_time}
                             endTime={batch.sale_end_time}
                             sold={batch.tickets_sold ? batch.tickets_sold.toString() : "0"}

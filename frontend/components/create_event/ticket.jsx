@@ -56,7 +56,7 @@ export default class Ticket extends React.Component {
         <button className="red-button" onClick={() => this.toggleTicketForm()}>Create Ticket</button>
       </div> : <BatchList batches={this.props.batches}/>;
         return (
-          <div className="ticket">
+          <div className={`ticket ${this.props.batches.length > 0 && "to-start"}`}>
             {batchDisplay}
             <div className={this.state.createTicketClassName.join(" ")}>
               <p className="add-ticket">Add Ticket</p>

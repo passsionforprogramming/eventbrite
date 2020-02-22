@@ -1,0 +1,63 @@
+.name-header {
+    color: #200220;
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.circle-grn {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(78,169,91);
+    border-radius: 50%;
+}
+
+.batch-list {
+    width: 100%;
+}
+
+.batch-col {
+}
+
+.tickets-sold {
+    margin-left: 40%;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.elipsis {
+    margin-left: 5px;
+}
+
+.price-tickets {
+    margin-left: 5%;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.ticket-end-time {
+    color: rgb(111,114,135);
+    font-family: sans-serif;
+    font-size: 16px;
+    margin-left: .5em;
+}
+
+.batch-thumb {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.circle-grey {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(194,194,204);
+    border-radius: 50%;
+}
