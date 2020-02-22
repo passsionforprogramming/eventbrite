@@ -50,10 +50,10 @@ export default class Ticket extends React.Component {
       })
     }
     render(){
-      const batchDisplay = this.props.batches.length === 0 ? <div className="align-center">
+      const batchDisplay = this.props.batches.length === 0 ? <div className={`align-center ${this.state.createTicketClassName.length > 1 && "all-center"}`}>
         <FontAwesomeIcon icon={faTicketAlt} className="ticket-icon" />
         <p className="ticket-create">Create your first ticket</p>
-        <button className="red-button">Create Ticket</button>
+        <button className="red-button" onClick={() => this.toggleTicketForm()}>Create Ticket</button>
       </div> : <BatchList batches={this.props.batches}/>;
         return (
           <div className="ticket">

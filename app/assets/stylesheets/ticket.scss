@@ -14,13 +14,31 @@
     display: flex;
     height: 88vh;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
 .align-center {
     text-align: center;
     margin-right: 25%;
+    margin-top: 15%;
+    animation: left;
+    animation-duration: 2s;
+}
+
+.all-center {
+    margin-right: 0%;
+    animation: right;
+    animation-duration: 2s;
+}
+
+@keyframes left {
+    from {margin-right: 0%}
+    to {margin-right: 25%}
+}
+
+@keyframes right {
+    from {margin-right: 25%}
+    to {margin-right: 0%}
 }
 
 .create-ticket {
