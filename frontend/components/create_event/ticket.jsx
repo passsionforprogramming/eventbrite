@@ -10,7 +10,7 @@ import {
 } from "@material-ui/pickers";
 export default class Ticket extends React.Component {
   componentDidMount(){
-    
+    this.props.fetchBatches();
   }
     constructor(props){
         super(props);
@@ -24,7 +24,6 @@ export default class Ticket extends React.Component {
 
     selected = arg => e => {
         this.setState({selected: arg});
-        console.logt(this.state.selected);
     }
 
     inFocus = (arg) => {
@@ -39,11 +38,14 @@ export default class Ticket extends React.Component {
         ))
     }
     render(){
+      const batchDisplay = this.props.batches ? <div className="align-center">
+        <FontAwesomeIcon icon={faTicketAlt} className="ticket-icon" />
+        <p className="ticket-create">Create your first ticket</p>
+        <button className="red-button">Create Ticket</button>
+      </div> : <div></div>;
         return (
           <div className="ticket">
-            <FontAwesomeIcon icon={faTicketAlt} className="ticket-icon" />
-            <p className="ticket-create">Create your first ticket</p>
-            <button className="red-button">Create Ticket</button>
+            {batchDisplay}
             <div className="create-ticket">
               <p className="add-ticket">Add Ticket</p>
               <div className="ticket-price-buttons">
@@ -187,7 +189,19 @@ export default class Ticket extends React.Component {
               </MuiPickersUtilsProvider>
               <div className="row">
                 <button  className="cancel-btn">Cancel</button>
-                <button className="save-ticket-btn">Save</button>
+                <button 
+                className="save-ticket-btn"
+                onClick={() => {
+                  const ticket = {
+                    name: this.props.ticket.name,
+                    price: this.props.ticket.price,
+                    sale_start_time: this.props.ticket.startDate,
+                    sale_end_time: this.props.ticket.endDate,
+                    quantity: this.props.ticket.quantity,
+                    event_id: this.props.match.params.eventId
+                  };
+                  this.props.createTicket(ticket);
+                }}>Save</button>
               </div>
             </div>
           </div>

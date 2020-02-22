@@ -36,6 +36,7 @@ class Api::EventsController < ApplicationController
 
     def destroy
         @event = Event.find(params[:id])
+        @event.destroy
     end
 
     def update

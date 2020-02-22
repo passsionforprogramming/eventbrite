@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:create, :show, :destroy, :update]
     resource :session, only: [:create, :destroy, :show]
     resources :tickets, only: [:create, :destroy, :update, :show]
+    resources :batches, only: [:create, :destroy, :update, :show, :index]
     get '/users_tickets/', to: 'tickets#users_tickets'
     get '/events_tickets/:event_id', to: 'tickets#events_tickets'
     post '/members/', to: 'members#verify'

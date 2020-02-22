@@ -1,12 +1,15 @@
 import { connect } from "react-redux";
-import { updateName, updateQuantity, updatePrice, updateStartDate, updateEndDate } from '../../actions/ticket_actions';
+import { updateName, updateQuantity, updatePrice, updateStartDate, updateEndDate, fetchBatches, createTicket } from '../../actions/ticket_actions';
 import Ticket from './ticket';
+import {withRouter} from 'react-router-dom';
 const mapStateToProps = state => ({
     name: state.entities.currentTicket.name,
     quantity: state.entities.currentTicket.quantity,
     price: state.entities.currentTicket.price,
     startDate: state.entities.currentTicket.startDate,
-    endDate: state.entities.currentTicket.endDate
+    endDate: state.entities.currentTicket.endDate,
+    ticket: state.entities.currentTicket,
+    batches: state.entities.batch.batches
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -14,7 +17,9 @@ const mapDispatchToProps = dispatch => ({
     updateQuantity: quantity => dispatch(updateQuantity(quantity)),
     updatePrice: price => dispatch(updatePrice(price)),
     updateStartDate: startDate => dispatch(updateStartDate(startDate)),
-    updateEndDate: endDate => dispatch(updateEndDate(endDate))
+    updateEndDate: endDate => dispatch(updateEndDate(endDate)),
+    fetchBatches: () => dispatch(fetchBatches()),
+    createTicket: ticket => dispatch(createTicket(ticket))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Ticket);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Ticket));

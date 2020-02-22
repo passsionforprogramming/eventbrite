@@ -18,6 +18,11 @@
     align-items: center;
 }
 
+.align-center {
+    text-align: center;
+    margin-right: 25%;
+}
+
 .create-ticket {
     width: 40%;
     background-color: white;
@@ -32,6 +37,19 @@
      max-height: 82%;
      overflow-y: scroll;
 }
+
+@keyframes hidden {
+    from {right: 0;}
+    to {right: -40%}
+}
+
+.hidden-ticket-form {
+    right: -40%;
+    animation-name: hidden;
+    animation-duration: 2s;
+}
+
+
 
 .create-ticket form {
     display: flex;

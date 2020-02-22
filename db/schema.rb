@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_044735) do
+ActiveRecord::Schema.define(version: 2020_02_22_033849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_044735) do
     t.text "description"
     t.integer "tickets_sold"
     t.integer "event_id"
+    t.string "type"
     t.index ["event_id"], name: "index_batches_on_event_id"
     t.index ["owner_id"], name: "index_batches_on_owner_id"
   end
