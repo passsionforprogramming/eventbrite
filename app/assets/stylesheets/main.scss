@@ -95,12 +95,22 @@ nav {
     }
 }
 
+
 .drop-down li {
     min-width: 190px;
     a {
         padding: 15px;
         line-height: 20px;
     }
+    p {
+      padding: 15px;
+      line-height: 20px;
+      &:hover {
+        background-color: rgba($color: #cfb6b63f, $alpha: .2);
+        cursor: pointer;
+    }
+    }
+    
 }
 
 .drop-down {

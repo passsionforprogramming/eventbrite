@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/users_tickets/', to: 'tickets#users_tickets'
     get '/events_tickets/:event_id', to: 'tickets#events_tickets'
     post '/members/', to: 'members#verify'
+    post '/publish_event', to: "events#publish_event"
   end
   root "static_pages#root"
 

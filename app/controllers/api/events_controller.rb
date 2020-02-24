@@ -48,9 +48,15 @@ class Api::EventsController < ApplicationController
         end
     end
 
+    def publish_event
+        @event = Event.new(event_params)
+        @event.published = true
+        if @event.update
+    end
+
     private
     def event_params
-        params.require(:event).permit(:title, :user_id, :category, :eventType, :organizer, :photo, :start_time, :end_time, :display_start_time, :display_end_time, :timezone, :image_url, :description, :published, :status, :sold, :gross, :views, :location_address, :location_type, :lat, :lon, tags: [])
+        params.require(:event).permit(:title, :id, :user_id, :category, :eventType, :organizer, :photo, :start_time, :end_time, :display_start_time, :display_end_time, :timezone, :image_url, :description, :published, :status, :sold, :gross, :views, :location_address, :location_type, :lat, :lon, tags: [])
     end
 
     def require_user_owns_event!

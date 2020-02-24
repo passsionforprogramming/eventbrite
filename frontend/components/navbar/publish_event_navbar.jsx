@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { publishEvent } from '../../util/event_api_util';
 const PublishEventNavBar = (props) => {
+    const regex = /\d*/g;
+    const eventId = props.location.pathname.match(regex).join("");
     return (
         <div>
             <nav className="login basic-info-nav" onClick={() => props.history.push("/")}>
@@ -14,9 +17,12 @@ const PublishEventNavBar = (props) => {
                         <li>
                             <NavLink to="#">Preview</NavLink>
                         </li>
-                        <li className="publish-event"> <NavLink to="">Publish Event <span className="arrow-down"></span></NavLink>
+                        <li className="publish-event"> <NavLink to="#">Publish Event <span className="arrow-down"></span></NavLink>
                         <ul className="drop-down">
-                            <li><NavLink to="#">Publish Now</NavLink></li>
+                                <li onClick={() => {
+                                    const event = { ...props.event, id: eventId }
+                                    publishEvent(event).then(evt => props.history.push(`event/${evt.id}`));
+                                }}><p>Publish Now</p></li>
                             <li><NavLink to="#">Schedule Publish</NavLink></li>
                         </ul>
                         </li>
@@ -43,8 +49,9 @@ const PublishEventNavBar = (props) => {
     )
 }
 
-const mapStateToProps = ({ session, entities: { users } }) => ({
-    currentUser: users[session.id]
+const mapStateToProps = ({ session, entities: { users, event } }) => ({
+    currentUser: users[session.id],
+    event
 });
 
 const mapDispatchToProps = dispatch => ({

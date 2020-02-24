@@ -32,3 +32,11 @@ export const deleteEvent = (eventId) => (
         url: `api/events/${eventId}`
     })
 )
+
+export const publishEvent = (event) => (
+    $.ajax({
+        method: 'POST',
+        url: `api/publish_event`,
+        data: { event }
+    })
+)
