@@ -54,7 +54,20 @@ export default class Ticket extends React.Component {
         <FontAwesomeIcon icon={faTicketAlt} className="ticket-icon" />
         <p className="ticket-create">Create your first ticket</p>
         <button className="red-button" onClick={() => this.toggleTicketForm()}>Create Ticket</button>
-      </div> : <BatchList batches={this.props.batches}/>;
+      </div> : <div className="batch-ticket-list">
+        <div className="ticket-empty-height">
+            
+        </div>
+        <p className="basic-info-header">Tickets</p>
+        <div className="btn-row">
+            <button className="red-button" 
+            onClick={() => this.toggleTicketForm()}>Create Ticket</button>
+        </div>
+        <div className="three-em">
+
+        </div>
+          <BatchList batches={this.props.batches} />
+      </div>;
         return (
           <div className={`ticket ${this.props.batches.length > 0 && "to-start"}`}>
             {batchDisplay}

@@ -18,11 +18,17 @@ const BatchThumb = props => {
                 <p className="name-header">{props.name}</p>
                 {conditionalTime}
             </div>
-            <p className="tickets-sold">{`${props.sold}/${props.quantity}`}</p>
-            <p className="price-tickets">{`$${props.price}`}</p>
-            <span className="elipsis">
-                <FontAwesomeIcon icon={faEllipsisV} className="icon-elipsis" />
-            </span>
+            <div className="right-batch-thumb">
+                <p className="tickets-sold">{`${props.sold}/${props.quantity}`}</p>
+                <p className="price-tickets">{`$${props.price}`}</p>
+                <span className="elipsis">
+                    <FontAwesomeIcon icon={faEllipsisV} className="icon-elipsis" />
+                    <div className="crud-box">
+                        <p className="crud-p">Edit</p>
+                        <p className="crud-p">Delete</p>
+                    </div>
+                </span>
+            </div>
         </div>
     )
 }

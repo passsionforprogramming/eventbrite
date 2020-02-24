@@ -20,6 +20,7 @@
 .to-start {
     align-items: flex-start;
     padding-left: 5%;
+    padding-right: 5%;
 }
 
 .align-center {
@@ -95,6 +96,21 @@
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
 }
 
+
+.batch-ticket-list {
+    width: 100%;
+}
+
+.ticket-empty-height {
+    height: 10%;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 17%;
+}
+
 .ticket-price-buttons {
     display: flex;
     justify-content: center;
@@ -134,7 +150,7 @@
 }
 
 .save-ticket-btn {
-  padding: .6em 2.5em;
+  padding: .85em 2.5em;
   margin: 1.3em 0.3em 1em 0;
   border-radius: 0.1em;
   box-sizing: border-box;
@@ -145,6 +161,10 @@
   background-color: rgb(189, 45, 45);
   text-align:center;
   position: relative;
+}
+
+.three-em {
+    height: 3em;
 }
 
 .cancel-btn {
