@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { publishEvent } from '../../util/event_api_util';
+import { publishEvent } from '../../actions/event_actions';
 const PublishEventNavBar = (props) => {
     const regex = /\d*/g;
     const eventId = props.location.pathname.match(regex).join("");
@@ -39,7 +39,7 @@ const PublishEventNavBar = (props) => {
                                         published: true,
                                         tags: event.tags
                                     };
-                                    publishEvent(myEvent).then(evt => props.history.replace(`/event/${evt.id}`));
+                                    props.publishEvent(myEvent, props).then(evt => props.history.replace(`/event/${evt.id}`));
                                 }}><p>Publish Now</p></li>
                             <li><NavLink to="#">Schedule Publish</NavLink></li>
                         </ul>
@@ -48,8 +48,6 @@ const PublishEventNavBar = (props) => {
                             <ul className="drop-down">
                                 <li><NavLink to="#">Copy Event</NavLink></li>
                                 <li><NavLink to="#">Cancel Event</NavLink></li>
-                                <li><NavLink to="#">Product Updates</NavLink></li>
-                                <li><NavLink to="#">Help Center</NavLink></li>
                             </ul>
                         </li>
                         <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><span className="arrow-down"></span></NavLink>
@@ -73,7 +71,8 @@ const mapStateToProps = ({ session, entities: { users, event } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    publishEvent: (event, props) => dispatch(publishEvent(event, props))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PublishEventNavBar);

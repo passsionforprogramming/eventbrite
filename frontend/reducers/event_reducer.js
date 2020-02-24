@@ -13,7 +13,8 @@ import {
   UPDATE_SINGLE_EVENT,
   RECEIVE_EVENT,
   UPDATE_DESCRIPTION,
-  UPDATE_IMAGE_FILE
+  UPDATE_IMAGE_FILE,
+  RESET_EVENT
 } from "../actions/event_actions";
 
 import { UPDATE_ADDRESS,
@@ -101,6 +102,8 @@ const eventReducer = (state = initState, action) => {
         return { ...state, startDate: action.startDate };
       case UPDATE_END_DATE:
         return { ...state, endDate: action.endDate };
+      case RESET_EVENT:
+        return initState;
 
       default:
         return state;

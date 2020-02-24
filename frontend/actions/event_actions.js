@@ -18,6 +18,11 @@ export const UPDATE_DESCRIPTION = "UPDATE_DESCRIPTION";
 export const UPDATE_IMAGE_FILE = "UPDATE_IMAGE_FILE";
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const DISPLAY_EVENT = "DISPLAY_EVENT";
+export const RESET_EVENT = "RESET_EVENT";
+
+export const resetEvent = () => ({
+    type: RESET_EVENT
+});
 
 export const displayEvent = event => ({
     type: DISPLAY_EVENT,
@@ -129,4 +134,11 @@ export const submitEvent = event => dispatch => {
 export const updateEvent = event => dispatch => (
     EventAPIUtil.updateEvent(event.id).then(event => 
         dispatch(receiveEvent(event)))
+);
+
+export const publishEvent = (event, props) => dispatch => (
+    EventAPIUtil.publishEvent(event).then(event => {
+        dispatch(resetEvent());
+        props.history.replace(`/event/${event.id}`)
+    })
 )
