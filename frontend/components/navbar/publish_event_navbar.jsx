@@ -10,9 +10,9 @@ const PublishEventNavBar = (props) => {
     const eventId = props.location.pathname.match(regex).join("");
     return (
         <div>
-            <nav className="login basic-info-nav" onClick={() => props.history.push("/")}>
+            <nav className="login basic-info-nav">
                 <ul className="nav-lists">
-                    <li><p className="logo">haply</p></li>
+                    <li><p className="logo" onClick={() => props.history.push("/")}>haply</p></li>
                     <span className="right">
                         <li>
                             <NavLink to="#">Preview</NavLink>
@@ -20,13 +20,31 @@ const PublishEventNavBar = (props) => {
                         <li className="publish-event"> <NavLink to="#">Publish Event <span className="arrow-down"></span></NavLink>
                         <ul className="drop-down">
                                 <li onClick={() => {
-                                    const event = { ...props.event, id: eventId }
-                                    publishEvent(event).then(evt => props.history.push(`event/${evt.id}`));
+                                    const { event } = props;
+                                    const myEvent = {
+                                        id: eventId,
+                                        title: event.title,
+                                        category: event.category,
+                                        eventType: event.eventType,
+                                        organizer: event.organizer,
+                                        start_time: event.startDate,
+                                        end_time: event.endDate,
+                                        location_address: event.address,
+                                        location_type: event.addressType,
+                                        lat: event.lat,
+                                        lon: event.lng,
+                                        display_start_time: event.displayStartTime,
+                                        display_end_time: event.displayEndTime,
+                                        status: "published",
+                                        published: true,
+                                        tags: event.tags
+                                    };
+                                    publishEvent(myEvent).then(evt => props.history.replace(`/event/${evt.id}`));
                                 }}><p>Publish Now</p></li>
                             <li><NavLink to="#">Schedule Publish</NavLink></li>
                         </ul>
                         </li>
-                        <li className="more"> <NavLink to="">More <span className="arrow-down"></span></NavLink>
+                        <li className="more"> <NavLink to="#">More <span className="arrow-down"></span></NavLink>
                             <ul className="drop-down">
                                 <li><NavLink to="#">Copy Event</NavLink></li>
                                 <li><NavLink to="#">Cancel Event</NavLink></li>

@@ -49,9 +49,26 @@ class Api::EventsController < ApplicationController
     end
 
     def publish_event
-        @event = Event.new(event_params)
-        @event.published = true
-        if @event.update
+        @tags = event_params[:tags]
+        new_params = event_params.select { |k, v| k != "tags" }
+        @event = Event.find(new_params[:id])
+        print(@event)
+        if @event.update(new_params)
+            if @tags
+                @tags.each do |tag|
+                new_tag = Tag.new(name: tag, event_id: @event.id)
+                if new_tag.save
+                    print ("Tag saved successfully")
+                else
+                    print ("Tag not saved")
+                    puts(new_tag.errors.full_messages)
+                end
+            end
+            render "api/events/show"
+               end
+        else
+            render json: ["There was an error creating your event"], status: 422
+        end
     end
 
     private
