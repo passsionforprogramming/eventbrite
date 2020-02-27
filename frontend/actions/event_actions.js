@@ -1,4 +1,5 @@
 import { loadingForm } from './session_actions';
+import { debounce } from '../util/debounce_util';
 import * as APIUtil from '../util/event_util';
 import * as EventAPIUtil from '../util/event_api_util';
 export const UPDATE_TITLE = "UPDATE_TITLE";
@@ -19,6 +20,7 @@ export const UPDATE_IMAGE_FILE = "UPDATE_IMAGE_FILE";
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const DISPLAY_EVENT = "DISPLAY_EVENT";
 export const RESET_EVENT = "RESET_EVENT";
+export const RECEIVE_SEARCH_EVENTS = "RECEIVE_SEARCH_EVENTS";
 
 export const resetEvent = () => ({
     type: RESET_EVENT
@@ -27,7 +29,18 @@ export const resetEvent = () => ({
 export const displayEvent = event => ({
     type: DISPLAY_EVENT,
     event
-})
+});
+
+export const receiveSearchEvents = events => ({
+    type: RECEIVE_SEARCH_EVENTS,
+    events
+});
+
+export const autoComplete = query => dispatch => {
+    EventAPIUtil.autocomplete(query).then(events => {
+        dispatch(receiveSearchEvents(events));
+    })
+}
 
 
 export const receiveTotalEvents = events => ({

@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_033849) do
+ActiveRecord::Schema.define(version: 2020_02_25_064345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,13 +80,10 @@ ActiveRecord::Schema.define(version: 2020_02_22_033849) do
     t.datetime "updated_at", null: false
     t.string "location_address", null: false
     t.string "location_type"
-    t.float "lat"
-    t.float "lon"
     t.string "venue"
     t.string "eventType"
+    t.geography "lat_lon", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.index ["end_time"], name: "index_events_on_end_time"
-    t.index ["lat"], name: "index_events_on_lat"
-    t.index ["lon"], name: "index_events_on_lon"
     t.index ["start_time"], name: "index_events_on_start_time"
     t.index ["user_id"], name: "index_events_on_user_id"
   end

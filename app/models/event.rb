@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+    include PgSearch
+
     validates :title, :user_id,  presence: true
     belongs_to :user,
     foreign_key: :user_id,
@@ -22,4 +24,26 @@ class Event < ApplicationRecord
     dependent: :destroy
 
     has_one_attached :photo
+
+     pg_search_scope(
+    :search,
+    against: %i(
+      title
+      description
+      category
+      venue
+    ),
+    using: {
+      tsearch: {
+        dictionary: "english",
+        prefix: true,
+
+      }
+    }
+  )
+    scope :within, -> (latitude, longitude, distance_in_mile = 1) {
+    where(%{
+     ST_Distance(lat_lon, 'POINT(%f %f)') < %d
+    } % [longitude, latitude, distance_in_mile * 1609.34]) # approx
+  }
 end

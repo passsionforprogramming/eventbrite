@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :batches, only: [:create, :destroy, :update, :show, :index]
     get '/users_tickets/', to: 'tickets#users_tickets'
     get '/events_tickets/:event_id', to: 'tickets#events_tickets'
-    get 'events_search/:q', to: "events#search"
+    get 'events_search', to: "events#search"
+    get 'events_autocomplete', to: "events#autocomplete"
     post '/members/', to: 'members#verify'
     post '/publish_event', to: "events#publish_event"
   end

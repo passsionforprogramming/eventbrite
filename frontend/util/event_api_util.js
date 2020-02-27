@@ -31,12 +31,18 @@ export const deleteEvent = (eventId) => (
         method: 'DELETE',
         url: `api/events/${eventId}`
     })
-)
+);
 
 export const publishEvent = (event) => (
     $.ajax({
         method: 'POST',
         url: `api/publish_event`,
         data: { event }
+    })
+);
+
+export const autocomplete = query => (
+    $.ajax({
+        url: `api/events_autocomplete?q=${query}`
     })
 )

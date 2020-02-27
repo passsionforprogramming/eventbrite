@@ -48,6 +48,38 @@ class Api::EventsController < ApplicationController
         end
     end
 
+    def search
+        query = params.has_key?(:q) ? params[:q] : nil
+        lat = params.has_key?(:lat) ? params[:lat] : nil
+        lon = params.has_key?(:lon) ? params[:lon] : nil
+        category = params.has_key?(:category) ? params[:category] : nil
+        if (query && !lat && !category)
+            @events = Event.search(query).where(published: true)
+            render :index
+        elsif (query && lat && !category)
+            @events = Event.within(lat, lon, 50).search(query).where(published: true)
+            render :index
+        elsif (query && lat && category)
+            @events = Event.within(lat, lon, 50).search(query).where(category: category).where(published: true)
+            render :index
+        elsif (query && !lat && category)
+            @events = Event.search(query).where(category: category).where(published: true)
+            render :index
+        elsif (!query && lat && !category)
+            @events = Event.within(lat, lon, 50).where(published: true)
+        elsif (!query && !lat && category)
+            @events = Event.find_by(category: category).where(published: true)
+        end
+    end
+
+    def autocomplete
+        query = params.has_key?(:q) ? params[:q] : nil
+        if query 
+            @events = Event.search(query).limit(5) 
+            render :index
+        end
+    end
+
     def publish_event
         @tags = event_params[:tags]
         new_params = event_params.select { |k, v| k != "tags" }

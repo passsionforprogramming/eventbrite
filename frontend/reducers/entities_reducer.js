@@ -7,6 +7,7 @@ import TotalEventsReducer from "./total_events_reducer";
 import LikedEventsReducer from "./liked_events_reducer";
 import eventDisplayReducer from './event_display_reducer';
 import BatchReducer from './batch_reducer';
+import SearchReducer from "./search_reducer";
 const entitiesReducer = combineReducers({
     users: usersReducer,
     previousUser: previousUserReducer,
@@ -15,6 +16,7 @@ const entitiesReducer = combineReducers({
     currentTicket: currentTicketReducer,
     totalEvents: TotalEventsReducer,
     likedEvents: LikedEventsReducer,
+    search: SearchReducer,
     batch: BatchReducer
 });
 
