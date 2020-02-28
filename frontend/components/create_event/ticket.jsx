@@ -11,7 +11,9 @@ import {
 } from "@material-ui/pickers";
 export default class Ticket extends React.Component {
   componentDidMount(){
-    this.props.fetchBatches();
+    const regex = /\d*/g;
+    const eventId = props.location.pathname.match(regex).join("");
+    this.props.fetchBatches(eventId);
   }
     constructor(props){
         super(props);

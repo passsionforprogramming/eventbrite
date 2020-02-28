@@ -6,10 +6,10 @@ export const createTicketBatch = batch => (
     })
 );
 
-export const fetchBatches = () => (
+export const fetchBatches = (eventId) => (
     $.ajax({
         method: 'GET',
-        url: `api/batches`
+        url: `api/batches?event=${eventId}`
     })
 );
 

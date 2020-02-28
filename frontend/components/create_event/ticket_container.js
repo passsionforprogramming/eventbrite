@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
     updatePrice: price => dispatch(updatePrice(price)),
     updateStartDate: startDate => dispatch(updateStartDate(startDate)),
     updateEndDate: endDate => dispatch(updateEndDate(endDate)),
-    fetchBatches: () => dispatch(fetchBatches()),
+    fetchBatches: eventId => dispatch(fetchBatches(eventId)),
     createTicket: ticket => dispatch(createTicket(ticket))
 });
 

@@ -20,7 +20,7 @@ class Api::BatchesController < ApplicationController
 
     def index
         render json: ["You need to be logged in to view your tickets"] if !logged_in?
-        @batches = current_user.batches
+        @batches = current_user.batches.find_by(event_id: params[:event])
     end
 
     def update

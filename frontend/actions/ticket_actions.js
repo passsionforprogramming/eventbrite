@@ -49,7 +49,7 @@ export const createTicket = ticket => dispatch => {
 
 }
 
-export const fetchBatches = () => dispatch => (
+export const fetchBatches = eventId => dispatch => (
     APIUtil.fetchBatches().then(batches => dispatch(receiveBatches(batches)))
 )
 
