@@ -6,7 +6,7 @@ class Api::EventsController < ApplicationController
         new_params = event_params.select { |k, v| k != "tags" }
         @event = Event.new(new_params);
         print(@event)
-        if @event.save
+        if @event.save!
             render "api/events/show"
             if @tags
                 @tags.each do |tag|
@@ -96,8 +96,8 @@ class Api::EventsController < ApplicationController
                     puts(new_tag.errors.full_messages)
                 end
             end
-            render "api/events/show"
                end
+               render "api/events/show"
         else
             render json: ["There was an error creating your event"], status: 422
         end
@@ -105,7 +105,7 @@ class Api::EventsController < ApplicationController
 
     private
     def event_params
-        params.require(:event).permit(:title, :id, :user_id, :category, :eventType, :organizer, :photo, :start_time, :end_time, :display_start_time, :display_end_time, :timezone, :image_url, :description, :published, :status, :sold, :gross, :views, :location_address, :location_type, :lat, :lon, tags: [])
+        params.require(:event).permit(:title, :id, :user_id, :category, :eventType, :organizer, :photo, :start_time, :end_time, :display_start_time, :display_end_time, :timezone, :image_url, :description, :published, :status, :sold, :gross, :views, :location_address, :location_type, :lat_lon, tags: [])
     end
 
     def require_user_owns_event!
