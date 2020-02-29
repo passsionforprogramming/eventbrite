@@ -12,6 +12,7 @@ export const updateName = name => ({
     name
 });
 
+
 export const updateQuantity = quantity => ({
     type: UPDATE_QUANTITY,
     quantity
@@ -50,10 +51,14 @@ export const createTicket = ticket => dispatch => {
 }
 
 export const fetchBatches = eventId => dispatch => (
-    APIUtil.fetchBatches().then(batches => dispatch(receiveBatches(batches)))
+    APIUtil.fetchBatches(eventId).then(batches => dispatch(receiveBatches(batches)))
 )
 
 export const fetchBatch = batchId => dispatch => (
     APIUtil.fetchBatch(batchId).then(batch => dispatch(receiveBatch(batch)))
+)
+
+export const deleteBatch = batchId => dispatch => (
+    APIUtil.deleteBatch(batchId).then(batches => dispatch(receiveBatches(batches)))
 )
     

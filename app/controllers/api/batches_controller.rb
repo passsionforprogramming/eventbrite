@@ -7,7 +7,7 @@ class Api::BatchesController < ApplicationController
             @batch.quantity.times do 
                 Ticket.create(name: @batch.name, event_id: @batch.event_id, description: @batch.description, price: @batch.price, owner_id: @batch.owner_id, batch_id: @batch.id)
             end
-            @batches = current_user.batches
+            @batches = current_user.batches.where(event_id: @batch.event_id)
             render :index
         else
             render json: ["There was an error creating your tickets"], status: 422
@@ -20,7 +20,8 @@ class Api::BatchesController < ApplicationController
 
     def index
         render json: ["You need to be logged in to view your tickets"] if !logged_in?
-        @batches = current_user.batches.find_by(event_id: params[:event])
+        print(params[:event])
+        @batches = current_user.batches.where(event_id: params[:event])
     end
 
     def update
@@ -34,8 +35,10 @@ class Api::BatchesController < ApplicationController
 
     def destroy
         batch = Batch.find(params[:id])
+        event_id = batch.event_id
         if batch.destroy
-            render json: ["Batch was successfully destroyed"]
+            @batches = current_user.batches.where(event_id: event_id)
+            render :index
         else
             render json: ["Your batch failed to destroy"]
         end

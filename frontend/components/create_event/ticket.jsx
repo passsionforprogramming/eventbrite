@@ -11,9 +11,7 @@ import {
 } from "@material-ui/pickers";
 export default class Ticket extends React.Component {
   componentDidMount(){
-    const regex = /\d*/g;
-    const eventId = props.location.pathname.match(regex).join("");
-    this.props.fetchBatches(eventId);
+    this.props.fetchBatches(this.props.match.params.eventId);
   }
     constructor(props){
         super(props);
@@ -68,7 +66,8 @@ export default class Ticket extends React.Component {
         <div className="three-em">
 
         </div>
-          <BatchList batches={this.props.batches} />
+          <BatchList 
+          batches={this.props.batches}/>
       </div>;
         return (
           <div className={`ticket ${this.props.batches.length > 0 && "to-start"}`}>
@@ -149,7 +148,7 @@ export default class Ticket extends React.Component {
                     value={this.props.price}
                   />
                 </div>
-              </form>
+              
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <div className="space-between">
                   <KeyboardDatePicker
@@ -231,6 +230,7 @@ export default class Ticket extends React.Component {
                   this.props.createTicket(ticket).then(() => this.toggleTicketForm());
                 }}>Save</button>
               </div>
+              </form>
             </div>
           </div>
         );

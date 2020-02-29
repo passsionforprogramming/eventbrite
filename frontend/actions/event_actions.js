@@ -144,10 +144,10 @@ export const submitEvent = event => dispatch => {
     return APIUtil.submitEvent(event);
 }
 
-export const updateEvent = event => dispatch => (
-    EventAPIUtil.updateEvent(event.id).then(event => 
+export const updateEvent = event => dispatch => {
+    EventAPIUtil.updateEvent(event).then(event => 
         dispatch(receiveEvent(event)))
-);
+    };
 
 export const publishEvent = (event, props) => dispatch => (
     EventAPIUtil.publishEvent(event).then(event => {

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { updateName, updateQuantity, updatePrice, updateStartDate, updateEndDate, fetchBatches, createTicket } from '../../actions/ticket_actions';
+import { updateName, updateQuantity, updatePrice, updateStartDate, updateEndDate, fetchBatches, createTicket} from '../../actions/ticket_actions';
 import Ticket from './ticket';
 import {withRouter} from 'react-router-dom';
 const mapStateToProps = state => ({

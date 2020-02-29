@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { connect } from 'react-redux';
+import { deleteBatch } from '../../../actions/ticket_actions';
 
 
 const BatchThumb = props => {
@@ -25,7 +27,7 @@ const BatchThumb = props => {
                     <FontAwesomeIcon icon={faEllipsisV} className="icon-elipsis" />
                     <div className="crud-box">
                         <p className="crud-p">Edit</p>
-                        <p className="crud-p">Delete</p>
+                        <p onClick={() => props.deleteBatch(props.id)} className="crud-p">Delete</p>
                     </div>
                 </span>
             </div>
@@ -33,4 +35,12 @@ const BatchThumb = props => {
     )
 }
 
-export default BatchThumb;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+    deleteBatch: batchId => dispatch(deleteBatch(batchId))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BatchThumb);

@@ -10,6 +10,8 @@ const AutoCompleteList = props => {
                 events.map(event => (
                     <EventListItem 
                     title={event.title}
+                    id={event.id}
+                    key={event.id}
                     eventTime={event.startDate}
                     imageUrl={event.imageUrl}
                     address={event.address}/>

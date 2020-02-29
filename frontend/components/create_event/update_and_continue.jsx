@@ -39,7 +39,6 @@ class UpdateAndContinue extends React.Component {
                 tags: event.tags,
                 description: event.description
             };
-            const that = this;
             updateEvent(formEvent).then(() => {
                 console.log("event updated");
             });

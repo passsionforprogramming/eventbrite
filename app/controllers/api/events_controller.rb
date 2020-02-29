@@ -41,7 +41,15 @@ class Api::EventsController < ApplicationController
 
     def update
         @event = Event.find(params[:id])
-        if @event.update(event_params)
+         @tags = event_params[:tags]
+        new_params = event_params.select { |k, v| k != "tags" }
+        if @event.update(new_params)
+            if @tags 
+                @event.tags.destroy_all
+                @tags.each do |tag|
+                    Tag.create(name: tag, event_id: @event.id)
+                end
+            end
             render "api/events/show"
         else
             render json: ["There was an error updating your event"], status: 422

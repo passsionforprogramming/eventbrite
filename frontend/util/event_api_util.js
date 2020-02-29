@@ -24,7 +24,7 @@ export const updateEvent = (event) => (
         method: 'PATCH',
         url: `api/events/${event.id}`
     })
-)
+);
 
 export const deleteEvent = (eventId) => (
     $.ajax({

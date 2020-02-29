@@ -14,6 +14,8 @@ const BatchList = props => {
                             sold={batch.tickets_sold ? batch.tickets_sold.toString() : "0"}
                             price={batch.price}
                             quantity={batch.quantity}
+                            key={batch.id}
+                            id={batch.id}
                         />
                     )
                 })
