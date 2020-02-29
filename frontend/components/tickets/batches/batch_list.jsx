@@ -5,7 +5,7 @@ const BatchList = props => {
     return (
         <div className="batch-list">
             {
-                batches.map(batch => {
+                batches.map((batch, i) => {
                     return (
                         <BatchThumb
                             name={batch.name}
@@ -16,6 +16,8 @@ const BatchList = props => {
                             quantity={batch.quantity}
                             key={batch.id}
                             id={batch.id}
+                            idx={i}
+                            toggleForm={props.toggleForm}
                         />
                     )
                 })

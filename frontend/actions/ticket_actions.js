@@ -6,11 +6,20 @@ export const UPDATE_TICKET_END_DATE = "UPDATE_TICKET_END_DATE";
 export const UPDATE_TICKET_START_DATE = "UPDATE_TICKET_START_DATE";
 export const RECEIVE_BATCH = "RECEIVE_BATCH";
 export const RECEIVE_BATCHES = "RECEIVE_BATCHES";
+export const EDIT_BATCH = "EDIT_BATCH";
 
 export const updateName = name => ({
     type: UPDATE_NAME,
     name
 });
+
+export const editBatch = (idx, batches) => {
+    const batch = batches[idx];
+    return {
+        type: EDIT_BATCH,
+        batch
+    }
+}
 
 
 export const updateQuantity = quantity => ({

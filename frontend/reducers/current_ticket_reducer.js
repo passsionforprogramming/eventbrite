@@ -2,7 +2,7 @@ import { UPDATE_NAME,
     UPDATE_QUANTITY, 
     UPDATE_PRICE,
     UPDATE_TICKET_END_DATE,
-    UPDATE_TICKET_START_DATE } from '../actions/ticket_actions';
+    UPDATE_TICKET_START_DATE, EDIT_BATCH  } from '../actions/ticket_actions';
 const initState = {
     name: "General Admission",
     price: "",
@@ -24,6 +24,8 @@ const currentTicketReducer = (state = initState, action) => {
             return {...state, endDate: action.endDate}
         case UPDATE_TICKET_START_DATE:
             return {...state, startDate: action.startDate}
+        case EDIT_BATCH:
+            return action.batch
         default:
             return state;
     }

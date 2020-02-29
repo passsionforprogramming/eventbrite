@@ -2,8 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux';
-import { deleteBatch } from '../../../actions/ticket_actions';
-
+import { deleteBatch, editBatch } from '../../../actions/ticket_actions';
 
 const BatchThumb = props => {
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' };
@@ -26,7 +25,10 @@ const BatchThumb = props => {
                 <span className="elipsis">
                     <FontAwesomeIcon icon={faEllipsisV} className="icon-elipsis" />
                     <div className="crud-box">
-                        <p className="crud-p">Edit</p>
+                        <p onClick={() => {
+                            props.editBatch(props.idx, props.batches);
+                            props.toggleForm();
+                        }} className="crud-p">Edit</p>
                         <p onClick={() => props.deleteBatch(props.id)} className="crud-p">Delete</p>
                     </div>
                 </span>
@@ -36,11 +38,12 @@ const BatchThumb = props => {
 }
 
 const mapStateToProps = state => ({
-
+    batches: state.entities.batch.batches
 });
 
 const mapDispatchToProps = dispatch => ({
-    deleteBatch: batchId => dispatch(deleteBatch(batchId))
+    deleteBatch: batchId => dispatch(deleteBatch(batchId)),
+    editBatch: (idx, batches) => dispatch(editBatch(idx, batches))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BatchThumb);
