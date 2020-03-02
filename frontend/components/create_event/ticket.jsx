@@ -53,7 +53,10 @@ export default class Ticket extends React.Component {
       const batchDisplay = this.props.batches.length === 0 ? <div className={`align-center ${this.state.createTicketClassName.length > 1 && "all-center"}`}>
         <FontAwesomeIcon icon={faTicketAlt} className="ticket-icon" />
         <p className="ticket-create">Create your first ticket</p>
-        <button className="red-button" onClick={() => this.toggleTicketForm()}>Create Ticket</button>
+        <button className="red-button" onClick={() => {
+          this.props.resetCurrentTicket();
+          this.toggleTicketForm();
+        }}>Create Ticket</button>
       </div> : <div className="batch-ticket-list">
         <div className="ticket-empty-height">
             
@@ -221,8 +224,8 @@ export default class Ticket extends React.Component {
                   const ticket = {
                     name: this.props.ticket.name,
                     price: this.props.ticket.price,
-                    sale_start_time: this.props.ticket.startDate,
-                    sale_end_time: this.props.ticket.endDate,
+                    sale_start_time: this.props.ticket.sale_start_time,
+                    sale_end_time: this.props.ticket.sale_end_time,
                     quantity: this.props.ticket.quantity,
                     event_id: this.props.match.params.eventId,
                     type: this.state.selected

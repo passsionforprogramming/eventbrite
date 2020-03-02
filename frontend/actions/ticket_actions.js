@@ -7,11 +7,16 @@ export const UPDATE_TICKET_START_DATE = "UPDATE_TICKET_START_DATE";
 export const RECEIVE_BATCH = "RECEIVE_BATCH";
 export const RECEIVE_BATCHES = "RECEIVE_BATCHES";
 export const EDIT_BATCH = "EDIT_BATCH";
+export const RESET_CURRENT_TICKET = "RESET_CURRENT_TICKET";
 
 export const updateName = name => ({
     type: UPDATE_NAME,
     name
 });
+
+export const resetCurrentTicket = () => ({
+    type: RESET_CURRENT_TICKET
+})
 
 export const editBatch = (idx, batches) => {
     const batch = batches[idx];
