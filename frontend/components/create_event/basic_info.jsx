@@ -159,7 +159,7 @@ export default class BasicInfo extends React.Component {
                 know where to show up.
               </p>
               <div className="one-em"></div>
-              <LocationDropdown items={locationOptions} />
+              <LocationDropdown items={locationOptions} locationClass="true"/>
               <div className="one-em"></div>
               <PlacesAutocomplete
                 value={this.props.address}

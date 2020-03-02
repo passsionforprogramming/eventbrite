@@ -17,7 +17,7 @@ export default class DropDownList extends React.Component {
                     <p><i className="arrow down"></i></p>
                 </div>
                 <div className="relative-custom">
-                    <ul className="event-type-dropdown-content">
+                    <ul className={`event-type-dropdown-content ${this.props.locationClass ? "auto-height" : ""}`} >
                         {itemList}
                     </ul>
                 </div>
