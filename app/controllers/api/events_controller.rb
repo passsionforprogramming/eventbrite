@@ -88,6 +88,11 @@ class Api::EventsController < ApplicationController
         end
     end
 
+    def user_events
+        @events = current_user.events.order(:published)
+        render :index
+    end
+
     def publish_event
         @tags = event_params[:tags]
         new_params = event_params.select { |k, v| k != "tags" }

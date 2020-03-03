@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/events_tickets/:event_id', to: 'tickets#events_tickets'
     get 'events_search', to: "events#search"
     get 'events_autocomplete', to: "events#autocomplete"
+    get 'user_events', to: "events#user_events"
     post '/members/', to: 'members#verify'
     post '/publish_event', to: "events#publish_event"
   end

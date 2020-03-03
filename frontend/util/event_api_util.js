@@ -45,4 +45,10 @@ export const autocomplete = query => (
     $.ajax({
         url: `api/events_autocomplete?q=${query}`
     })
-)
+);
+
+export const fetchUserEvents = () => (
+    $.ajax({
+        url: `api/user_events`
+    })
+);

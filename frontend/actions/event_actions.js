@@ -21,6 +21,7 @@ export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const DISPLAY_EVENT = "DISPLAY_EVENT";
 export const RESET_EVENT = "RESET_EVENT";
 export const RECEIVE_SEARCH_EVENTS = "RECEIVE_SEARCH_EVENTS";
+export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
 
 export const resetEvent = () => ({
     type: RESET_EVENT
@@ -51,6 +52,17 @@ export const receiveTotalEvents = events => ({
 export const fetchAllEvents = () => dispatch => (
     EventAPIUtil.fetchEvents().then(events =>
         dispatch(receiveTotalEvents(events)))
+);
+
+export const reciveUserEvents = events => ({
+    type: RECEIVE_USER_EVENTS,
+    events
+})
+
+export const fetchUserEvents = () => dispatch => (
+    EventAPIUtil.fetchUserEvents().then(events => (
+        dispatch(receiveTotalEvents(events))
+    ))
 );
 export const updateImageFile = file => ({
     type: UPDATE_IMAGE_FILE,
