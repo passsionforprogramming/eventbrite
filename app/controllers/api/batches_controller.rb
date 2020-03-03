@@ -29,8 +29,9 @@ class Api::BatchesController < ApplicationController
         @batch = Batch.find(params[:id])
         render json: ["You can't decrease the number of tickets to less than the amount that have already been sold to your guests."] if batch_params.has_key?(:quantity) && batch_params[:quantity].to_i < @batch.tickets.where.not(owner_id: nil).count
         if @batch.update(batch_params)
-            ticket_params = batch_params.select { |k, v| k == :price || k == :name || k == :description}
-            @batch.tickets.where(owner_id: nil).update_all(ticket_params)
+            ticket_params = batch_params.select { |k, v| k == "price" || k == "name" || k == "description"}
+            non_purchased_tickets = @batch.tickets.where(owner_id: nil)
+            non_purchased_tickets.each { |non_purchased_ticket| non_purchased_ticket.update(ticket_params)}
             tickets = @batch.tickets
             purchased_tickets = tickets.where.not(owner_id: nil);
             quantity = @batch.quantity
