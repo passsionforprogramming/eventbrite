@@ -220,7 +220,8 @@ export default class Ticket extends React.Component {
                 <button className="cancel-btn" onClick={() => this.toggleTicketForm()}>Cancel</button>
                 <button 
                 className="save-ticket-btn"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   const ticket = {
                     name: this.props.ticket.name,
                     price: this.props.ticket.price,
@@ -228,7 +229,7 @@ export default class Ticket extends React.Component {
                     sale_end_time: this.props.ticket.sale_end_time,
                     quantity: this.props.ticket.quantity,
                     event_id: this.props.match.params.eventId,
-                    type: this.state.selected
+                    paymentType: this.state.selected
                   };
                   !this.props.ticket.id ? this.props.createTicket(ticket).then(() => this.toggleTicketForm()) : this.props.updateTicket(ticket, this.props.ticket.id).then(() => this.toggleTicketForm());
                 }}>{this.props.ticket.id ? "Edit": "Save"}</button>

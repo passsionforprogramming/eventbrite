@@ -27,9 +27,29 @@ class Api::BatchesController < ApplicationController
 
     def update
         @batch = Batch.find(params[:id])
+        render json: ["You can't decrease the number of tickets to less than the amount that have already been sold to your guests."] if batch_params.has_key?(:quantity) && batch_params[:quantity].to_i < @batch.tickets.where.not(owner_id: nil).count
         if @batch.update(batch_params)
             ticket_params = batch_params.select { |k, v| k == :price || k == :name || k == :description}
-            tickets = @batch.tickets.where(owner_id: nil).update_all(ticket_params)
+            @batch.tickets.where(owner_id: nil).update_all(ticket_params)
+            tickets = @batch.tickets
+            purchased_tickets = tickets.where.not(owner_id: nil);
+            quantity = @batch.quantity
+            tickets_count = tickets.count
+            if quantity > tickets_count
+                difference = quantity - tickets_count
+                difference.times do 
+                    Ticket.create(name: @batch.name, event_id: @batch.event_id, description: @batch.description, price: @batch.price, batch_id: @batch.id)
+                end
+            elsif quantity < tickets_count
+                if quantity >= purchased_tickets.count
+                    difference = quantity - tickets_count
+                    non_purchased_tickets = tickets.where(owner_id: nil)
+                    difference.times do 
+                        last = non_purchased_tickets.last
+                        last.destroy
+                    end
+                end
+            end
             @batches = current_user.batches.where(event_id: @batch.event_id)
             render :index
         else
@@ -50,7 +70,7 @@ class Api::BatchesController < ApplicationController
 
     private
     def batch_params
-        params.require(:batch).permit(:sale_start_time, :sale_end_time, :visibility, :absorb_fees, :quantity, :price, :min_num_tickets_sold, :max_num_tickets_sold, :sales_channel, :name, :owner_id, :event_id)
+        params.require(:batch).permit(:sale_start_time, :paymentType, :sale_end_time, :visibility, :absorb_fees, :quantity, :price, :min_num_tickets_sold, :max_num_tickets_sold, :sales_channel, :name, :owner_id, :event_id)
     end
 
     def require_user_owns_batch!

@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
     fetchBatches: eventId => dispatch(fetchBatches(eventId)),
     createTicket: ticket => dispatch(createTicket(ticket)),
     resetCurrentTicket: () => dispatch(resetCurrentTicket()),
-    updateTicket: ticket => dispatch(updateTicket(ticket))
+    updateTicket: (ticket, id) => dispatch(updateTicket(ticket, id))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Ticket));
