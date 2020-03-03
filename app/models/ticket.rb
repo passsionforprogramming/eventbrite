@@ -7,7 +7,8 @@ class Ticket < ApplicationRecord
 
     belongs_to :owner,
     class_name: 'User',
-    foreign_key: :owner_id
+    foreign_key: :owner_id,
+    optional: true
 
     belongs_to :event,
     class_name: 'Event',

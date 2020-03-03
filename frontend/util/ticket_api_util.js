@@ -20,10 +20,10 @@ export const fetchBatch = batchId => (
     })
 );
 
-export const updateBatch = batch => (
+export const updateBatch = (batch, id) => (
     $.ajax({
         method: "PATCH",
-        url: `api/batches/${batch.id}`,
+        url: `api/batches/${id}`,
         data: { batch }
     })
 );

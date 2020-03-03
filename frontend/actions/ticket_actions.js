@@ -62,17 +62,23 @@ export const createTicket = ticket => dispatch => {
         dispatch(receiveBatches(batches))
     ))
 
-}
+};
+
+export const updateTicket = (ticket, id) => dispatch => (
+    APIUtil.updateBatch(ticket, id).then(batches => (
+        dispatch(receiveBatches(batches))
+    ))
+);
 
 export const fetchBatches = eventId => dispatch => (
     APIUtil.fetchBatches(eventId).then(batches => dispatch(receiveBatches(batches)))
-)
+);
 
 export const fetchBatch = batchId => dispatch => (
     APIUtil.fetchBatch(batchId).then(batch => dispatch(receiveBatch(batch)))
-)
+);
 
 export const deleteBatch = batchId => dispatch => (
     APIUtil.deleteBatch(batchId).then(batches => dispatch(receiveBatches(batches)))
-)
+);
     

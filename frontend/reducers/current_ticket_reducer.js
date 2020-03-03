@@ -5,6 +5,7 @@ import { UPDATE_NAME,
     UPDATE_TICKET_START_DATE, EDIT_BATCH, RESET_CURRENT_TICKET } from '../actions/ticket_actions';
 const initState = {
     name: "General Admission",
+    id: null,
     price: "",
     sale_start_time: new Date(),
     sale_end_time: new Date(),

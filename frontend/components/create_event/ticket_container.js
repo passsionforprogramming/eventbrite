@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { updateName, updateQuantity, updatePrice, updateStartDate, updateEndDate, fetchBatches, createTicket, resetCurrentTicket} from '../../actions/ticket_actions';
+import { updateName, updateQuantity, updatePrice, updateStartDate, updateEndDate, fetchBatches, createTicket, resetCurrentTicket, updateTicket} from '../../actions/ticket_actions';
 import Ticket from './ticket';
 import {withRouter} from 'react-router-dom';
 const mapStateToProps = state => ({
@@ -20,7 +20,8 @@ const mapDispatchToProps = dispatch => ({
     updateEndDate: endDate => dispatch(updateEndDate(endDate)),
     fetchBatches: eventId => dispatch(fetchBatches(eventId)),
     createTicket: ticket => dispatch(createTicket(ticket)),
-    resetCurrentTicket: () => dispatch(resetCurrentTicket())
+    resetCurrentTicket: () => dispatch(resetCurrentTicket()),
+    updateTicket: ticket => dispatch(updateTicket(ticket))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Ticket));

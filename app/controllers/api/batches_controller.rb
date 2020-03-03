@@ -4,8 +4,9 @@ class Api::BatchesController < ApplicationController
         @batch = Batch.new(batch_params)
         @batch.owner_id = current_user.id
         if @batch.save!
+            print("Batch Qantity is #{@batch.quantity}")
             @batch.quantity.times do 
-                Ticket.create(name: @batch.name, event_id: @batch.event_id, description: @batch.description, price: @batch.price, owner_id: @batch.owner_id, batch_id: @batch.id)
+                Ticket.create!(name: @batch.name, event_id: @batch.event_id, description: @batch.description, price: @batch.price, batch_id: @batch.id)
             end
             @batches = current_user.batches.where(event_id: @batch.event_id)
             render :index
@@ -27,7 +28,10 @@ class Api::BatchesController < ApplicationController
     def update
         @batch = Batch.find(params[:id])
         if @batch.update(batch_params)
-            render :show
+            ticket_params = batch_params.select { |k, v| k == :price || k == :name || k == :description}
+            tickets = @batch.tickets.where(owner_id: nil).update_all(ticket_params)
+            @batches = current_user.batches.where(event_id: @batch.event_id)
+            render :index
         else
             render json: ["Your tickets failed to update"]
         end

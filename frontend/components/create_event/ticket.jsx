@@ -230,8 +230,8 @@ export default class Ticket extends React.Component {
                     event_id: this.props.match.params.eventId,
                     type: this.state.selected
                   };
-                  this.props.createTicket(ticket).then(() => this.toggleTicketForm());
-                }}>Save</button>
+                  !this.props.ticket.id ? this.props.createTicket(ticket).then(() => this.toggleTicketForm()) : this.props.updateTicket(ticket, this.props.ticket.id).then(() => this.toggleTicketForm());
+                }}>{this.props.ticket.id ? "Edit": "Save"}</button>
               </div>
               </form>
             </div>
