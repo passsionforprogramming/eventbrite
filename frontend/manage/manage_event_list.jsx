@@ -9,7 +9,7 @@ const ManageEventList = props => {
                     <ManageThumb 
                     imageUrl={event.image_url}
                     title={event.title}
-                    address={event.location_address}
+                    address={event.address}
                     gross={event.gross}
                     sold={event.sold}
                     status={event.status}
