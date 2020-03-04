@@ -14,14 +14,14 @@ const LoginNavBar = (props) => {
                     <li><SearchBar /></li>
                     <span className="right">
                         <li><NavLink to="#">Browse</NavLink></li>
-                    <li className="help"><NavLink to="#">Help</NavLink>
+                    {/* <li className="help"><NavLink to="#">Help</NavLink>
                         <ul className="drop-down">
                             <li><NavLink to="#">How it Works</NavLink></li>
                             <li><NavLink to="#">What it costs to create an event.</NavLink></li>
                             <li><NavLink to="#">Blog</NavLink></li>
                             <li><NavLink to="#">Resources</NavLink></li>
                         </ul>
-                    </li>
+                    </li> */}
                     {condition}
                     </span>
                 </ul>

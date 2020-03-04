@@ -53,7 +53,7 @@ const PublishEventNavBar = (props) => {
                         <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><span className="arrow-down"></span></NavLink>
                             <ul className="drop-down drop-down-right">
                                 <li onClick={() => props.logout()}><NavLink to="#">Logout</NavLink></li>
-                                <li><NavLink to="#">Manage Events</NavLink></li>
+                                <li><NavLink to="/manage">Manage Events</NavLink></li>
                                 <li><NavLink to="/likes">Liked</NavLink></li>
                                 <li><NavLink to="#">Tickets</NavLink></li>
                             </ul>
