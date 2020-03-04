@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { destroyEvent } from '../actions/event_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-import Placeholder from './placeholder.png'
+import Placeholder from './placeholder.png';
+import { withRouter } from 'react-router-dom';
+
 const ManageThumb = props => {
     const eventTime = new Date(props.eventTime);
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
@@ -74,4 +76,4 @@ const mapDispatchToProps = dispatch => ({
   destroyEvent: eventId => dispatch(destroyEvent(eventId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageThumb);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ManageThumb));
