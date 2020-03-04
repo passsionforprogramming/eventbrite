@@ -8,6 +8,7 @@ class Manage extends React.Component {
     }
 
     componentDidMount(){
+        console.log("We are in the component did mount");
         this.props.fetchUserEvents();
     }
     render(){
@@ -39,8 +40,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchUserEvents: () => dispatch(fetchUserEvents),
-    resetEvent: () => dispatch(resetEvent)
+    fetchUserEvents: () => dispatch(fetchUserEvents()),
+    resetEvent: () => dispatch(resetEvent())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Manage);

@@ -89,7 +89,17 @@ class Api::EventsController < ApplicationController
     end
 
     def user_events
-        @events = current_user.events.order(:published)
+        events = current_user.events
+        events.each do |event|
+            total_tickets = 0
+            sold = 0
+            event.batches.each do |batch|
+                total_tickets += batch.quantity if batch.quantity
+                sold += batch.tickets_sold if batch.tickets_sold
+            end
+            event.update(total_tickets: total_tickets, sold: sold)
+        end
+        @events = current_user.events.includes.order(:published)
         render :index
     end
 
