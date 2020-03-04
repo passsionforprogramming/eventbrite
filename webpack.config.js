@@ -5,7 +5,7 @@ module.exports = {
   context: __dirname,
   entry: "./frontend/index.jsx",
   output: {
-    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
+    path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "./bundle.js"
   },
   module: {
@@ -17,13 +17,20 @@ module.exports = {
           loader: "babel-loader",
           query: {
             presets: ["@babel/env", "@babel/react"],
-            plugins: [
-                [
-                    "@babel/plugin-proposal-class-properties"
-                ]
-            ]
+            plugins: [["@babel/plugin-proposal-class-properties"]]
           }
         }
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },

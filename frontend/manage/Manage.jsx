@@ -14,7 +14,7 @@ class Manage extends React.Component {
     render(){
         return (
             <div className="manage">
-                <div className="row">
+                <div className="manage-row">
                     <p className="basic-info-header">Events</p>
                     <button className="red-button" onClick={() => {
                         this.props.resetEvent();
