@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { destroyEvent } from '../actions/event_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import Placeholder from './placeholder.png'
@@ -44,16 +46,18 @@ const ManageThumb = props => {
         <span className="elipsis">
           <FontAwesomeIcon icon={faEllipsisV} className="icon-elipsis" />
           <div className="crud-box">
+            <p onClick={() => props.history.push(`/event/${props.id}`)} className="crud-p">
+              View
+            </p>
             <p
               onClick={() => {
-                props.editBatch(props.idx, props.batches);
-                props.toggleForm();
+                props.history.push(`/manageEvents/${props.id}`)
               }}
               className="crud-p"
             >
               Edit
             </p>
-            <p onClick={() => props.deleteBatch(props.id)} className="crud-p">
+            <p onClick={() => props.destroyEvent(props.id)} className="crud-p">
               Delete
             </p>
           </div>
@@ -62,4 +66,12 @@ const ManageThumb = props => {
     );
 };
 
-export default ManageThumb;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  destroyEvent: eventId => dispatch(destroyEvent(eventId))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageThumb);

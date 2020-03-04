@@ -166,4 +166,8 @@ export const publishEvent = (event, props) => dispatch => (
         dispatch(resetEvent());
         props.history.replace(`/event/${event.id}`)
     })
-)
+);
+
+export const destroyEvent = eventId => dispatch => (
+    EventAPIUtil.deleteEvent(eventId).then(events => dispatch(receiveUserEvents(events)))
+);

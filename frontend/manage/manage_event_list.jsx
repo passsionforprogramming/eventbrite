@@ -14,7 +14,9 @@ const ManageEventList = props => {
                     sold={event.sold}
                     status={event.status}
                     tickets={event.total_tickets}
+                    id={event.id}
                     eventTime={event.eventTime}
+                    key={event.id}
                     />
                 ))
             }
