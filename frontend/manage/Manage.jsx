@@ -36,7 +36,7 @@ class Manage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    events: state.entities.totalEvents
+    events: state.entities.userEvents
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ManageThumb = props => {
-    const eventTime = new Date(props.startDate);
+    const eventTime = new Date(props.eventTime);
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
     const monthOptions = { month: 'short'};
     const dayOptions = { day: 'numeric'};
@@ -25,7 +25,7 @@ const ManageThumb = props => {
             <p className="sold">
                 {props.status}
             </p>
-            
+
         </div>
     )
 };

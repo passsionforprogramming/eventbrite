@@ -54,14 +54,14 @@ export const fetchAllEvents = () => dispatch => (
         dispatch(receiveTotalEvents(events)))
 );
 
-export const reciveUserEvents = events => ({
+export const receiveUserEvents = events => ({
     type: RECEIVE_USER_EVENTS,
     events
-})
+});
 
 export const fetchUserEvents = () => dispatch => (
     EventAPIUtil.fetchUserEvents().then(events => (
-        dispatch(receiveTotalEvents(events))
+        dispatch(receiveUserEvents(events))
     ))
 );
 export const updateImageFile = file => ({

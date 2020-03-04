@@ -99,8 +99,8 @@ class Api::EventsController < ApplicationController
             end
             event.update(total_tickets: total_tickets, sold: sold)
         end
-        @events = current_user.events.includes.order(:published)
-        render :index
+        @events = current_user.events.order(:published)
+        render "api/events/user_events"
     end
 
     def publish_event
