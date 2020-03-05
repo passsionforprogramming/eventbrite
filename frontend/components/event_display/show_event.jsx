@@ -18,10 +18,12 @@ class ShowEvent extends React.Component {
                     <div className="img-aspect">
                         <img src={event.imageUrl} className="show-evt-img" />
                     </div>
+                    <button className="grn-btn">Tickets</button>
                     <p className="evt-show-title">{event.title}</p>
                     <p className="organizer">by {event.organizer}</p>
                     <p className="evt-show-date">{startDate.toLocaleDateString('en-US', options)}</p>
                     <p className="evt-address">{event.address}</p>
+                    <p className="description-header">About this event</p>
                     <p className="evt-show-description">{event.description}</p>
                 </div>
             </div>
