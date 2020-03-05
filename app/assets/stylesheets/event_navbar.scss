@@ -1,0 +1,11 @@
+.event-nav-list {
+    display: grid;
+    padding: .5em;
+    background-color: white;
+    grid-template-rows: 100%;
+    grid-template-columns: 15% 55% 12.5% 12.5% 15%;
+    align-items: center;
+    a:hover {
+        font-weight: bold;
+    }
+}

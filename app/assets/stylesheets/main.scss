@@ -79,6 +79,7 @@ nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
+     align-items: center;
 }
 
 .nav-list a {
@@ -153,7 +154,10 @@ nav {
     margin-top: 10px;
     margin-left: 20px;
     position: relative;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .search-bar > input {

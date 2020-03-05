@@ -4,7 +4,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import AutoCompleteList from "./auto_complete_list";
 import { connect } from 'react-redux';
 import { autoComplete } from '../../actions/event_actions';
-import { debounce } from '../../util/debounce_util';
 class SearchBar extends React.Component {
     constructor(props){
         super(props);
