@@ -16,7 +16,7 @@ class TicketModal extends React.Component {
     render(){
         const itemList = available => {
             const list = [];
-            for (let i = 0; i < available; i++){
+            for (let i = 0; i <= available; i++){
                 const listElement = <li key={i} onClick={() => this.setState({selected: i})}>{i}</li>
                 list.push(listElement);
             }
@@ -27,7 +27,7 @@ class TicketModal extends React.Component {
                     <div className="ticket-modal-content">
                         {this.state.batches.length === 0 && <LoadingIcon />}
                         <p className="modal-event-title">{this.props.title}</p>
-                        <p className="modal-event-date">{this.props.date.toLocaleDateString()}</p>
+                        <p className="modal-event-date">{this.props.date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}</p>
                         <p className="ticket-modal-header">Tickets</p>
                         <div className="modal-list">
                             {
@@ -35,17 +35,17 @@ class TicketModal extends React.Component {
                                     <div className="modal-list-item">
                                         <div className="modal-list-col">
                                             <p className="modal-ticket-name">{batch.name}</p>
-                                            <p className="modal-ticket-price">{batch.price}</p>
-                                            <p className="modal-ticket-remaining">{`${(batch.quantity - batch.tickets_sold).toString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })} REMAINING Sales end on ${new Date(batch.sale_end_time).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}`}</p>
+                                            <p className="modal-ticket-price">{`$${batch.price.toFixed(2)}`}</p>
+                                            <p className="modal-ticket-remaining">{`${(batch.quantity - batch.tickets_sold).toString()} REMAINING Sales end on ${new Date(batch.sale_end_time).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}`}</p>
                                         </div>
-                                        <div className="my-custom-dropdown">
+                                        <div className="ticket-modal-dropdown">
                                             <div className="select-box">
                                                 <p>{this.state.selected}</p>
                                                 <p><i className="arrow down"></i></p>
                                             </div>
                                             <div className="relative-custom">
-                                                <ul className={`event-type-dropdown-content ${this.props.locationClass ? "auto-height" : ""}`} >
-                                                    {itemList(batch.available)}
+                                                <ul className={`ticket-dropdown-content ${this.props.locationClass ? "auto-height" : ""}`} >
+                                                    {itemList(batch.tickets_available)}
                                                 </ul>
                                             </div>
                                         </div>
@@ -53,7 +53,6 @@ class TicketModal extends React.Component {
                                 ))
                             }
                         </div>
-                        <p>This is a test</p>
                     </div>
                 </div>
             );
