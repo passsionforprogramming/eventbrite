@@ -9,6 +9,9 @@ class TicketModal extends React.Component {
         super(props);
         this.state = {
             batches: [],
+            tickets: {
+                0: 0
+            }
         }
     }
     componentDidMount(){
@@ -36,9 +39,18 @@ class TicketModal extends React.Component {
                 })
             }
         }
-
+        const batch = {
+            batches: filledBatches
+        }
+        purchaseTickets(batch);
     }
     render(){
+        const buttonCondition = Object.values(this.state.tickets).every(el => el === 0) ? 
+            <button className="red-button dull-checkout" disabled="true">
+            Checkout</button> :
+            <button className="red-button" onClick={() => this.purchaseTicket()}>
+                Checkout
+                        </button>;
             return (
                 <div className="ticket-modal">
                     <div className="ticket-modal-content">
@@ -64,9 +76,7 @@ class TicketModal extends React.Component {
                         </div>
                         <div className="let-space">
                             <button className="discard-button" onClick={() => this.props.closeModal()}> Cancel</button>
-                            <button className="red-button" onClick={() => this.purchaseTicket()}>
-                                Checkout
-                        </button>
+                            {buttonCondition}
                         </div>
                     </div>
                 </div>

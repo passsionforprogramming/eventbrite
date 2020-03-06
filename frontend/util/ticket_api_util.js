@@ -41,10 +41,10 @@ export const getBatchByEvent = eventId => (
     })
 );
 
-export const purchaseTickets = batches => (
+export const purchaseTickets = batch => (
     $.ajax({
         method: 'POST',
         url: `api/purchase_ticket`,
-        data: { batches }
+        data: { batch }
     })
 );

@@ -59,9 +59,11 @@ class Api::BatchesController < ApplicationController
     end
 
     def purchase_tickets
-        print batch_params[:batches]
-        batch_params[:batches].each do |id|
-        print id
+        batch_params[:batches].each do |el|
+        el[:amount].times do 
+            ticket = Ticket.where(batch_id: el[:id], owner_id: nil).last
+            ticket.update(owner_id: current_user.id)
+        end
         end
     end
 
@@ -83,7 +85,7 @@ class Api::BatchesController < ApplicationController
 
     private
     def batch_params
-        params.require(:batch).permit(:sale_start_time, :paymentType, :sale_end_time, :visibility, :absorb_fees, :quantity, :price, :min_num_tickets_sold, :max_num_tickets_sold, :sales_channel, :name, :owner_id, :event_id, batches: [])
+        params.require(:batch).permit(:sale_start_time, :paymentType, :sale_end_time, :visibility, :absorb_fees, :quantity, :price, :min_num_tickets_sold, :max_num_tickets_sold, :sales_channel, :name, :owner_id, :event_id, batches: [:id, :amount])
     end
 
     def require_user_owns_batch!

@@ -122,6 +122,13 @@
   position: relative;
 }
 
+.dull-checkout {
+    background-color: rgba(189, 45, 45, .3);
+    &:active, &:hover {
+        background-color: rgba(189, 45, 45, .3);
+    }
+}
+
 .checkout-ticket-button:active, .checkout-ticket-button:hover {
   background-color: orangered;
 }
