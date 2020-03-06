@@ -58,6 +58,11 @@ class Api::BatchesController < ApplicationController
         end
     end
 
+    def batch_by_event_id
+        @batches = Batch.where(event_id: params[:event_id])
+        render :index
+    end
+
     def destroy
         batch = Batch.find(params[:id])
         event_id = batch.event_id

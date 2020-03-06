@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { displayEventThunk } from '../../actions/event_actions';
+import TicketModal from '../tickets/modal/ticket_modal';
 class ShowEvent extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            showModal: false
+        }
+    }
     componentDidMount(){
         this.props.requestEvent(this.props.match.params.eventId);
     }
@@ -14,11 +21,13 @@ class ShowEvent extends React.Component {
                 <div className="event-back-img">
 
                 </div>
+                {this.state.showModal && <TicketModal/>}
                 <div className="show-card">
                     <div className="img-aspect">
                         <img src={event.imageUrl} className="show-evt-img" />
                     </div>
-                    <button className="grn-btn">Tickets</button>
+                    <button className="grn-btn" 
+                    onClick={() => this.setState({showModal: true})}>Tickets</button>
                     <p className="evt-show-title">{event.title}</p>
                     <p className="organizer">by {event.organizer}</p>
                     <p className="evt-show-date">{startDate.toLocaleDateString('en-US', options)}</p>

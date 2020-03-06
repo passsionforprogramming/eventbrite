@@ -33,4 +33,10 @@ export const deleteBatch = batchId => (
         method: "DELETE",
         url: `api/batches/${batchId}`
     })
-)
+);
+
+export const getBatchByEvent = eventId => (
+    $.ajax({
+        url: `batch_by_event_id?=${eventId}`
+    })
+);
