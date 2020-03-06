@@ -8,11 +8,20 @@ class TicketModal extends React.Component {
         super(props);
         this.state = {
             batches: [],
-            selected: 0,
         }
     }
     componentDidMount(){
         getBatchByEvent(this.props.id).then(batches => this.setState({batches}));
+    }
+
+    updateState = (id, num) => {
+        this.setState(prevState => ({
+            ...prevState,
+            tickets: {
+                ...prevState.tickets,
+                [id]: num
+            }
+        }))
     }
     render(){
             return (
@@ -33,7 +42,8 @@ class TicketModal extends React.Component {
                                     quantity={batch.quantity}
                                     tickets_sold={batch.tickets_sold}
                                     sale_end_time={batch.sale_end_time}
-                                    tickets_available={batch.tickets_available}/>
+                                    tickets_available={batch.tickets_available}
+                                    updateState={this.updateState}/>
                                 ))
                             }
                         </div>

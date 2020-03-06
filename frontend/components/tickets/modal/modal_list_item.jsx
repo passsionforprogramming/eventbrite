@@ -11,7 +11,10 @@ class ModalListItem extends React.Component {
         const itemList = available => {
             const list = [];
             for (let i = 0; i <= available; i++) {
-                const listElement = <li key={i} onClick={() => this.setState({ selected: i })}>{i}</li>
+                const listElement = <li key={i} onClick={() => {
+                    this.setState({ selected: i });
+                    this.props.updateState(this.props.id, i);
+                }}>{i}</li>
                 list.push(listElement);
             }
             return list;

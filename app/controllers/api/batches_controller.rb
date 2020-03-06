@@ -58,6 +58,12 @@ class Api::BatchesController < ApplicationController
         end
     end
 
+    # def purchase_tickets
+    #     batch_params[:batches].each do |batch|
+    #         batch.
+    #     end
+    # end
+
     def batch_by_event_id
         @batches = Batch.where(event_id: params[:event_id])
         render :index
@@ -76,7 +82,7 @@ class Api::BatchesController < ApplicationController
 
     private
     def batch_params
-        params.require(:batch).permit(:sale_start_time, :paymentType, :sale_end_time, :visibility, :absorb_fees, :quantity, :price, :min_num_tickets_sold, :max_num_tickets_sold, :sales_channel, :name, :owner_id, :event_id)
+        params.require(:batch).permit(:sale_start_time, :paymentType, :sale_end_time, :visibility, :absorb_fees, :quantity, :price, :min_num_tickets_sold, :max_num_tickets_sold, :sales_channel, :name, :owner_id, :event_id, batches: [])
     end
 
     def require_user_owns_batch!
