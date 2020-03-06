@@ -30,7 +30,7 @@ class ShowEvent extends React.Component {
                         <img src={event.imageUrl} className="show-evt-img" />
                     </div>
                     {
-                        event.has_batches ? <button className="grn-btn"
+                        event.hasBatches ? <button className="grn-btn"
                             onClick={() => this.setState({ showModal: true })}>Tickets</button> :
                             <button className="grn-btn dull" disabled>Tickets(0)</button>
                     }

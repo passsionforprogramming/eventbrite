@@ -16,7 +16,7 @@ const EventNavbar = props => {
     return (
         <nav className="event-nav-bar">
             <ul className="event-nav-list">
-                <li className="logo login-logo" onClick={props.history.push("/")}>haply</li>
+                <li className="logo login-logo" onClick={() => props.history.push("/")}>haply</li>
                 <li><SearchBar /></li>
                 <li><NavLink to="/browse_events">Browse Events</NavLink></li>
                 <li><NavLink to="/createEvent">Create Event</NavLink></li>

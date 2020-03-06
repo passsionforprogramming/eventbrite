@@ -6,5 +6,5 @@ json.array! @batches do |batch|
     json.id batch.id
     json.tickets_sold batch.tickets_sold
     json.name batch.name
-    json.tickets_available batch.quantity - batch.tickets_sold
+    json.tickets_available batch.quantity - (batch.tickets_sold.nil? ? 0 : batch.tickets_sold)
 end

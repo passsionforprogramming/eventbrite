@@ -40,6 +40,7 @@ const eventDisplayReducer = (state = initState, action) => {
                 imageFile: !event.imageFile ? null : event.imageFile,
                 imageUrl: !event.imageUrl ? "" : event.imageUrl,
                 tags: event.tags,
+                hasBatches: event.has_batches
             }
         default:
             return state;
