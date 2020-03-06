@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from '../search_bar/search_bar';
-import { NavLink } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,7 @@ const EventNavbar = props => {
     return (
         <nav className="event-nav-bar">
             <ul className="event-nav-list">
-                <li className="logo login-logo">haply</li>
+                <li className="logo login-logo" onClick={props.history.push("/")}>haply</li>
                 <li><SearchBar /></li>
                 <li><NavLink to="/browse_events">Browse Events</NavLink></li>
                 <li><NavLink to="/createEvent">Create Event</NavLink></li>
@@ -34,5 +34,5 @@ const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventNavbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventNavbar));
 
