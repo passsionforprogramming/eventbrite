@@ -58,11 +58,12 @@ class Api::BatchesController < ApplicationController
         end
     end
 
-    # def purchase_tickets
-    #     batch_params[:batches].each do |batch|
-    #         batch.
-    #     end
-    # end
+    def purchase_tickets
+        print batch_params[:batches]
+        batch_params[:batches].each do |id|
+        print id
+        end
+    end
 
     def batch_by_event_id
         @batches = Batch.where(event_id: params[:event_id])

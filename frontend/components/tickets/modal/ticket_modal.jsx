@@ -3,6 +3,7 @@ import { getBatchByEvent } from '../../../util/ticket_api_util';
 import TicketDropDownList from '../../builders/dropdown_list_container';
 import LoadingIcon from '../../loading/loading_icon';
 import ModalListItem from './modal_list_item';
+import { purchaseTickets } from '../../../util/ticket_api_util';
 class TicketModal extends React.Component {
     constructor(props){
         super(props);
@@ -22,6 +23,20 @@ class TicketModal extends React.Component {
                 [id]: num
             }
         }))
+    }
+
+    purchaseTicket = () => {
+        const allBatches = this.state.tickets;
+        const filledBatches = [];
+        for (let id in allBatches){
+            if (allBatches[id] > 0) {
+                filledBatches.push({
+                    id,
+                    amount: allBatches[id]
+                })
+            }
+        }
+
     }
     render(){
             return (
@@ -48,8 +63,8 @@ class TicketModal extends React.Component {
                             }
                         </div>
                         <div className="let-space">
-                            <button className="discard-button"> Cancel</button>
-                            <button className="red-button">
+                            <button className="discard-button" onClick={() => this.props.closeModal()}> Cancel</button>
+                            <button className="red-button" onClick={() => this.purchaseTicket()}>
                                 Checkout
                         </button>
                         </div>

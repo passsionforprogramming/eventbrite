@@ -9,6 +9,10 @@ class ShowEvent extends React.Component {
             showModal: false
         }
     }
+
+    closeModal = () => {
+        this.setState({showModal: false});
+    }
     componentDidMount(){
         this.props.requestEvent(this.props.match.params.eventId);
     }
@@ -24,6 +28,7 @@ class ShowEvent extends React.Component {
                 {this.state.showModal && <TicketModal 
                 id={this.props.match.params.eventId}
                 date={startDate}
+                closeModal={this.closeModal}
                 title={event.title}/>}
                 <div className="show-card">
                     <div className="img-aspect">

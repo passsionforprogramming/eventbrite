@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     post '/members/', to: 'members#verify'
     post '/publish_event', to: "events#publish_event"
     get 'batch_by_event_id', to: "batches#batch_by_event_id"
+    post 'purchase_ticket', to: "batches#purchase_tickets"
   end
   root "static_pages#root"
 
