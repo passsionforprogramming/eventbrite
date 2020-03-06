@@ -1,1 +1,1 @@
-json.partial! "api/events/event", event: @event, tags: @tags
+json.partial! "api/events/event", event: @event, tags: @tags, has_batches: @has_batches

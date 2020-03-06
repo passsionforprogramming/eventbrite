@@ -32,6 +32,7 @@ class Api::EventsController < ApplicationController
     def show
         @event = Event.find(params[:id])
         @tags = @event.tags.pluck(:name)
+        @has_batches = @event.batches.count > 0
     end
 
     def destroy

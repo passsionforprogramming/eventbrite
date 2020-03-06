@@ -21,13 +21,19 @@ class ShowEvent extends React.Component {
                 <div className="event-back-img">
 
                 </div>
-                {this.state.showModal && <TicketModal/>}
+                {this.state.showModal && <TicketModal 
+                id={this.props.match.params.eventId}
+                date={startDate}
+                title={event.title}/>}
                 <div className="show-card">
                     <div className="img-aspect">
                         <img src={event.imageUrl} className="show-evt-img" />
                     </div>
-                    <button className="grn-btn" 
-                    onClick={() => this.setState({showModal: true})}>Tickets</button>
+                    {
+                        event.has_batches ? <button className="grn-btn"
+                            onClick={() => this.setState({ showModal: true })}>Tickets</button> :
+                            <button className="grn-btn dull" disabled>Tickets(0)</button>
+                    }
                     <p className="evt-show-title">{event.title}</p>
                     <p className="organizer">by {event.organizer}</p>
                     <p className="evt-show-date">{startDate.toLocaleDateString('en-US', options)}</p>
