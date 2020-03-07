@@ -3,7 +3,8 @@ import { getBatchByEvent } from '../../../util/ticket_api_util';
 import TicketDropDownList from '../../builders/dropdown_list_container';
 import LoadingIcon from '../../loading/loading_icon';
 import ModalListItem from './modal_list_item';
-import { purchaseTickets } from '../../../util/ticket_api_util';
+import { purchaseTickets } from '../../../actions/ticket_actions';
+import { connect } from 'react-redux';
 class TicketModal extends React.Component {
     constructor(props){
         super(props);
@@ -42,11 +43,11 @@ class TicketModal extends React.Component {
         const batch = {
             batches: filledBatches
         }
-        purchaseTickets(batch);
+        this.props.purchaseTickets(batch);
     }
     render(){
         const buttonCondition = Object.values(this.state.tickets).every(el => el === 0) ? 
-            <button className="red-button dull-checkout" disabled="true">
+            <button className="red-button dull-checkout" disabled={true}>
             Checkout</button> :
             <button className="red-button" onClick={() => this.purchaseTicket()}>
                 Checkout
@@ -86,4 +87,13 @@ class TicketModal extends React.Component {
     }
 }
 
-export default TicketModal; 
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+    purchaseTickets: batches => dispatch(purchaseTickets(batches))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TicketModal);
+

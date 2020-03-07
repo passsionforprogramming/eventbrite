@@ -59,12 +59,17 @@ class Api::BatchesController < ApplicationController
     end
 
     def purchase_tickets
-        batch_params[:batches].each do |el|
-        el[:amount].times do 
-            ticket = Ticket.where(batch_id: el[:id], owner_id: nil).last
+        batch_params[:batches].each do |k, val|
+            puts "Lets print the element"
+            print val
+            puts "Here is the amount"
+            print val[:amount]
+        val[:amount].to_i.times do 
+            ticket = Ticket.where(batch_id: val[:id], owner_id: nil).last
             ticket.update(owner_id: current_user.id)
         end
         end
+        @users_tickets = current_user.tickets
     end
 
     def batch_by_event_id

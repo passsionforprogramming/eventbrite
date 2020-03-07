@@ -8,6 +8,7 @@ export const RECEIVE_BATCH = "RECEIVE_BATCH";
 export const RECEIVE_BATCHES = "RECEIVE_BATCHES";
 export const EDIT_BATCH = "EDIT_BATCH";
 export const RESET_CURRENT_TICKET = "RESET_CURRENT_TICKET";
+export const RECEIVE_USER_TICKETS = "RECEIVE_USER_TICKETS";
 
 export const updateName = name => ({
     type: UPDATE_NAME,
@@ -51,6 +52,15 @@ export const receiveBatch = batch => ({
     type: RECEIVE_BATCH,
     batch
 });
+
+export const receiveUserTickets = tickets => ({
+    type: RECEIVE_USER_TICKETS,
+    tickets
+});
+
+export const purchaseTickets = batches => dispatch => (
+    APIUtil.purchaseTickets(batches).then(tickets => dispatch(receiveUserTickets(tickets)))
+);
 
 export const receiveBatches = batches => ({
     type: RECEIVE_BATCHES,
