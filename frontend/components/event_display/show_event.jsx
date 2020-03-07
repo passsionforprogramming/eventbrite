@@ -2,16 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { displayEventThunk } from '../../actions/event_actions';
 import TicketModal from '../tickets/modal/ticket_modal';
+import ConfirmationModal from '../tickets/modal/confirmation_modal';
 class ShowEvent extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            showModal: false
+            showModal: false,
+            showConfirmation: false,
         }
     }
 
     closeModal = () => {
         this.setState({showModal: false});
+    }
+    switchToConfirm = () => {
+        this.setState({showModal: false, showConfirmation: true});
     }
     componentDidMount(){
         this.props.requestEvent(this.props.match.params.eventId);
@@ -29,7 +34,9 @@ class ShowEvent extends React.Component {
                 id={this.props.match.params.eventId}
                 date={startDate}
                 closeModal={this.closeModal}
+                confirmPage={this.switchToConfirm}
                 title={event.title}/>}
+                {this.state.showConfirmation && <ConfirmationModal />}
                 <div className="show-card">
                     <div className="img-aspect">
                         <img src={event.imageUrl} className="show-evt-img" />

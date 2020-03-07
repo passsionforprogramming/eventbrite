@@ -30,20 +30,25 @@ class TicketModal extends React.Component {
     }
 
     purchaseTicket = () => {
-        const allBatches = this.state.tickets;
-        const filledBatches = [];
-        for (let id in allBatches){
-            if (allBatches[id] > 0) {
-                filledBatches.push({
-                    id,
-                    amount: allBatches[id]
-                })
+        if (this.props.loggedIn){
+            const allBatches = this.state.tickets;
+            const filledBatches = [];
+            for (let id in allBatches) {
+                if (allBatches[id] > 0) {
+                    filledBatches.push({
+                        id,
+                        amount: allBatches[id]
+                    })
+                }
             }
+            const batch = {
+                batches: filledBatches
+            }
+            this.props.purchaseTickets(batch).then(this.props.confirmPage());
+        } else {
+            this.props.history.push("/signin");
         }
-        const batch = {
-            batches: filledBatches
-        }
-        this.props.purchaseTickets(batch);
+       
     }
     render(){
         const buttonCondition = Object.values(this.state.tickets).every(el => el === 0) ? 
@@ -88,7 +93,7 @@ class TicketModal extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+    loggedIn: !!state.session.id
 });
 
 const mapDispatchToProps = dispatch => ({

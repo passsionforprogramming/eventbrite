@@ -15,6 +15,7 @@ import ShowEvent from './event_display/show_event';
 import LikesList from './likes/likes_list';
 import BrowseEvents from './browse/browse_events';
 import Manage from '../manage/Manage';
+import Tickets from './tickets/users_tickets/Tickets';
 const App = () => (
   <div>
     <NavBarContainer />
@@ -34,6 +35,7 @@ const App = () => (
       <ProtectedRoute exact path="/likes" component={LikesList} />
       <Route exact path="/browse_events" component={BrowseEvents} />
       <ProtectedRoute exact patch="/manage" component={Manage}/>
+      <ProtectedRoute exact patch="/tickets" component={Tickets} />
     </Switch>
     <Footer />
   </div>

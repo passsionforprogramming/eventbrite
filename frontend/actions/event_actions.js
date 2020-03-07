@@ -157,7 +157,7 @@ export const submitEvent = event => dispatch => {
 }
 
 export const updateEvent = event => dispatch => {
-    EventAPIUtil.updateEvent(event).then(event => 
+    return EventAPIUtil.updateEvent(event).then(event => 
         dispatch(receiveEvent(event)))
     };
 

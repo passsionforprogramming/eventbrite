@@ -1,7 +1,6 @@
 import { RECEIVE_USER_TICKETS } from '../actions/ticket_actions';
-const initState = [];
 
-const UsersTicketsReducer = (state = initState, action) => {
+const UsersTicketsReducer = (state = [], action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_USER_TICKETS:

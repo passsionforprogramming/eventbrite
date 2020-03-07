@@ -133,7 +133,7 @@ export default class BasicInfo extends React.Component {
               <div className="row">
                 {this.props.tags.length === 0
                   ? null
-                  : this.props.tags.map(tag => <Tag tag={tag} />)}
+                  : this.props.tags.map(tag => <Tag tag={tag} remove={this.props.removeTag} />)}
               </div>
               <div className={this.state.organizerClassName.join(" ")}>
                 <label htmlFor="organizer">Organizer</label>

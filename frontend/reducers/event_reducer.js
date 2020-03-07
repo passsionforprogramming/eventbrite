@@ -88,7 +88,7 @@ const eventReducer = (state = initState, action) => {
         tags: event.tags,}
       case REMOVE_TAG:
         const updatedTags = state.tags.filter(
-          tag => tag.toLowerCase() !== tag.toLowerCase()
+          tag => tag.toLowerCase() !== action.tag.toLowerCase()
         );
         return {
           ...state,

@@ -61,6 +61,24 @@
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
 }
 
+.new-row {
+    display: flex;
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+    padding-bottom: 1em;
+    align-items: center;
+}
+
+.two-em {
+    height: 2em;
+}
+
+.going-to {
+    color: rgb(32, 2, 32);
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 1em;
+}
+
 .modal-ticket-remaining {
     color: rgb(143,146,162);
     font-size: 14px;
@@ -120,6 +138,19 @@
   background-color: rgb(189, 45, 45);
   text-align:center;
   position: relative;
+}
+
+.grn-checkmark {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    color: white;
+    background-color: lightgreen;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-right: 5px;
 }
 
 .dull-checkout {
