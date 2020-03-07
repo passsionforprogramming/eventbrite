@@ -20,10 +20,10 @@ import UpdateAndContinue from './update_and_continue';
                     <div className="background-selector"><Link to={`/manageEvents/${this.props.match.params.eventId}/basicInfo`} replace className="link-selectors"><p className="circle-border">1</p><p>Basic Info</p></Link></div>
                     <div className="background-selector"><Link to={`/manageEvents/${this.props.match.params.eventId}/details`} className="link-selectors"><p className="circle-border">2</p><p>Details</p></Link></div>
                     <div className="background-selector last-child"><Link to={`/manageEvents/${this.props.match.params.eventId}/tickets`} className="link-selectors"><p className="circle-border">3</p><p>Tickets</p></Link></div>
-                    <div className="background-selector"><Link to="#" className="link-selectors"><p>Dashboard</p></Link></div>
+                    {/* <div className="background-selector"><Link to="#" className="link-selectors"><p>Dashboard</p></Link></div>
                     <div className="background-selector"><Link to="#" className="link-selectors"><p>Order Options</p></Link></div>
                     <div className="background-selector"><Link to="#" className="link-selectors"><p>Invite & Promote</p></Link></div>
-                    <div className="background-selector"><Link to="#" className="link-selectors"><p>Manage Attendees</p></Link></div>
+                    <div className="background-selector"><Link to="#" className="link-selectors"><p>Manage Attendees</p></Link></div> */}
                 </div>
                 <div className="main-event-update">
                     <MainEventContent />

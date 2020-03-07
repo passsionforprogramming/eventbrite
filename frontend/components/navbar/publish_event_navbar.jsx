@@ -33,6 +33,7 @@ const PublishEventNavBar = (props) => {
                                         location_type: event.addressType,
                                         lat: event.lat,
                                         lon: event.lng,
+                                        description: event.description,
                                         display_start_time: event.displayStartTime,
                                         display_end_time: event.displayEndTime,
                                         status: "published",
