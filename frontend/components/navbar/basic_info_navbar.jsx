@@ -24,7 +24,7 @@ const SignedInNavBar = (props) => {
                                 <li onClick={() => props.logout()}><NavLink to="#">Logout</NavLink></li>
                                 <li><NavLink to="/manage">Manage Events</NavLink></li>
                                 <li><NavLink to="/likes">Liked</NavLink></li>
-                                <li><NavLink to="#">Tickets</NavLink></li>
+                                <li><NavLink to="/tickets">Tickets</NavLink></li>
                             </ul>
                         </li>
                     </span>

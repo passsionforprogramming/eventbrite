@@ -4,8 +4,7 @@ import { withRouter } from 'react-router-dom';
 import LoadingIcon from '../../loading/loading_icon';
 const ConfirmationModal = props => {
     if (props.tickets.length > 0){
-        const ticketIdx = props.tickets.find(el => el.event_id == props.match.params.eventId);
-        const ticket = props.tickets[ticketIdx];
+        const ticket= props.tickets.find(el => el.event_id == props.match.params.eventId);
         return (
             <div className="ticket-modal">
                 <div className="ticket-modal-content">
