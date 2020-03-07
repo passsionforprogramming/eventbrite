@@ -59,6 +59,7 @@ class Api::BatchesController < ApplicationController
     end
 
     def purchase_tickets
+        @recent_purchased_tickets = []
         batch_params[:batches].each do |k, val|
             puts "Lets print the element"
             print val
@@ -67,6 +68,7 @@ class Api::BatchesController < ApplicationController
         val[:amount].to_i.times do 
             ticket = Ticket.where(batch_id: val[:id], owner_id: nil).last
             ticket.update(owner_id: current_user.id)
+            @recent_purchased_tickets << ticket
         end
         end
         @users_tickets = current_user.tickets

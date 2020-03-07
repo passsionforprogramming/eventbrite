@@ -34,8 +34,9 @@ const App = () => (
       <Route exact path="/event/:eventId" component={ShowEvent} />
       <ProtectedRoute exact path="/likes" component={LikesList} />
       <Route exact path="/browse_events" component={BrowseEvents} />
-      <ProtectedRoute exact patch="/manage" component={Manage}/>
       <ProtectedRoute exact patch="/tickets" component={Tickets} />
+      <ProtectedRoute exact patch="/manage" component={Manage}/>
+      
     </Switch>
     <Footer />
   </div>

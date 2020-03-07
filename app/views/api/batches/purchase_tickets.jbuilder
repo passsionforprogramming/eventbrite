@@ -7,4 +7,6 @@ json.array! @users_tickets do |ticket|
     json.price ticket.price
     json.event_id ticket.event_id
     json.owner_id ticket.owner_id
+    json.event_name ticket.event.title
+    json.event_id ticket.event.id
 end
