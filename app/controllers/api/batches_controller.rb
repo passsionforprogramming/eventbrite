@@ -79,6 +79,11 @@ class Api::BatchesController < ApplicationController
         render :index
     end
 
+    def current_user_tickets
+        @tickets = current_user.tickets
+        render :purchase_tickets
+    end
+
     def destroy
         batch = Batch.find(params[:id])
         event_id = batch.event_id

@@ -9,10 +9,15 @@ export const RECEIVE_BATCHES = "RECEIVE_BATCHES";
 export const EDIT_BATCH = "EDIT_BATCH";
 export const RESET_CURRENT_TICKET = "RESET_CURRENT_TICKET";
 export const RECEIVE_USER_TICKETS = "RECEIVE_USER_TICKETS";
+export const LOADING_FORM = "LOADING_FORM";
 
 export const updateName = name => ({
     type: UPDATE_NAME,
     name
+});
+
+export const loading = () => ({
+    type: LOADING_FORM
 });
 
 export const resetCurrentTicket = () => ({
@@ -91,4 +96,9 @@ export const fetchBatch = batchId => dispatch => (
 export const deleteBatch = batchId => dispatch => (
     APIUtil.deleteBatch(batchId).then(batches => dispatch(receiveBatches(batches)))
 );
+
+export const getCurrentUserTickets = () => dispatch => {
+    dispatch(loading());
+    return APIUtil.getCurrentUserTickets().then(tickets => dispatch(receiveUserTickets(tickets)))
+};
     

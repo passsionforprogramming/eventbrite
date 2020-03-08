@@ -23,14 +23,14 @@ const SignedInNavBar = (props) => {
                             <NavLink to="/likes"><span className="row-icon"><FontAwesomeIcon icon={faHeart} color="white" />Likes</span></NavLink>
                         </li>
                         <li>
-                            <NavLink to="#"><span className="row-icon"><FontAwesomeIcon icon={faTicketAlt} color="white" />Tickets</span></NavLink>
+                            <NavLink to="/tickets"><span className="row-icon"><FontAwesomeIcon icon={faTicketAlt} color="white" />Tickets</span></NavLink>
                         </li>
                         <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><span className="arrow-down"></span></NavLink>
                             <ul className="drop-down dropdown-left">
                                 <li onClick={() => props.logout()}><NavLink to="#">Logout</NavLink></li>
                                 <li><NavLink to="/manage">Manage Events</NavLink></li>
                                 <li><NavLink to="/likes">Liked</NavLink></li>
-                                <li><NavLink to="#">Tickets</NavLink></li>
+                                <li><NavLink to="/tickets">Tickets</NavLink></li>
                             </ul>
                         </li>
                     </span>

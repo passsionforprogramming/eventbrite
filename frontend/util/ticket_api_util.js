@@ -48,3 +48,9 @@ export const purchaseTickets = batch => (
         data: { batch }
     })
 );
+
+export const getCurrentUserTickets = () => (
+    $.ajax({
+        url: `api/users_tickets/`
+    })
+);

@@ -17,8 +17,8 @@ class Api::TicketsController < ApplicationController
     end
 
     def users_tickets
-        @ticket = Ticket.find_by(owner_id: curent_user.id).includes(:event)
-        render :show
+        @users_tickets = current_user.tickets
+        render 'api/batches/purchase_tickets'
     end
 
     def events_tickets

@@ -5,5 +5,7 @@ json.array! @tickets do |ticket|
     json.price ticket.price
     json.event do
         json.event_name ticket.event.title 
+        json.imageUrl ticket.event.image_url
+        json.eventStart ticket.event.start_time
     end
 end

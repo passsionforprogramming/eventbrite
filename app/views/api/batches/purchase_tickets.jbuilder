@@ -9,4 +9,7 @@ json.array! @users_tickets do |ticket|
     json.owner_id ticket.owner_id
     json.event_name ticket.event.title
     json.event_id ticket.event.id
+    json.eventStart ticket.event.start_time
+    json.imageUrl ticket.event.photo.attached? ? url_for(ticket.event.photo) : nil
+    json.userName ticket.owner.first_name
 end
