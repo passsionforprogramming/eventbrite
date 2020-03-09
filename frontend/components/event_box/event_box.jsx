@@ -134,7 +134,7 @@ class EventSearchBox extends React.Component {
                           return (
                             <div
                               {...getSuggestionItemProps(suggestion, {
-                                className,
+                                className: "autocomplete-suggestion-content",
                                 style
                               })}
                             >
