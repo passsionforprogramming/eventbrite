@@ -66,9 +66,9 @@ class EventSearchBox extends React.Component {
               <p className="down-arrow"> ▾ </p>
             </div>
             <div
-              className={this.props.showDropDown ? "relative show" : "relative"}
+              className="relative"
             >
-              <ul className="custom-select-dropdown-content">{dateList}</ul>
+              <ul className={`custom-select-dropdown-content ${this.props.showDropDown && 'show'}` }>{dateList}</ul>
             </div>
             <div className="five-height"></div>
             <p className="box-top">In</p>
