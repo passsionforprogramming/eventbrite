@@ -5,6 +5,7 @@ import RangePicker from "react-range-picker";
 import LoadingIcon from '../loading/loading_icon';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { eventCategories } from '../../util/event_categories';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -51,6 +52,7 @@ class EventSearchBox extends React.Component {
       const searchOptions = {
         types: ['(cities)']
       }
+      const categories = ["Anything", ...eventCategories.slice(1)];
         const days = [
             "Any date",
             "Today",
