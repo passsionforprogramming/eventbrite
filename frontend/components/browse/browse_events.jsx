@@ -39,7 +39,10 @@ class BrowseEvents extends React.Component {
                     <ul className="date-list-browse">
                         {categoryList}
                     </ul>
-                    <p className="more-categories">More Categories</p>
+                    {
+                        !this.state.moreCategories ? <p className="more-categories" onClick={() => this.setState({ moreCategories: true })}>More Categories</p>:
+                        <p className="more-categories" onClick={() => this.setState({moreCategories: false})}>Less Categories</p>
+                    }
                 </div>
                 <div className="evt-search-list">
 
