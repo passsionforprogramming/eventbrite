@@ -18,6 +18,7 @@ const NavBar = (props) => {
                 <Route exact path="/likes" render={(props) => <BasicInfoNavBar {...props} />} />
                 <Route exact path="/createEvent" render={(props) => <BasicInfoNavBar {...props} />} />
                 <Route exact path="/manage" render={(props) => <BasicInfoNavBar {...props} />} />
+                <Route exact path="/browse_events/" render={(props) => <EventNavBar {...props} />} />
                 <Route exact path="/manageEvents/" render={(props) => <PublishEventNavBar {...props} />} />
                 <Route path="/event/" render={(props) => <EventNavBar {...props} />} />
                 <Route path="/tickets/" render={(props) => <EventNavBar {...props} />} />

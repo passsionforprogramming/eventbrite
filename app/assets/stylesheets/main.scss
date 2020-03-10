@@ -106,12 +106,13 @@ nav {
     p {
       padding: 15px;
       line-height: 20px;
-      &:hover {
+    }
+    padding: 15px;
+    line-height: 20px;
+     &:hover {
         background-color: rgba($color: #cfb6b63f, $alpha: .2);
         cursor: pointer;
     }
-    }
-    
 }
 
 .drop-down {
