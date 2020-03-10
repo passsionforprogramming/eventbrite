@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 const EventNavbar = props => {
-    const condition = props.currentUser ? <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><span className="arrow-down"></span></NavLink>
+    const condition = props.currentUser ? <li className="profile"><NavLink to="#"><FontAwesomeIcon icon={faUserCircle} className="profile-icon" /><span className="arrow-down black"></span></NavLink>
         <ul className="drop-down drop-down-right">
             <li onClick={() => props.logout()}><NavLink to="#">Logout</NavLink></li>
             <li><NavLink to="/manage">Manage Events</NavLink></li>
