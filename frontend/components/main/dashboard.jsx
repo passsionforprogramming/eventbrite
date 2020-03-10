@@ -8,6 +8,20 @@ import Thumbnail from "../event_display/thumbnail";
 import { fetchAllEvents } from "../../actions/event_actions";
 import { connect } from 'react-redux';
 class DashBoard extends React.Component {
+       constructor(props){
+              super(props);
+              this.state = {
+                     hideArrow: false
+              }
+       }
+
+       hideIt = () => {
+              this.setState({hideArrow: true})
+       }
+
+       showIt = () => {
+              this.setState({hideArrow: false})
+       }
        render(){
               return (
 
@@ -28,8 +42,8 @@ class DashBoard extends React.Component {
                             <div className="large-main-text">
                                    those who do
               </div>
-                            <EventSearchBox />
-                            <div className="arrow-circle">
+                            <EventSearchBox hideIt={this.hideIt} showIt={this.showIt}/>
+                            <div className={`arrow-circle ${this.state.hideArrow ? "hide-arrow" : ""}`}>
                                    <FontAwesomeIcon icon={faArrowCircleRight}
                                           color={"orangered"}
                                           className="the-arrow" />

@@ -9,11 +9,26 @@ import Thumbnail from "../event_display/thumbnail";
 import { connect } from 'react-redux';
 import { likeEvent } from '../../actions/like_actions';
 class Home extends React.Component {
+       constructor(props){
+              super(props);
+              this.state = {
+                     hideArrow: false
+              }
+       }
+
+       hideIt = () => {
+              this.setState({ hideArrow: true })
+       }
+
+       showIt = () => {
+              this.setState({ hideArrow: false })
+       }
+       
        componentDidMount(){
               this.props.fetchAllEvents().then(console.log("Type of", typeof this.props.events));
        }
        render(){
-
+              debugger;
               return (
 
                      <div className="main-home-div" onClick={() => {
@@ -34,7 +49,7 @@ class Home extends React.Component {
                                    those who do
               </div>
                             <EventSearchBox />
-                            <div className="arrow-circle">
+                            <div className={`arrow-circle ${this.props.hideArrow && "hide-arrow"}`}>
                                    <FontAwesomeIcon icon={faArrowCircleRight}
                                           color={"orangered"}
                                           className="the-arrow" />
@@ -77,7 +92,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   showDropDown: state.ui.homeUi.dateDropDown,
-  events: Object.values(state.entities.totalEvents)
+  events: Object.values(state.entities.totalEvents),
+  hideArrow: state.ui.homeUi.hideArrow
 });
 
 const mapDispatchToProps = dispatch => ({

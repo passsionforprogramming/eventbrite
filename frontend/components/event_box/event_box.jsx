@@ -1,5 +1,5 @@
 import React from 'react'
-import { sendDropdownEvent } from '../../actions/ui_actions';
+import { sendDropdownEvent, sendArrowEvent } from '../../actions/ui_actions';
 import { connect } from 'react-redux';
 import RangePicker from "react-range-picker";
 import LoadingIcon from '../loading/loading_icon';
@@ -17,7 +17,8 @@ class EventSearchBox extends React.Component {
             checked: "Any date",
             date: "",
             category: "Anything",
-            address: ""
+            address: "",
+            categoryDropdown: false
         }
     }
     updateDay = day => {
@@ -73,6 +74,22 @@ class EventSearchBox extends React.Component {
                 return <li key={i} onClick={() => this.updateDay(day)}>&nbsp;&nbsp;&nbsp; {day} </li>
             }
             
+        });
+
+        const categoryList = categories.map((category, i) => {
+          if (this.state.category === category) {
+            return (
+              <li key={i} onClick={() => {
+                this.setState({ category, categoryDropdown: false });
+                this.props.showIt();
+              }}>&#10003; {category}</li>
+            )
+          } else {
+            return <li key={i} onClick={() => {
+              this.setState({ category, categoryDropdown: false });
+              this.props.showIt();
+            }}>&nbsp;&nbsp;&nbsp; {category} </li>
+          }
         })
         return (
           <div className="large-box">
@@ -157,8 +174,14 @@ class EventSearchBox extends React.Component {
             <div className="one-em"></div>
             <p className="box-top">And I'm in the mood for</p>
             <div className="custom-select">
-              <p className="box-select-category">{this.state.category}</p>
+              <p className="box-select-category" onClick={() => {
+                this.setState({ categoryDropdown: true });
+                this.props.hideIt();
+              }}>{this.state.category}</p>
               <p className="down-arrow"> ▾ </p>
+            </div>
+            <div className="relative">
+              <ul className={`custom-select-dropdown-content ${this.state.categoryDropdown && 'show'}`}>{categoryList}</ul>
             </div>
           </div>
         );
@@ -167,11 +190,13 @@ class EventSearchBox extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    showDropDown: state.ui.homeUi.dateDropDown
+    showDropDown: state.ui.homeUi.dateDropDown,
+    hideArrow: state.ui.homeUi.hideArrow
 })
 
 const mapDispatchToProps = dispatch => ({
-  sendDropDownEvent: (event) => dispatch(sendDropdownEvent(event))
+  sendDropDownEvent: (event) => dispatch(sendDropdownEvent(event)),
+  sendArrowEvent: event => dispatch(sendArrowEvent(event))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventSearchBox);

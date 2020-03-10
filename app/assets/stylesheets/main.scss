@@ -345,9 +345,13 @@ border-bottom: 2px solid blue;
 
 .arrow-circle {
   position: absolute;
-  z-index: -75;
+  z-index: -80;
   right: 10%;
   top: 71.5%;
+}
+
+.hide-arrow {
+  z-index: -10000;
 }
 
 

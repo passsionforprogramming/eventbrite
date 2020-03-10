@@ -1,5 +1,6 @@
 export const DATE_DROPDOWN_EVENT = "DATE_DROPDOWN_EVENT";
 export const RECEIVE_PREVIEW_URL = "RECEIVE_PREVIEW_URL";
+export const HIDE_ARROW_EVENT = "HIDE_ARROW_EVENT"
 export const sendDropdownEvent = event => ({
          type: DATE_DROPDOWN_EVENT,
          event
@@ -8,4 +9,9 @@ export const sendDropdownEvent = event => ({
 export const sendPreviewUrl = url => ({
   type: RECEIVE_PREVIEW_URL,
   url
+});
+
+export const sendArrowEvent = event => ({
+  type: HIDE_ARROW_EVENT,
+  event
 });
