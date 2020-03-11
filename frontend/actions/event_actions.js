@@ -37,6 +37,10 @@ export const receiveSearchEvents = events => ({
     events
 });
 
+export const submitSearch = (query, date, category, lat, lon ) =>  dispatch => (
+    EventAPIUtil.searchEvents(query, date, category, lat, lon).then(events => dispatch(receiveSearchEvents(events)))
+)
+
 export const autoComplete = query => dispatch => {
     EventAPIUtil.autocomplete(query).then(events => {
         dispatch(receiveSearchEvents(events));

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_033359) do
+ActiveRecord::Schema.define(version: 2020_03_11_062041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_033359) do
     t.string "eventType"
     t.geography "lat_lon", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.integer "total_tickets"
+    t.float "maps_lat"
+    t.float "maps_lon"
     t.index ["end_time"], name: "index_events_on_end_time"
     t.index ["start_time"], name: "index_events_on_start_time"
     t.index ["user_id"], name: "index_events_on_user_id"

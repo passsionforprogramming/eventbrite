@@ -6,7 +6,8 @@
 }
 
 .evt-search-list {
-    width: 50%
+    width: 45%;
+    padding: 1% 2% 2% 1%;
 }
 
 .browse-events {
@@ -66,4 +67,33 @@
         transition: margin .5s;
         cursor: pointer;
     }
+}
+
+.search-button {
+  display: inline-block;
+  padding: .8em 2.0em;
+  margin: 1em 0.3em 0.3em 0;
+  border-radius: 0.1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family:'Roboto',sans-serif;
+  color:#FFFFFF;
+  background-color: rgb(189, 45, 45);
+  text-align:center;
+  position: relative;
+}
+
+.search-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.no-events-match {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.event-maps {
+    width: 35%;
 }

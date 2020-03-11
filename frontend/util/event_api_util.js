@@ -52,3 +52,14 @@ export const fetchUserEvents = () => (
         url: `api/user_events`
     })
 );
+
+export const searchEvents = (
+         query = null,
+         date = null,
+         category = null,
+         lat = null,
+         lon = null
+       ) =>
+         $.ajax({
+           url: `/api/events_search?q=${query}&date=${date}&category=${category}&lat=${lat}&lon=${lon}`
+         });

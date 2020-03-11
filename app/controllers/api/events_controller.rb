@@ -130,7 +130,7 @@ class Api::EventsController < ApplicationController
 
     private
     def event_params
-        params.require(:event).permit(:title, :id, :user_id, :category, :eventType, :organizer, :photo, :start_time, :end_time, :display_start_time, :display_end_time, :timezone, :image_url, :description, :published, :status, :sold, :gross, :views, :location_address, :location_type, :lat_lon, tags: [])
+        params.require(:event).permit(:title, :id, :user_id, :category, :eventType, :organizer, :photo, :start_time, :end_time, :display_start_time, :display_end_time, :timezone, :image_url, :description, :published, :status, :sold, :gross, :views, :location_address, :location_type, :maps_lat, :maps_lon, :lat_lon, tags: [])
     end
 
     def require_user_owns_event!
