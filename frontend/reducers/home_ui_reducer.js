@@ -1,7 +1,8 @@
-import { DATE_DROPDOWN_EVENT, HIDE_ARROW_EVENT } from "../actions/ui_actions";
+import { DATE_DROPDOWN_EVENT, HIDE_ARROW_EVENT, ARROW_SEARCH_CLICKED } from "../actions/ui_actions";
 const initState = {
     dateDropDown: false,
-    hideArrow: false
+    hideArrow: false,
+    arrowClicked: false
 }
 
 const UiReducer = (state = initState, action) => {
@@ -11,6 +12,8 @@ const UiReducer = (state = initState, action) => {
             return {...state, ...action.event}
         case HIDE_ARROW_EVENT:
             return {...state, hideArrow: action.event}
+        case ARROW_SEARCH_CLICKED:
+            return {...state, arrowClicked: action.event}
         default:
             return state;
     }

@@ -12,6 +12,7 @@ gem 'activerecord-postgis-adapter'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'figaro'
+gem 'geocoder'
 gem "aws-sdk-s3"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # Use SCSS for stylesheets

@@ -2,6 +2,7 @@ import React from 'react'
 import { sendDropdownEvent, sendArrowEvent } from '../../actions/ui_actions';
 import { connect } from 'react-redux';
 import RangePicker from "react-range-picker";
+import { withRouter } from 'react-router-dom';
 import LoadingIcon from '../loading/loading_icon';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +19,9 @@ class EventSearchBox extends React.Component {
             date: "",
             category: "Anything",
             address: "",
-            categoryDropdown: false
+            categoryDropdown: false,
+            lat: 32.7766642,
+            lng: -96.79698789999999
         }
     }
     updateDay = day => {
@@ -90,7 +93,10 @@ class EventSearchBox extends React.Component {
               this.props.showIt();
             }}>&nbsp;&nbsp;&nbsp; {category} </li>
           }
-        })
+        });
+        if (this.props.arrowClicked) {
+          this.props.history.push(`/browse_events/${this.state.lat}/${this.state.lng}/${this.state.category}`);
+        }
         return (
           <div className="large-box">
             <p className="box-top">I want to go out</p>
@@ -191,13 +197,15 @@ class EventSearchBox extends React.Component {
 
 const mapStateToProps = state => ({
     showDropDown: state.ui.homeUi.dateDropDown,
-    hideArrow: state.ui.homeUi.hideArrow
+    hideArrow: state.ui.homeUi.hideArrow,
+    arrowClicked: state.ui.homeUi.arrowClicked
 })
 
 const mapDispatchToProps = dispatch => ({
   sendDropDownEvent: (event) => dispatch(sendDropdownEvent(event)),
-  sendArrowEvent: event => dispatch(sendArrowEvent(event))
+  sendArrowEvent: event => dispatch(sendArrowEvent(event)),
+  arrowSearchClicked: val => dispatch(arrowSearchClicked(val))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventSearchBox);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventSearchBox));
 

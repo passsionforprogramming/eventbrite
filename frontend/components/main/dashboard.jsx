@@ -2,7 +2,7 @@ import React from 'react';
 import EventSearchBox from '../event_box/event_box';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
-import { sendDropdownEvent } from "../../actions/ui_actions";
+import { sendDropdownEvent, arrowSearchClicked } from "../../actions/ui_actions";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Thumbnail from "../event_display/thumbnail";
 import { fetchAllEvents } from "../../actions/event_actions";
@@ -13,6 +13,10 @@ class DashBoard extends React.Component {
               this.state = {
                      hideArrow: false
               }
+       }
+
+       componentDidMount() {
+              this.props.fetchAllEvents().then(console.log("Type of", typeof this.props.events));
        }
 
        hideIt = () => {
@@ -43,7 +47,9 @@ class DashBoard extends React.Component {
                                    those who do
               </div>
                             <EventSearchBox hideIt={this.hideIt} showIt={this.showIt}/>
-                            <div className={`arrow-circle ${this.state.hideArrow ? "hide-arrow" : ""}`}>
+                            <div onClick={() => {
+                                   this.props.arrowSearchClicked(true);
+                            }} className={`arrow-circle ${this.state.hideArrow ? "hide-arrow" : ""}`}>
                                    <FontAwesomeIcon icon={faArrowCircleRight}
                                           color={"orangered"}
                                           className="the-arrow" />
@@ -87,6 +93,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   sendDropdownEvent: (event) => dispatch(sendDropdownEvent(event)),
   fetchAllEvents: () => dispatch(fetchAllEvents()),
+  arrowSearchClicked: val => dispatch(arrowSearchClicked(val))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);

@@ -349,6 +349,7 @@ border-bottom: 2px solid blue;
   z-index: -80;
   right: 10%;
   top: 71.5%;
+  cursor: pointer;
 }
 
 .hide-arrow {
@@ -366,7 +367,8 @@ border-bottom: 2px solid blue;
   // align-self: flex-start;
   width: 100%;
   // height: 100%;
-  z-index: -30;
+  // z-index: -30;
+  z-index: 100000;
   // display: none;
 }
 

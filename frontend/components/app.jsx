@@ -34,7 +34,7 @@ const App = () => (
       <ProtectedRoute exact path="/manageEvents/:eventId/tickets" component={ManageEvents} />
       <Route exact path="/event/:eventId" component={ShowEvent} />
       <ProtectedRoute exact path="/likes" component={LikesList} />
-      <Route exact path="/browse_events/:lat/:lon/:category" component={BrowseEvents} />
+      <Route path="/browse_events/:lat/:lon/:category" component={BrowseEvents} />
       <ProtectedRoute exact path="/manage" component={Manage} />
       <ProtectedRoute exact path="/tickets" component={Tickets} />
       <ProtectedRoute exact path="/ticketShow" component={TicketShow} />

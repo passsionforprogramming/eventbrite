@@ -2,7 +2,7 @@ import React from 'react';
 import EventSearchBox from '../event_box/event_box';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
-import { sendDropdownEvent } from "../../actions/ui_actions";
+import { sendDropdownEvent, arrowSearchClicked } from "../../actions/ui_actions";
 import { fetchAllEvents } from "../../actions/event_actions";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Thumbnail from "../event_display/thumbnail";
@@ -49,7 +49,7 @@ class Home extends React.Component {
                                    those who do
               </div>
                             <EventSearchBox />
-                            <div className={`arrow-circle ${this.props.hideArrow && "hide-arrow"}`}>
+                            <div className={`arrow-circle ${this.props.hideArrow && "hide-arrow"}`} onClick={() => this.props.arrowSearchClicked(true)}>
                                    <FontAwesomeIcon icon={faArrowCircleRight}
                                           color={"orangered"}
                                           className="the-arrow" />
@@ -99,7 +99,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   sendDropdownEvent: event => dispatch(sendDropdownEvent(event)),
   fetchAllEvents: () => dispatch(fetchAllEvents()),
-  like: (eventId, userId) => dispatch(likeEvent(eventId, userId))
+  like: (eventId, userId) => dispatch(likeEvent(eventId, userId)),
+  arrowSearchClicked: val => dispatch(arrowSearchClicked)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

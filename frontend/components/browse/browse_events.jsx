@@ -2,13 +2,14 @@ import React from 'react';
 import { eventCategories } from '../../util/event_categories';
 import EventListItem from '../search_bar/event_list_item';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { arrowSearchClicked } from '../../actions/ui_actions';
 import LoadingIcon from '../loading/loading_icon';
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
 } from 'react-places-autocomplete';
-import MapsContainer from './maps_container';
+import MapsContainer from './redux_maps_container';
 import { submitSearch } from '../../actions/event_actions';
 import { connect } from 'react-redux';
 class BrowseEvents extends React.Component {
@@ -23,6 +24,7 @@ class BrowseEvents extends React.Component {
     }
 
     componentDidMount(){
+      this.props.arrowSearchClicked(false);
         const {lat, lon, category} = this.props.match.params;
         this.props.submitSearch(null, null, category, lat, lon);
     }
@@ -163,7 +165,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   submitSearch: (query, date, category, lat, lon) =>
-    dispatch(submitSearch(query, date, category, lat, lon))
+    dispatch(submitSearch(query, date, category, lat, lon)),
+  arrowSearchClicked: val => dispatch(arrowSearchClicked(val))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BrowseEvents);
