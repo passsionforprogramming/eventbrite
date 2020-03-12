@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 require 'faker'
+require 'geocoder'
+require 'httparty'
+require 'securerandom'
 
 eventTypes = [
     "Type",
@@ -64,6 +67,8 @@ demoUser = User.create(
     email: "barryallen@haply.com"
 )
 
+dallas_locations = [{lat: 32.9600796, lon: -97.0101134}, { lat: 32.8203525, lon: -97.011731 }, {lat: 33.0807655, lon: -96.8287174}, {lat: 32.9536795, lon: -96.8302922}, {lat: 32.7886951, lon: -97.3474424}, {lat: 32.9134561, lon: -97.335023}]
+
 10.times do 
     User.create(
         first_name: Faker::Name.first_name,
@@ -73,25 +78,35 @@ demoUser = User.create(
     )
 end
 
-100.times do
-    i = 1
-    demoEvent = Event.create(
+dallas_locations.each do |location|
+    response = HTTParty.get("https://atlas.microsoft.com/search/nearby/json?subscription-key=NdvdzeRaZF7wv2CCOGGao3eelC28YASCvSW5k1Blhy0&api-version=1.0&lat=#{location[:lat]}&lon=#{location[:lon]}&limit=100&radius=50000")
+    body = JSON.parse response.body
+    results = body["results"]
+    results.each do |result|
+            # puts result["address"]["freeformAddress"]
+            # puts result["position"]["lat"]
+            # puts result["position"]["lon"]
+        next if Event.exists?(location_address: result["address"]["freeformAddress"])
+        demoEvent = Event.create(
         title: Faker::Movies::LordOfTheRings.location,
         user_id: rand(1..10),
         category: eventCategories.sample,
         eventType: eventTypes.sample,
-        location_address: Faker::Address.full_address,
+        location_address: result["address"]["freeformAddress"],
         organizer: Faker::Name.name,
-        lat: Faker::Address.latitude,
-        lon: Faker::Address.longitude,
+        maps_lat: result["position"]["lat"],
+        maps_lon: result["position"]["lon"],
+        lat_lon: "POINT(#{result['position']['lon']} #{result['position']['lat']})",
         published: true,
         location_type: "venue",
-        start_time: Faker::Time.between(from: DateTime.now + 8, to: DateTime.now + 15, format: :default),
+        status: "published",
+        start_time: Faker::Time.between(from: DateTime.now + 10.days, to: DateTime.now + 120.days, format: :default),
         description: Faker::GreekPhilosophers.quote)
         file = open("https://haply-seed.s3.us-east-2.amazonaws.com/#{rand(1..9)}.jpg")
-    demoEvent.photo.attach(io: file, filename: "event_image#{i}.jpg")
-    i += 1
+        demoEvent.photo.attach(io: file, filename: "event_image#{SecureRandom.uuid}.jpg")
+    end
 end
+
 
 20.times do
     i = 1

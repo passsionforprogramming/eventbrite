@@ -2,6 +2,7 @@ class Api::EventsController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy]
     before_action :require_user_owns_event!, only: [:update, :destroy]
     def create
+        @current_user = current_user
         @tags = event_params[:tags]
         new_params = event_params.select { |k, v| k != "tags" }
         @event = Event.new(new_params);
@@ -25,23 +26,27 @@ class Api::EventsController < ApplicationController
     end
 
     def index
-        @events = Event.all
-
+        @current_user = current_user
+        print @current_user
+        @events = Event.where(published: true)
     end
 
     def show
+        @current_user = current_user
         @event = Event.find(params[:id])
         @tags = @event.tags.pluck(:name)
         @has_batches = @event.batches.count > 0
     end
 
     def destroy
+        @current_user = current_user
         @event = Event.find(params[:id])
         @event.destroy
         user_events
     end
 
     def update
+        @current_user = current_user
         @event = Event.find(params[:id])
          @tags = event_params[:tags]
         new_params = event_params.select { |k, v| k != "tags" }
@@ -59,6 +64,7 @@ class Api::EventsController < ApplicationController
     end
 
     def search
+        @current_user = current_user
         query = params.has_key?(:q) ? params[:q] : nil
         lat = params.has_key?(:lat) ? params[:lat] : nil
         lon = params.has_key?(:lon) ? params[:lon] : nil
@@ -83,6 +89,7 @@ class Api::EventsController < ApplicationController
     end
 
     def autocomplete
+        @current_user = current_user
         query = params.has_key?(:q) ? params[:q] : nil
         if query 
             @events = Event.search(query).limit(5) 
@@ -91,6 +98,7 @@ class Api::EventsController < ApplicationController
     end
 
     def user_events
+        @current_user = current_user
         events = current_user.events
         events.each do |event|
             total_tickets = 0
@@ -106,6 +114,7 @@ class Api::EventsController < ApplicationController
     end
 
     def publish_event
+        @current_user = current_user
         @tags = event_params[:tags]
         new_params = event_params.select { |k, v| k != "tags" }
         @event = Event.find(new_params[:id])

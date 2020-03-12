@@ -28,7 +28,6 @@ class Home extends React.Component {
               this.props.fetchAllEvents().then(console.log("Type of", typeof this.props.events));
        }
        render(){
-              debugger;
               return (
 
                      <div className="main-home-div" onClick={() => {

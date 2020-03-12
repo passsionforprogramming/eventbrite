@@ -17,9 +17,11 @@ import BrowseEvents from './browse/browse_events';
 import Manage from '../manage/Manage';
 import Tickets from './tickets/users_tickets/Tickets';
 import TicketShow from './tickets/users_tickets/ticket_show';
+import SnackBar from './snackbar/snackbar';
 const App = () => (
   <div>
     <NavBarContainer />
+    <SnackBar />
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signin" component={SignIn} />

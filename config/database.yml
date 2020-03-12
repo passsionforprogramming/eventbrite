@@ -84,4 +84,4 @@ production:
   database: eventBriteClone_production
   username: eventBriteClone
   password: <%= ENV['EVENTBRITECLONE_DATABASE_PASSWORD'] %>
-  
+ 

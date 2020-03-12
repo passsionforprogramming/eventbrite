@@ -70,6 +70,7 @@ class DashBoard extends React.Component {
                                                                       address={event.address}
                                                                       key={event.id}
                                                                       id={event.id}
+                                                                      eventLiked={event.liked}
                                                                />
                                                         ))
                                                  }
