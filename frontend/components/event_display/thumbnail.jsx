@@ -48,7 +48,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    like: (eventId, userId) => dispatch(likeEvent(eventId, userId))
+    like: (eventId, userId, wasLiked) => dispatch(likeEvent(eventId, userId, wasLiked))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Thumbnail)
