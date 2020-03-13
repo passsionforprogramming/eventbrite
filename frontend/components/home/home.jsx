@@ -25,7 +25,7 @@ class Home extends React.Component {
        }
        
        componentDidMount(){
-              this.props.fetchAllEvents().then(console.log("Type of", typeof this.props.events));
+              this.props.fetchAllEvents();
        }
        render(){
               return (
@@ -99,7 +99,7 @@ const mapDispatchToProps = dispatch => ({
   sendDropdownEvent: event => dispatch(sendDropdownEvent(event)),
   fetchAllEvents: () => dispatch(fetchAllEvents()),
   like: (eventId, userId) => dispatch(likeEvent(eventId, userId)),
-  arrowSearchClicked: val => dispatch(arrowSearchClicked)
+  arrowSearchClicked: val => dispatch(arrowSearchClicked(val))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
