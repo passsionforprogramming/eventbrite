@@ -29,7 +29,7 @@ class MapContainer extends React.Component {
       const markers = this.props.events.map(event => (
         <Marker 
         title={event.title}
-        position={{lat: event.lat, lng: event.lng}} />
+        position={{lat: event.lat, lng: event.lon}} />
       ));
         return (
           <Map
@@ -42,7 +42,6 @@ class MapContainer extends React.Component {
           onClick={this.onMarkerClick}
           name={"Dallas"} 
           position={{ lat: 32.8203525, lng: -97.011731 }}/>
-          {this.props.events > 0 && {markers}} 
             <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}

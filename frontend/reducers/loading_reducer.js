@@ -1,5 +1,5 @@
 import { PREVIOUS_USER, START_LOADING_VERIFY, LOADING_FORM } from '../actions/session_actions';
-import { FORM_SUBMITTED, RECEIVE_EVENT } from '../actions/event_actions';
+import { FORM_SUBMITTED, RECEIVE_EVENT, RECEIVE_BROWSE_EVENTS } from '../actions/event_actions';
 import { RECEIVE_USER_TICKETS } from '../actions/ticket_actions';
 const initialState = {
   verifyLoading: false,
@@ -20,6 +20,8 @@ switch (action.type) {
     return Object.assign({}, state, {loadingForm: false});
   case RECEIVE_USER_TICKETS:
     return Object.assign({}, state, {loadingForm: false});
+  case RECEIVE_BROWSE_EVENTS:
+    return Object.assign({}, state, {loadingForm: false})
   default:
     return state;
 }

@@ -65,27 +65,11 @@ class Api::EventsController < ApplicationController
 
     def search
         @current_user = current_user
-        query = params.has_key?(:q) ? params[:q] : nil
-        lat = params.has_key?(:lat) ? params[:lat] : nil
-        lon = params.has_key?(:lon) ? params[:lon] : nil
-        category = params.has_key?(:category) ? params[:category] : nil
-        if (query && !lat && !category)
-            @events = Event.search(query).where(published: true)
-            render :index
-        elsif (query && lat && !category)
-            @events = Event.within(lat, lon, 50).search(query).where(published: true)
-            render :index
-        elsif (query && lat && category)
-            @events = Event.within(lat, lon, 50).search(query).where(category: category).where(published: true)
-            render :index
-        elsif (query && !lat && category)
-            @events = Event.search(query).where(category: category).where(published: true)
-            render :index
-        elsif (!query && lat && !category)
-            @events = Event.within(lat, lon, 50).where(published: true)
-        elsif (!query && !lat && category)
-            @events = Event.find_by(category: category).where(published: true)
-        end
+        str = "Event.within(params[:lat], params[:lon], 50)"
+        str += ".category_search(params[:category])" if params[:category] != "null" && params[:category] != "Anything"
+        str += ".search(params[:q])" if params[:q] != "null"
+        @events = eval(str)
+        render :index
     end
 
     def autocomplete

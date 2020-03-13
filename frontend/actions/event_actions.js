@@ -22,6 +22,7 @@ export const DISPLAY_EVENT = "DISPLAY_EVENT";
 export const RESET_EVENT = "RESET_EVENT";
 export const RECEIVE_SEARCH_EVENTS = "RECEIVE_SEARCH_EVENTS";
 export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS";
+export const RECEIVE_BROWSE_EVENTS = "RECEIVE_BROWSE_EVENTS";
 
 export const resetEvent = () => ({
     type: RESET_EVENT
@@ -37,9 +38,17 @@ export const receiveSearchEvents = events => ({
     events
 });
 
-export const submitSearch = (query, date, category, lat, lon ) =>  dispatch => (
-    EventAPIUtil.searchEvents(query, date, category, lat, lon).then(events => dispatch(receiveSearchEvents(events)))
-)
+export const receiveBrowseEvents = events => ({
+    type: RECEIVE_BROWSE_EVENTS,
+    events
+})
+
+
+
+export const submitSearch = (query, date, category, lat, lon ) =>  dispatch => {
+    dispatch(loadingForm());
+    return EventAPIUtil.searchEvents(query, date, category, lat, lon).then(events => dispatch(receiveBrowseEvents(events)))
+}
 
 export const autoComplete = query => dispatch => {
     EventAPIUtil.autocomplete(query).then(events => {

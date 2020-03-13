@@ -46,4 +46,16 @@ class Event < ApplicationRecord
      ST_Distance(lat_lon, 'POINT(%f %f)') < %d
     } % [longitude, latitude, distance_in_mile * 1609.34]) # approx
   }
+
+  def self.chain(methods)
+    methods.inject(self, :send)
+  end
+
+  # def self.chain_method(methods)
+  #   methods.inject(self) { |acc, el| acc.send (el.keys.first), el.values.first}
+  # end
+
+  scope :date, -> (date){where('start_time < ?', date)}
+
+  scope :category_search, -> (category){where(category: category)}
 end

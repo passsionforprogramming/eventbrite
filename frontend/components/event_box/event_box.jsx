@@ -95,7 +95,7 @@ class EventSearchBox extends React.Component {
           }
         });
         if (this.props.arrowClicked) {
-          this.props.history.push(`/browse_events/${this.state.lat}/${this.state.lng}/${this.state.category}`);
+          this.props.history.push(`/browse_events/${this.state.lat}/${this.state.lng}/${this.state.category}/${this.state.checked}`);
         }
         return (
           <div className="large-box">

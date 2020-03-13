@@ -11,6 +11,7 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import MapsContainer from './redux_maps_container';
 import { submitSearch } from '../../actions/event_actions';
+import EventList from './event_list';
 import { connect } from 'react-redux';
 class BrowseEvents extends React.Component {
     constructor(props){
@@ -25,8 +26,8 @@ class BrowseEvents extends React.Component {
 
     componentDidMount(){
       this.props.arrowSearchClicked(false);
-        const {lat, lon, category} = this.props.match.params;
-        this.props.submitSearch(null, null, category, lat, lon);
+        const {lat, lon, category, date} = this.props.match.params;
+        this.props.submitSearch(null, date, category, lat, lon);
     }
 
     handleSelect = address => {
@@ -53,6 +54,13 @@ class BrowseEvents extends React.Component {
         const newDateList = dateList.map((date, i) => (
             <li key={i} className={this.state.date === date ? "the-selected" : ""} onClick={() => this.setState({date})}>{date}</li>
         ));
+
+      const searchResults = () => {
+        if (this.props.loading) return <LoadingIcon />
+        return this.props.events.length > 0 ? <EventList events={this.props.events} /> : <div className="no-events-match">
+          <p className="basic-info-header">There are no events in the area that match your search request.</p>
+        </div>
+      }
         return (
           <div className="browse-events">
             <div className="filters">
@@ -137,21 +145,11 @@ class BrowseEvents extends React.Component {
                 </PlacesAutocomplete>
                 <button className="search-button">Search</button>
               </div>
-              {this.props.events.length > 0 ? this.props.events.map(event => (
-                <EventListItem
-                  title={event.title}
-                  id={event.id}
-                  key={event.id}
-                  eventTime={event.startDate}
-                  imageUrl={event.imageUrl}
-                  address={event.address}
-                />
-              )) : <div className="no-events-match">
-                  <p className="basic-info-header">There are no events in the area that match your search request.</p>
-              </div> }
+              
+              {searchResults()}
             </div>
             <div className="event-maps">
-              <MapsContainer />
+              {/* <MapsContainer /> */}
             </div>
           </div>
         );
@@ -160,7 +158,8 @@ class BrowseEvents extends React.Component {
 
 
 const mapStateToProps = state => ({
-    events: state.entities.search
+    events: state.entities.browse,
+    loading: state.ui.loading.loadingForm
 });
 
 const mapDispatchToProps = dispatch => ({

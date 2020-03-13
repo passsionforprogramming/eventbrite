@@ -4,6 +4,8 @@ json.array! @events do |event|
     json.title event.title
     json.address event.location_address
     json.status event.status
+    json.lat event.maps_lat
+    json.lon event.maps_lon
     if current_user
         json.liked Like.exists?(event_id: event.id, user_id: @current_user.id)
     end
