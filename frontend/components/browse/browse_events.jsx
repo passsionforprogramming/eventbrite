@@ -149,7 +149,7 @@ class BrowseEvents extends React.Component {
               {searchResults()}
             </div>
             <div className="event-maps">
-              {/* <MapsContainer /> */}
+              <MapsContainer />
             </div>
           </div>
         );

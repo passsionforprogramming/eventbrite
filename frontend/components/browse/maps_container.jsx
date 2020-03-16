@@ -26,11 +26,11 @@ class MapContainer extends React.Component {
     }
   };
     render(){
-      const markers = this.props.events.map(event => (
+      const markers = this.props.events > 0 ? this.props.events.map(event => (
         <Marker 
         title={event.title}
         position={{lat: event.lat, lng: event.lon}} />
-      ));
+      )) : <div></div>;
         return (
           <Map
             google={this.props.google}
