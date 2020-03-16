@@ -14,7 +14,7 @@ const Footer = props => (
                     };
                     props.login(user);
                 }}>Demo Login</li>
-                <li><a href="#">About James Saulsberry</a></li>
+                <li><a href="https://www.jamessaulsberry.com">About James Saulsberry</a></li>
             </div>
         </ul>
 );
