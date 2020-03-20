@@ -1,6 +1,6 @@
 import React from 'react';
 
-class EventMap extends React.Component {
+export default class EventMap extends React.Component {
     constructor(props){
         super(props);
         this.state = {
