@@ -3,6 +3,7 @@ json.array! @events do |event|
     json.eventTime event.start_time
     json.title event.title
     json.address event.location_address
+    json.description event.description
     json.status event.status
     json.lat event.maps_lat
     json.lon event.maps_lon

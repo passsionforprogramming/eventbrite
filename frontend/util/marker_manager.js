@@ -7,34 +7,36 @@ class MarkerManager {
     this.markers = {};
   }
 
-  updateMarkers(benches){
-    const benchesObj = {};
-    benches.forEach(bench => benchesObj[bench.id] = bench);
+  updateMarkers(events){
+    const eventsObj = {};
+    events.forEach(event => eventsObj[event.id] = event);
 
-    benches
-      .filter(bench => !this.markers[bench.id])
-      .forEach(newBench => this.createMarkerFromBench(newBench, this.handleClick))
+    events
+      .filter(event => !this.markers[event.id])
+      .forEach(newEvent => this.createMarkerFromEvent(newEvent, this.handleClick))
 
     Object.keys(this.markers)
-      .filter(benchId => !benchesObj[benchId])
-      .forEach((benchId) => this.removeMarker(this.markers[benchId]))
+      .filter(eventId => !eventsObj[eventId])
+      .forEach((eventId) => this.removeMarker(this.markers[eventId]))
   }
 
-  createMarkerFromBench(bench) {
-    const position = new google.maps.LatLng(bench.lat, bench.lng);
+
+  createMarkerFromEvent(event) {
+    const position = new google.maps.LatLng(event.lat, event.lng);
     const marker = new google.maps.Marker({
       position,
       map: this.map,
-      benchId: bench.id
+      title: event.title,
+      eventId: event.id
     });
 
-    marker.addListener('click', () => this.handleClick(bench));
-    this.markers[marker.benchId] = marker;
+    marker.addListener('click', () => this.handleClick(event));
+    this.markers[marker.eventId] = marker;
   }
 
   removeMarker(marker) {
-    this.markers[marker.benchId].setMap(null);
-    delete this.markers[marker.benchId];
+    this.markers[marker.eventId].setMap(null);
+    delete this.markers[marker.eventId];
   }
 }
 
