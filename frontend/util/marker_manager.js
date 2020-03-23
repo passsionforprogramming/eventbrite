@@ -8,28 +8,27 @@ class MarkerManager {
   }
 
   updateMarkers(events){
+    debugger;
     const eventsObj = {};
     events.forEach(event => eventsObj[event.id] = event);
 
     events
-      .filter(event => !this.markers[event.id])
       .forEach(newEvent => this.createMarkerFromEvent(newEvent, this.handleClick))
-
-    Object.keys(this.markers)
-      .filter(eventId => !eventsObj[eventId])
-      .forEach((eventId) => this.removeMarker(this.markers[eventId]))
   }
 
 
   createMarkerFromEvent(event) {
-    const position = new google.maps.LatLng(event.lat, event.lng);
+    //const position = new google.maps.LatLng(event.lat, event.lon);
     const marker = new google.maps.Marker({
-      position,
+      position: {
+        lat: event.lat,
+        lng: event.lon
+      },
       map: this.map,
       title: event.title,
       eventId: event.id
     });
-
+    
     marker.addListener('click', () => this.handleClick(event));
     this.markers[marker.eventId] = marker;
   }

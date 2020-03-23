@@ -4,7 +4,7 @@ import EventMap from './EventMap';
 
 
 const mapStateToProps = state => ({
-    events: state.entities.browse
+    otherEvents: state.entities.browse
 });
 
 const mapDispatchToProps = dispatch => ({

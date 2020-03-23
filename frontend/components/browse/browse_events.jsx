@@ -13,6 +13,7 @@ import MapsContainer from './redux_maps_container';
 import { submitSearch } from '../../actions/event_actions';
 import EventList from './event_list';
 import { connect } from 'react-redux';
+import EventsMapContainer from '../EventMap/EventContainer';
 class BrowseEvents extends React.Component {
     constructor(props){
         super(props);
@@ -149,7 +150,7 @@ class BrowseEvents extends React.Component {
               {searchResults()}
             </div>
             <div className="event-maps">
-              <MapsContainer />
+              <EventsMapContainer events={this.props.events}/>
             </div>
           </div>
         );

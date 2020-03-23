@@ -18,23 +18,28 @@ export default class EventMap extends React.Component {
             this.handleClick(coords);
         });
     }
+
     componentDidMount(){
         const mapOptions = {
             center: {
-                lat: this.props.match.params.lat,
-                lng: this.props.atch.params.lon
+                lat: parseFloat(this.props.match.params.lat),
+                lng: parseFloat(this.props.match.params.lon)
             },
-            zoom: 13
-            }
+            zoom: 10
+        }
         const map = this.refs.map;
         this.map = new google.maps.Map(map, mapOptions);
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick);
         this.registerListeners();
-        this.MarkerManager.updateMarkers(this.props.events);
     }
+    
     render(){
+        
+        if (this.props.events.length > 0) {
+            this.MarkerManager.updateMarkers(this.props.events);
+        }
         return (
-            <div className="map" ref="map">
+            <div className="map" style={{width: "100%", height: "100vh"}} ref="map">
 
             </div>
         )
