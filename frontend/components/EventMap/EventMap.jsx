@@ -16,7 +16,7 @@ export default class EventMap extends React.Component {
 
     registerListeners() {
         google.maps.event.addListener(this.map, 'click', (event) => {
-            const coords = getCoordsObj(event.latLng);
+            //const coords = getCoordsObj(event.latLng);
             this.handleClick(coords);
         });
         
@@ -27,6 +27,7 @@ export default class EventMap extends React.Component {
     
 
     componentDidMount(){
+        debugger;
         const mapOptions = {
             center: {
                 lat: parseFloat(this.props.match.params.lat),

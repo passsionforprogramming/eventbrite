@@ -65,9 +65,32 @@ class Api::EventsController < ApplicationController
 
     def search
         @current_user = current_user
+        datestring = ""
+        date = nil
+        case params[:date]
+            when "Any"
+                date = "Any"
+                break
+            when "null"
+                date = "null"
+                break
+            when "Today"
+                date = DateTime.now.midnight + 1.days
+                datestring = ".dateEquals(date)"
+                break
+            when "Tomorrow"
+                date = DateTime.now.midnight + 2.days
+                datestring = ".dateEquals(date)"
+                break
+            when "This weekend"
+                date = Event.weekend_array
+                datestring = ".date_between(date)"
+                break
+        end
         str = "Event.within(params[:lat], params[:lon], 50)"
         str += ".category_search(params[:category])" if params[:category] != "null" && params[:category] != "Anything"
         str += ".search(params[:q])" if params[:q] != "null"
+        str += datestring
         @events = eval(str)
         render :index
     end

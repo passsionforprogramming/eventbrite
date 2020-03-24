@@ -51,11 +51,23 @@ class Event < ApplicationRecord
     methods.inject(self, :send)
   end
 
+  def self.weekend_array
+    arr = []
+    fridayDate = Date.parse("Friday")
+    sundayDate = fridayDate + 2.days
+    arr << fridayDate
+    arr << sundayDate
+  end
+
   # def self.chain_method(methods)
   #   methods.inject(self) { |acc, el| acc.send (el.keys.first), el.values.first}
   # end
 
   scope :date, -> (date){where('start_time < ?', date)}
+
+  scope :dateEquals, -> (date){where(start_time: date)}
+
+  scope :date_between, -> (date){'start_time < ? AND start_time > ?', date[1], date[0]}
 
   scope :category_search, -> (category){where(category: category)}
 end

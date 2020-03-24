@@ -21,14 +21,25 @@ class BrowseEvents extends React.Component {
             moreCategories: false,
             category: "Anything",
             date: "Any day",
-            address: ""
+            address: "",
+            lat: this.props.match.params.lat,
+            lon: this.props.match.params.lon
         }
     }
 
     componentDidMount(){
+      debugger;
       this.props.arrowSearchClicked(false);
         const {lat, lon, category, date} = this.props.match.params;
         this.props.submitSearch(null, date, category, lat, lon);
+    }
+
+  componentDidUpdate(prevProps, prevState){
+      if ((prevState.category !== this.state.category) || (prevState.date !== this.state.date) || (prevState.lat !== this.state.lat) ){
+        this.props.history.push(`/browse_events/${this.state.lat}/${this.state.lon}/${this.state.category}/${this.state.date}`);
+        const { lat, lon, category, date } = this.props.match.params;
+        this.props.submitSearch(null, date, category, lat, lon);
+      }
     }
 
     handleSelect = address => {
