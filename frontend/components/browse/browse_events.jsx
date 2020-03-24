@@ -28,7 +28,6 @@ class BrowseEvents extends React.Component {
     }
 
     componentDidMount(){
-      debugger;
       this.props.arrowSearchClicked(false);
         const {lat, lon, category, date} = this.props.match.params;
         this.props.submitSearch(null, date, category, lat, lon);
@@ -37,7 +36,7 @@ class BrowseEvents extends React.Component {
   componentDidUpdate(prevProps, prevState){
       if ((prevState.category !== this.state.category) || (prevState.date !== this.state.date) || (prevState.lat !== this.state.lat) ){
         this.props.history.push(`/browse_events/${this.state.lat}/${this.state.lon}/${this.state.category}/${this.state.date}`);
-        const { lat, lon, category, date } = this.props.match.params;
+        const { lat, lon, category, date } = this.state;
         this.props.submitSearch(null, date, category, lat, lon);
       }
     }
@@ -56,13 +55,13 @@ class BrowseEvents extends React.Component {
         const searchOptions = {
             types: ['(cities)']
         };
-        const newCategories = ["Anything", ...eventCategories];
+        const newCategories = ["Anything", ...eventCategories.slice(1)];
         const categoryList = this.state.moreCategories ? newCategories.map((category, i) => {
             return <li key={i} className={this.state.category === category ? "the-selected" : ""} onClick={() => this.setState({category})}>{category}</li>
         }) : newCategories.slice(0, 4).map((category, i) => {
             return <li key={i} onClick={() => this.setState({ category })}>{category}</li>
         });
-        const dateList = ["Any day", "Pick a date...", "Today", "Tomorrow", "This weekend"];
+        const dateList = ["Any day", "Today", "Tomorrow", "This weekend"];
         const newDateList = dateList.map((date, i) => (
             <li key={i} className={this.state.date === date ? "the-selected" : ""} onClick={() => this.setState({date})}>{date}</li>
         ));

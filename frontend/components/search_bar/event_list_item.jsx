@@ -1,10 +1,10 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 const EventListItem = props => {
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     const thumbDate = new Date(props.eventTime);
     return (
-        <div className="event-list-item">
+        <div className="event-list-item" onClick={() => props.history.push(`/event/${props.id}`)}>
             <img className="event-img-list" src={props.imageUrl}/>
             <div className="detail-col">
                 <p className="detail-title">{props.title}</p>
@@ -15,4 +15,4 @@ const EventListItem = props => {
     )
 }
 
-export default EventListItem;
+export default withRouter(EventListItem);
