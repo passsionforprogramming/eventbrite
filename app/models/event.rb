@@ -67,7 +67,7 @@ class Event < ApplicationRecord
 
   scope :dateEquals, -> (date){where(start_time: date)}
 
-  scope :date_between, -> (date){'start_time < ? AND start_time > ?', date[1], date[0]}
+  scope :date_between, -> (date){where('start_time < ? AND start_time > ?', date[1], date[0])}
 
   scope :category_search, -> (category){where(category: category)}
 end
