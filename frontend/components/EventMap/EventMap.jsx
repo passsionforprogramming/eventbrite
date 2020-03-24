@@ -4,12 +4,14 @@ export default class EventMap extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            
+            loaded: false
         }
     }
 
-    handleMarkerClick = () => {
-        this.props.history.push(`event/${event.id}`)
+
+
+    handleMarkerClick = event => {
+        this.props.history.push(`/event/${event.id}`);
     }
 
     registerListeners() {
@@ -17,7 +19,12 @@ export default class EventMap extends React.Component {
             const coords = getCoordsObj(event.latLng);
             this.handleClick(coords);
         });
+        
     }
+
+
+
+    
 
     componentDidMount(){
         const mapOptions = {
@@ -31,11 +38,14 @@ export default class EventMap extends React.Component {
         this.map = new google.maps.Map(map, mapOptions);
         this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick);
         this.registerListeners();
+        this.setState({loaded: true});
     }
+
+    
     
     render(){
         
-        if (this.props.events.length > 0) {
+        if (this.props.events.length > 0 && this.state.loaded) {
             this.MarkerManager.updateMarkers(this.props.events);
         }
         return (

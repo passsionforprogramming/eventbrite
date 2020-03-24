@@ -8,7 +8,6 @@ class MarkerManager {
   }
 
   updateMarkers(events){
-    debugger;
     const eventsObj = {};
     events.forEach(event => eventsObj[event.id] = event);
 
@@ -28,7 +27,7 @@ class MarkerManager {
       title: event.title,
       eventId: event.id
     });
-    
+
     marker.addListener('click', () => this.handleClick(event));
     this.markers[marker.eventId] = marker;
   }
