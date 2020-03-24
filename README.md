@@ -4,6 +4,8 @@ Haply is a clone of the event site, Eventbrite. On this site, users are able to 
 Features cloned from Eventbrite include:
 * User authentication
 * Creating events
+* Creating tickets
+* Buying tickets
 * Liking events
 * Viewing event information
 * Browsing events
@@ -14,3 +16,6 @@ Haply was built on Ruby on a Rails backend with React/Redux front end. User data
 
 # Site
 ![alt site](https://haply-seed.s3.us-east-2.amazonaws.com/Screen+Shot+2020-01-03+at+4.27.47+PM.png)
+
+# Browse Events
+![alt site](https://haply-seed.s3.us-east-2.amazonaws.com/search-haply.png)
